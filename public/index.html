@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archetype</title>
+<meta name="description" content="Cultural-fit briefs for launches, grounded in the Qloo taste graph.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/" aria-label="Archetype home"><span class="mark">A</span> Archetype</a>
+  <span class="tagline">Who the audience really is, and who they would accept as a partner.</span>
+  <button id="themeBtn" class="ghost small" aria-label="Toggle theme">Theme</button>
+</header>
+
+<main>
+  <section id="view-start" class="view">
+    <div class="narrow">
+      <h1>What are you launching?</h1>
+      <p class="lede">Name a book, game, film, show, podcast or artist. Archetype measures its audience in the Qloo taste graph and builds a brief: who they are, which artists and partner brands they would accept, where fans are, and where a plain AI guess falls short.</p>
+      <form id="startForm" class="card form" autocomplete="off">
+        <label for="q">Title</label>
+        <input id="q" required maxlength="120" placeholder="The Secret History">
+        <label>Kind</label>
+        <div id="typeChips" class="chips" role="radiogroup" aria-label="Kind"></div>
+        <div class="grid2">
+          <div><label for="goal">Goal (optional)</label><input id="goal" maxlength="200" placeholder="Series adaptation launch"></div>
+          <div><label for="city">City for venues and neighborhoods (optional)</label><input id="city" maxlength="80" placeholder="New York"></div>
+        </div>
+        <div class="grid2">
+          <div><label for="age">Target age group</label><select id="age"><option value="">Anyone</option></select></div>
+          <div><label for="gender">Target gender</label><select id="gender"><option value="">Anyone</option><option value="female">Women</option><option value="male">Men</option></select></div>
+        </div>
+        <details><summary>Partner categories and minimum fit</summary>
+          <div id="catChips" class="chips"></div>
+          <label for="minScore">Minimum fit score: <b id="minScoreOut"></b></label>
+          <input id="minScore" type="range" min="0.5" max="0.95" step="0.01">
+        </details>
+        <div class="row"><button class="primary" type="submit" id="findBtn">Find it</button><span id="startMsg" class="muted" role="status"></span></div>
+      </form>
+      <div class="examples"><span class="muted">Try:</span> <span id="examples"></span></div>
+    </div>
+  </section>
+
+  <section id="view-confirm" class="view" hidden>
+    <div class="narrow">
+      <h1>Which one did you mean?</h1>
+      <p class="lede">Names are ambiguous in the taste graph. Pick the match so the numbers are about the right thing.</p>
+      <div id="candidates" class="card"></div>
+      <div class="row"><button class="ghost" id="backBtn">Back</button><button class="primary" id="buildBtn">Build my brief</button><span id="confirmMsg" class="muted"></span></div>
+    </div>
+  </section>
+
+  <section id="view-progress" class="view" hidden>
+    <div class="narrow">
+      <h1 id="progTitle">Building your brief</h1>
+      <p class="lede">Each line is a real Qloo or Gemini call. Slow ones can take a few seconds.</p>
+      <div id="steps" class="card steps"></div>
+      <p class="muted" id="elapsed"></p>
+      <p id="failure" class="warnbox" hidden></p>
+    </div>
+  </section>
+
+  <section id="view-brief" class="view" hidden>
+    <div id="brief"></div>
+  </section>
+</main>
+
+<footer class="foot">Data from the Qloo taste graph. Scores are indices from 0 to 1, demographic values are skew indices, not percentages. Open source (MIT).</footer>
+<script src="/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "archetype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cultural-fit briefs for launches, grounded in the Qloo taste graph.",
+  "license": "MIT",
+  "engines": { "node": ">=22.0.0" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@google/genai": "2.31.0"
+  }
+}
