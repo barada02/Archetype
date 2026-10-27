@@ -1,0 +1,50 @@
+name: CI / Deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Pull, install, restart
+        run: |
+          ssh "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" 'bash -se' <<'EOF'
+          set -euo pipefail
+          cd ~/archetype
+          git fetch --quiet origin master
+          git reset --hard origin/master
+          npm ci --omit=dev
+          sudo systemctl restart archetype
+          sleep 3
+          systemctl is-active --quiet archetype
+          curl -fsS -o /dev/null http://127.0.0.1:3100/
+          echo "Deployed $(git rev-parse --short HEAD)"
+          EOF
