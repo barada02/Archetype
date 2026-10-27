@@ -30,21 +30,92 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Pull, install, restart
+      # Idempotent: the first run sets up the server, later runs only update the app.
+      - name: Provision and deploy
         run: |
-          ssh "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" 'bash -se' <<'EOF'
+          ssh -i ~/.ssh/deploy_key "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" 'bash -se' <<'EOF'
           set -euo pipefail
-          cd ~/archetype
+          export DEBIAN_FRONTEND=noninteractive
+          APP=~/archetype
+          DOMAIN='${{ secrets.DOMAIN }}'
+
+          # Node 22+, nginx, git
+          if ! command -v node >/dev/null || ! node -e 'process.exit(+process.versions.node.split(".")[0] >= 22 ? 0 : 1)'; then
+            curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+          fi
+          command -v nginx >/dev/null || { sudo apt-get update -q; sudo apt-get install -y nginx; }
+          command -v git >/dev/null || sudo apt-get install -y git
+
+          # Code
+          [ -d "$APP/.git" ] || git clone https://github.com/${{ github.repository }}.git "$APP"
+          cd "$APP"
           git fetch --quiet origin master
           git reset --hard origin/master
+          mkdir -p data
           npm ci --omit=dev
+
+          # Secrets
+          umask 077
+          printf '%s\n' \
+            'QLOO_API_KEY=${{ secrets.QLOO_API_KEY }}' \
+            'QLOO_BASE_URL=https://hackathon.api.qloo.com' \
+            'GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}' > .env
+          umask 022
+
+          # Service
+          sudo tee /etc/systemd/system/archetype.service >/dev/null <<UNIT
+          [Unit]
+          Description=Archetype
+          After=network.target
+
+          [Service]
+          User=$USER
+          WorkingDirectory=$APP
+          ExecStart=$(command -v node) --env-file=.env server.mjs
+          Restart=always
+          Environment=NODE_ENV=production
+
+          [Install]
+          WantedBy=multi-user.target
+          UNIT
+          sudo systemctl daemon-reload
+          sudo systemctl enable --quiet archetype
           sudo systemctl restart archetype
+
+          # nginx (written once; certbot edits it afterwards)
+          if [ ! -f /etc/nginx/sites-available/archetype ]; then
+            sudo tee /etc/nginx/sites-available/archetype >/dev/null <<NGINX
+          server {
+              listen 80;
+              server_name $DOMAIN;
+              location / {
+                  proxy_pass http://127.0.0.1:3100;
+                  proxy_set_header Host \$host;
+                  proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                  proxy_read_timeout 120s;
+              }
+          }
+          NGINX
+            sudo ln -sf /etc/nginx/sites-available/archetype /etc/nginx/sites-enabled/archetype
+            sudo rm -f /etc/nginx/sites-enabled/default
+            sudo nginx -t
+            sudo systemctl reload nginx
+          fi
+
+          # HTTPS (once)
+          if [ ! -d "/etc/letsencrypt/live/$DOMAIN" ]; then
+            command -v certbot >/dev/null || sudo snap install --classic certbot
+            sudo certbot --nginx -d "$DOMAIN" --non-interactive --agree-tos -m '${{ secrets.CERTBOT_EMAIL }}' --redirect
+          fi
+
+          # Health check
           sleep 3
           systemctl is-active --quiet archetype
           curl -fsS -o /dev/null http://127.0.0.1:3100/
-          echo "Deployed $(git rev-parse --short HEAD)"
+          echo "Deployed $(git rev-parse --short HEAD) to https://$DOMAIN"
           EOF
