@@ -32,6 +32,15 @@ function allowBuild(ip) {
   buildLog.set(ip, recent);
   return true;
 }
+// Behind the local nginx proxy every socket is loopback; nginx appends the real
+// client as the last X-Forwarded-For entry (earlier entries can be spoofed).
+function clientIp(req) {
+  const ip = req.socket.remoteAddress ?? "local";
+  const loopback = ip === "127.0.0.1" || ip === "::1" || ip === "::ffff:127.0.0.1";
+  const forwarded = req.headers["x-forwarded-for"];
+  if (!loopback || typeof forwarded !== "string") return ip;
+  return forwarded.split(",").at(-1).trim() || ip;
+}
 let running = 0;
 
 async function readJson(req) {
@@ -70,7 +79,7 @@ const json = (res, status, value) => {
 async function handleBuild(req, res) {
   if (!config.qlooKey) throw fail(503, "QLOO_API_KEY is not set");
   const input = parseBriefInput(await readJson(req));
-  if (!allowBuild(req.socket.remoteAddress ?? "local")) throw fail(429, "Too many briefs from this address. Try again later.");
+  if (!allowBuild(clientIp(req))) throw fail(429, "Too many briefs from this address. Try again later.");
   if (running >= 2) throw fail(429, "The server is busy building other briefs. Try again in a moment.");
   running++;
   res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive" });
