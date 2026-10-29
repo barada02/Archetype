@@ -1,4 +1,4 @@
-// Builds a brief. Data modules run in parallel against Qloo; Gemini only edits
+// Builds a brief. Data modules run in parallel against Qloo; the LLM only edits
 // and explains what came back. Every Qloo call is recorded for provenance.
 import { randomBytes } from "node:crypto";
 import { listOf, errorOf } from "./qloo.mjs";
@@ -64,7 +64,7 @@ function brandCard(e, key) {
 const artistCard = (e) => ({ id: e.entity_id, name: e.name, affinity: round(e.query?.affinity), popularity: round(e.popularity), image: e.properties?.image?.url });
 
 // input: { entity:{id,name,type,...}, goal, ageBand, gender, city, categories, minScore }
-export async function buildBrief({ input, qloo, gemini, emit = () => {}, now = new Date() }) {
+export async function buildBrief({ input, qloo, llm, emit = () => {}, now = new Date() }) {
   const entity = input.entity;
   const trace = [];
   const modules = {};
@@ -178,17 +178,17 @@ export async function buildBrief({ input, qloo, gemini, emit = () => {}, now = n
   const [audience, sound = { mainstream: [], emerging: [] }, partnerData = { candidates: [], stats: {} }, places, timing] =
     await Promise.all([profileP, soundP, partnersP, placesP, timingP]);
 
-  // ---- editor: Gemini picks and explains from the candidates ----
+  // ---- editor: the LLM picks and explains from the candidates ----
   const editor = await step("editor", "Editor: choose and explain partners", async () => {
     let raw;
-    if (gemini && partnerData.candidates.length) {
+    if (llm && partnerData.candidates.length) {
       try {
-        raw = await gemini.json({
+        raw = await llm.json({
           system: EDITOR_SYSTEM,
           prompt: editorPrompt({ entity, goal: input.goal, target, audience, candidates: partnerData.candidates.slice(0, 30), sound }),
         });
       } catch (error) {
-        emit({ id: "editor", label: "Editor", status: "running", detail: `Gemini failed (${error.message.slice(0, 80)}); using ranked fallback` });
+        emit({ id: "editor", label: "Editor", status: "running", detail: `LLM failed (${error.message.slice(0, 80)}); using ranked fallback` });
       }
     }
     const result = validateEditor(raw, { candidates: partnerData.candidates, entity, audience });
@@ -214,15 +214,15 @@ export async function buildBrief({ input, qloo, gemini, emit = () => {}, now = n
     return { data: true, detail: `${flagged} of ${picks.length} flagged` };
   });
 
-  const clicheP = gemini
-    ? step("cliche", "Cliché check: plain Gemini vs the data", async () => {
+  const clicheP = llm
+    ? step("cliche", "Cliché check: plain LLM vs the data", async () => {
         const ourBrands = picks.slice(0, 5).map((p) => ({ id: p.id, name: p.name, affinity: p.affinity }));
         const ourArtists = sound.mainstream.slice(0, 5).map((a) => ({ id: a.id, name: a.name, affinity: a.affinity }));
-        const data = await clicheCheck({ gemini, call, entity, target, signal: { ...signal, ...demoSignal }, oursBrands: ourBrands, oursArtists: ourArtists });
+        const data = await clicheCheck({ llm, call, entity, target, signal: { ...signal, ...demoSignal }, oursBrands: ourBrands, oursArtists: ourArtists });
         const s = data.brands.summary;
-        return { data, detail: `${s.scored} of ${data.brands.llm.length} Gemini brands scored, ${s.llmBelowOurFloor} below our floor` };
+        return { data, detail: `${s.scored} of ${data.brands.llm.length} LLM brands scored, ${s.llmBelowOurFloor} below our floor` };
       })
-    : (skip("cliche", "Cliché check", "Gemini key missing"), Promise.resolve(undefined));
+    : (skip("cliche", "Cliché check", "LLM key missing"), Promise.resolve(undefined));
 
   const [, cliche] = await Promise.all([checkP, clicheP]);
   picks = picks.map((p) => ({ ...p, reason: p.reason || fallbackReason(p, entity.name) }));
@@ -230,7 +230,7 @@ export async function buildBrief({ input, qloo, gemini, emit = () => {}, now = n
   return {
     id: randomBytes(6).toString("hex"),
     createdAt: now.toISOString(),
-    model: gemini?.model,
+    model: llm?.model,
     input: { entity, goal: input.goal, ageBand: input.ageBand, gender: input.gender, city: input.city, categories, minScore },
     audience,
     sound,

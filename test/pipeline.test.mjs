@@ -37,14 +37,14 @@ const entity = { id: "SELF", name: "The Test Book", type: "book" };
 test("buildBrief assembles every module, filters media brands, and records provenance", async () => {
   const qloo = fakeQloo();
   const events = [];
-  const brief = await buildBrief({ input: { entity, city: "New York", ageBand: "25_to_29", gender: "female", goal: "Launch", categories: ["fashion", "travel"] }, qloo, gemini: undefined, emit: (e) => events.push(e) });
+  const brief = await buildBrief({ input: { entity, city: "New York", ageBand: "25_to_29", gender: "female", goal: "Launch", categories: ["fashion", "travel"] }, qloo, llm: undefined, emit: (e) => events.push(e) });
   assert.equal(brief.audience.peakAge.band, "25_to_29");
   assert.equal(brief.audience.gender.side, "female");
   assert.deepEqual(brief.sound.mainstream.map((a) => a.id), ["ART1"]); // the entity itself is excluded
   assert.equal(brief.partners.stats.mediaBrands, 2);
   assert.equal(brief.partners.stats.belowScore, 2);
   assert.ok(brief.partners.candidates.every((c) => !/media/i.test(c.brandType)));
-  assert.equal(brief.editor.source, "fallback"); // no Gemini given
+  assert.equal(brief.editor.source, "fallback"); // no LLM given
   assert.ok(brief.partners.picks.length > 0 && brief.partners.picks.every((p) => p.reason));
   assert.deepEqual(brief.places.neighborhoods.map((n) => n.name), ["Brooklyn"]); // county filtered out
   assert.equal(brief.modules.timing.status, "skipped"); // books have no trend series
@@ -62,10 +62,10 @@ test("target demographics are sent as signals on partner calls", async () => {
   assert.equal(partnerCall.params["signal.demographics.gender"], "female");
 });
 
-test("Gemini output is validated: invented partners are dropped and numbers never come from the model", async () => {
+test("LLM output is validated: invented partners are dropped and numbers never come from the model", async () => {
   const qloo = fakeQloo();
   let prompts = 0;
-  const gemini = {
+  const llm = {
     model: "fake",
     async json({ prompt }) {
       prompts++;
@@ -73,10 +73,10 @@ test("Gemini output is validated: invented partners are dropped and numbers neve
       return { headline: "Up 82% with fans", audienceSummary: "Nice.", launchAngles: [], partnerPicks: [{ id: "NOT-A-CANDIDATE", reason: "made up" }, { id: "B-fashion", reason: "Fits well" }] };
     },
   };
-  const brief = await buildBrief({ input: { entity, categories: ["fashion"] }, qloo, gemini });
+  const brief = await buildBrief({ input: { entity, categories: ["fashion"] }, qloo, llm });
   assert.deepEqual(brief.partners.picks.map((p) => p.id), ["B-fashion"]);
   assert.doesNotMatch(brief.editor.headline, /82/);
-  assert.equal(brief.editor.source, "gemini");
+  assert.equal(brief.editor.source, "llm");
   assert.equal(prompts, 2); // editor + cliché
   assert.ok(brief.cliche.brands.llm[0].found === false); // unknown brand reported as not in Qloo
 });

@@ -1,4 +1,4 @@
-// The editor step: Gemini reads the measured data and picks and explains partners.
+// The editor step: the LLM reads the measured data and picks and explains partners.
 // Numbers never come from the model. Its output is validated against the candidate
 // list, and any text that contains a number not in the title is replaced by a
 // deterministic fallback.
@@ -99,7 +99,7 @@ export function validateEditor(raw, { candidates, entity, audience }) {
   const angles = (Array.isArray(raw?.launchAngles) ? raw.launchAngles : []).map((a) => cleanText(a, title, 160)).filter(Boolean).slice(0, 3);
   const caveats = (Array.isArray(raw?.caveats) ? raw.caveats : []).map((a) => cleanText(a, title, 200)).filter(Boolean).slice(0, 3);
   return {
-    source: raw ? "gemini" : "fallback",
+    source: raw ? "llm" : "fallback",
     headline: cleanText(raw?.headline, title, 200) || `${title}: who the audience is and which partners they would accept.`,
     audienceSummary:
       cleanText(raw?.audienceSummary, title, 420) ||

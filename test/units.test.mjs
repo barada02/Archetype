@@ -5,6 +5,7 @@ import { validateEditor, unsupportedDigits, MAX_PER_CATEGORY, MAX_PICKS } from "
 import { buildUrl, createQloo } from "../src/qloo.mjs";
 import { matchesName, rankPool } from "../src/cliche.mjs";
 import { loadConfig, redactor } from "../src/config.mjs";
+import { createLlm, parseJson } from "../src/llm.mjs";
 
 test("normName ignores case, accents and punctuation", () => {
   assert.equal(normName("Beyoncé & Jay-Z"), "beyonce and jay z");
@@ -66,7 +67,7 @@ test("validateEditor drops ids the model invented and caps per category", () => 
   }, ctx);
   assert.deepEqual(out.picks.map((p) => p.id), ["a", "b", "d"]);
   assert.ok(out.picks.length <= MAX_PICKS && MAX_PER_CATEGORY === 2);
-  assert.equal(out.source, "gemini");
+  assert.equal(out.source, "llm");
 });
 
 test("validateEditor replaces text containing numbers the data did not give", () => {
@@ -120,8 +121,36 @@ test("cliche helpers match names loosely and rank by affinity", () => {
 });
 
 test("config accepts hackathon variable names and redacts secrets", () => {
-  const config = loadConfig({ API_Key: "qloo-secret-key", API_Server_URL: "https://h.test/", GEMINI_API_KEY: "gemini-secret-key" });
+  const config = loadConfig({ API_Key: "qloo-secret-key", API_Server_URL: "https://h.test/", META_API: "meta-secret-key", BASETEN_API_KEY: "baseten-secret-key" });
   assert.equal(config.qlooKey, "qloo-secret-key");
   assert.equal(config.qlooBase, "https://h.test");
-  assert.equal(redactor(config)("a qloo-secret-key b gemini-secret-key"), "a [REDACTED] b [REDACTED]");
+  assert.equal(config.metaKey, "meta-secret-key");
+  assert.equal(config.llmPrimary, "meta");
+  assert.equal(redactor(config)("a qloo-secret-key b meta-secret-key c baseten-secret-key"), "a [REDACTED] b [REDACTED] c [REDACTED]");
+});
+
+test("parseJson strips fences and stray prose", () => {
+  assert.deepEqual(parseJson('```json\n{"a": 1}\n```'), { a: 1 });
+  assert.deepEqual(parseJson('Here you go: {"a": [2]} done'), { a: [2] });
+  assert.throws(() => parseJson("no json here"));
+});
+
+test("createLlm tries the primary first and falls back to the backup", async () => {
+  const calls = [];
+  const fake = (name, fails) => ({ model }) => ({ name, model, async json() { calls.push(name); if (fails) throw new Error("down"); return { from: name }; } });
+  const keys = { metaKey: "m", metaModel: "mm", basetenKey: "b", basetenModel: "bm" };
+  const quiet = console.error; console.error = () => {};
+  try {
+    const llm = createLlm(keys, { meta: fake("meta", true), baseten: fake("baseten", false) });
+    assert.equal(llm.model, "mm");
+    assert.deepEqual(await llm.json({}), { from: "baseten" });
+    assert.deepEqual(calls, ["meta", "baseten"]);
+    const swapped = createLlm({ ...keys, llmPrimary: "baseten" }, { meta: fake("meta", false), baseten: fake("baseten", true) });
+    assert.equal(swapped.label, "baseten:bm > meta:mm");
+    assert.deepEqual(await swapped.json({}), { from: "meta" });
+    const both = createLlm(keys, { meta: fake("meta", true), baseten: fake("baseten", true) });
+    await assert.rejects(both.json({}), /down/);
+  } finally { console.error = quiet; }
+  assert.equal(createLlm({}), undefined);
+  assert.equal(createLlm({ basetenKey: "b", basetenModel: "bm" }).label, "baseten:bm");
 });

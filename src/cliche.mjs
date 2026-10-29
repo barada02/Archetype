@@ -1,4 +1,4 @@
-// The cliché check: ask plain Gemini (no data) for partners and artists, then score
+// The cliché check: ask the plain LLM (no data) for partners and artists, then score
 // its suggestions with Qloo against the same audience, next to our data-backed picks.
 import { normName, round } from "./util.mjs";
 import { listOf } from "./qloo.mjs";
@@ -66,8 +66,8 @@ async function compareList({ call, type, suggestions, ours, signal }) {
   };
 }
 
-export async function clicheCheck({ gemini, call, entity, target, signal, oursBrands, oursArtists }) {
-  const raw = await gemini.json({ system: SYSTEM, prompt: clichePrompt({ entity, target }) });
+export async function clicheCheck({ llm, call, entity, target, signal, oursBrands, oursArtists }) {
+  const raw = await llm.json({ system: SYSTEM, prompt: clichePrompt({ entity, target }) });
   const take = (list) => (Array.isArray(list) ? list.map(String).slice(0, 5) : []);
   const brands = take(raw?.brands), artists = take(raw?.artists);
   const [b, a] = await Promise.all([

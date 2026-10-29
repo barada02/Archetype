@@ -6,7 +6,7 @@ import { join, dirname, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadConfig, redactor } from "./src/config.mjs";
 import { createQloo } from "./src/qloo.mjs";
-import { createGemini } from "./src/gemini.mjs";
+import { createLlm } from "./src/llm.mjs";
 import { buildBrief, resolveEntities, ENTITY_TYPES, PARTNER_CATEGORIES, DEFAULT_MIN_SCORE } from "./src/pipeline.mjs";
 import { AGE_BANDS } from "./src/util.mjs";
 
@@ -16,7 +16,7 @@ const BRIEFS = join(ROOT, "data", "briefs");
 const config = loadConfig();
 const redact = redactor(config);
 const qloo = createQloo({ apiKey: config.qlooKey, baseUrl: config.qlooBase, cacheDir: join(ROOT, "data", "cache") });
-const gemini = config.geminiKey ? createGemini({ apiKey: config.geminiKey, model: config.geminiModel }) : undefined;
+const llm = createLlm(config);
 
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml" };
 const MAX_BODY = 20_000;
@@ -85,7 +85,7 @@ async function handleBuild(req, res) {
   res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive" });
   const send = (event, data) => res.write(`event: ${event}\ndata: ${redact(data)}\n\n`);
   try {
-    const brief = await buildBrief({ input, qloo, gemini, emit: (e) => send("progress", e) });
+    const brief = await buildBrief({ input, qloo, llm, emit: (e) => send("progress", e) });
     await mkdir(BRIEFS, { recursive: true });
     await writeFile(join(BRIEFS, `${brief.id}.json`), redact(brief));
     send("done", brief);
@@ -99,7 +99,7 @@ async function handleBuild(req, res) {
 
 const api = {
   "GET /api/config": async () => ({
-    hasQloo: Boolean(config.qlooKey), hasGemini: Boolean(gemini), model: gemini?.model,
+    hasQloo: Boolean(config.qlooKey), hasLlm: Boolean(llm), model: llm?.model,
     types: ENTITY_TYPES, ageBands: AGE_BANDS, minScore: DEFAULT_MIN_SCORE,
     categories: Object.entries(PARTNER_CATEGORIES).map(([key, c]) => ({ key, label: c.label })),
   }),
@@ -145,5 +145,5 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(config.port, config.host, () => {
-  console.error(`Archetype on http://${config.host}:${config.port}  qloo=${config.qlooKey ? "key set" : "NO KEY"}  gemini=${gemini ? gemini.model : "NO KEY"}`);
+  console.error(`Archetype on http://${config.host}:${config.port}  qloo=${config.qlooKey ? "key set" : "NO KEY"}  llm=${llm ? llm.label : "NO KEY"}`);
 });
