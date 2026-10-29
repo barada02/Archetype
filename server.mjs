@@ -18,6 +18,20 @@ const redact = redactor(config);
 const qloo = createQloo({ apiKey: config.qlooKey, baseUrl: config.qlooBase, cacheDir: join(ROOT, "data", "cache") });
 const llm = createLlm(config);
 
+// Sample briefs are committed under samples/ (data/ is not), so a fresh deploy always has a
+// demo to open without spending Qloo or LLM calls. samples/index.json sets the order; the first is featured.
+const SAMPLES = join(ROOT, "samples");
+const samples = [];
+try {
+  for (const id of JSON.parse(await readFile(join(SAMPLES, "index.json"), "utf8"))) {
+    const b = JSON.parse(await readFile(join(SAMPLES, `${id}.json`), "utf8"));
+    samples.push({ id: b.id, name: b.input.entity.name, type: b.input.entity.type, image: b.input.entity.image, goal: b.input.goal, city: b.input.city, ageBand: b.input.ageBand, gender: b.input.gender, headline: b.editor.headline });
+  }
+} catch (error) {
+  if (error.code !== "ENOENT") console.error(`samples: ${error.message}`);
+}
+const sampleIds = new Set(samples.map((s) => s.id));
+
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml" };
 const MAX_BODY = 20_000;
 const fail = (status, message) => Object.assign(new Error(message), { status });
@@ -102,6 +116,7 @@ const api = {
     hasQloo: Boolean(config.qlooKey), hasLlm: Boolean(llm), model: llm?.model,
     types: ENTITY_TYPES, ageBands: AGE_BANDS, minScore: DEFAULT_MIN_SCORE,
     categories: Object.entries(PARTNER_CATEGORIES).map(([key, c]) => ({ key, label: c.label })),
+    samples,
   }),
   "POST /api/resolve": async (req) => {
     const body = await readJson(req);
@@ -148,7 +163,9 @@ const server = createServer(async (req, res) => {
     if (handler) return json(res, 200, await handler(req));
     const saved = req.method === "GET" && pathname.match(/^\/api\/brief\/([0-9a-f]{12})$/);
     if (saved) {
-      try { return json(res, 200, JSON.parse(await readFile(join(BRIEFS, `${saved[1]}.json`), "utf8"))); }
+      const id = saved[1];
+      const isSample = sampleIds.has(id);
+      try { return json(res, 200, { ...JSON.parse(await readFile(join(isSample ? SAMPLES : BRIEFS, `${id}.json`), "utf8")), ...(isSample ? { sample: true } : {}) }); }
       catch { throw fail(404, "No such brief"); }
     }
     if (req.method !== "GET") throw fail(405, "Method not allowed");

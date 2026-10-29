@@ -82,6 +82,19 @@ Command line, no browser:
 node --env-file=.env scripts/brief.mjs movie "Everything Everywhere All at Once" --age 25_to_29 --city "Los Angeles" --goal "Theatrical release co-marketing"
 ```
 
+### Sample briefs
+
+The landing page links to finished sample briefs so anyone can see the output in one click, with no wait and
+no API calls. They live in `samples/` (committed, unlike `data/`), and `samples/index.json` sets their order; the
+first one is behind the "See a sample brief" button. To refresh or add one, build it with `--out samples` and put
+its id in `samples/index.json`:
+
+```bash
+node --env-file=.env scripts/brief.mjs tv_show "The Bear" --age 30_to_34 --city "Chicago" --goal "Season premiere brand tie-ins" --out samples
+```
+
+Keys are redacted from saved briefs, and a test checks that every listed sample exists and is complete.
+
 ## Limits we know about
 
 - Qloo has no trend series for books and games, so the timing section is skipped for them.

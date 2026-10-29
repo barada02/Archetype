@@ -1,0 +1,2386 @@
+{
+  "id": "237b050d1f36",
+  "createdAt": "2026-10-29T15:35:33.621Z",
+  "model": "muse-wonder-1.0",
+  "input": {
+    "entity": {
+      "id": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+      "name": "Everything Everywhere All at Once",
+      "type": "movie",
+      "description": "Everything Everywhere All at Once (2022), directed by Daniel Kwan and Daniel Scheinert, stars Michelle Yeoh alongside Stephanie Hsu and Jamie Lee Curtis in a genre-defying mix of action, sci‑fi, come…",
+      "image": "https://images.qloo.com/i/F0D354AA-BA7E-49D2-8ABA-9A8250F5C852-420x-auto.jpg",
+      "popularity": 1,
+      "year": 2022
+    },
+    "goal": "Theatrical release co-marketing",
+    "ageBand": "25_to_29",
+    "city": "Los Angeles",
+    "categories": [
+      "fashion",
+      "food_drink",
+      "beauty",
+      "travel",
+      "automotive",
+      "gaming"
+    ],
+    "minScore": 0.75
+  },
+  "audience": {
+    "ageIndex": {
+      "24_and_younger": -0.02,
+      "25_to_29": -0.2,
+      "30_to_34": -0.67,
+      "35_to_44": 0.38,
+      "45_to_54": -0.63,
+      "55_and_older": -0.65
+    },
+    "genderIndex": {
+      "male": -0.84,
+      "female": 0.84
+    },
+    "peakAge": {
+      "band": "35_to_44",
+      "label": "35 to 44",
+      "value": 0.38
+    },
+    "gender": {
+      "side": "female",
+      "strength": "strong",
+      "value": -0.84,
+      "text": "strongly female-leaning"
+    },
+    "genres": [
+      {
+        "name": "Fiction",
+        "affinity": 0.97
+      },
+      {
+        "name": "Adult Fiction",
+        "affinity": 0.951
+      },
+      {
+        "name": "Short Stories",
+        "affinity": 0.94
+      },
+      {
+        "name": "Literature",
+        "affinity": 0.934
+      },
+      {
+        "name": "Humor",
+        "affinity": 0.929
+      },
+      {
+        "name": "Contemporary",
+        "affinity": 0.924
+      }
+    ],
+    "moods": [
+      {
+        "name": "Reflective",
+        "affinity": 0.985
+      },
+      {
+        "name": "Uplifting",
+        "affinity": 0.979
+      },
+      {
+        "name": "Heartwarming",
+        "affinity": 0.965
+      },
+      {
+        "name": "Performance",
+        "affinity": 0.965
+      },
+      {
+        "name": "Thoughtful",
+        "affinity": 0.964
+      }
+    ],
+    "traits": [
+      {
+        "name": "Marvel Fans",
+        "affinity": 0.97
+      },
+      {
+        "name": "Dark Humor Fans",
+        "affinity": 0.957
+      },
+      {
+        "name": "Teenagers",
+        "affinity": 0.952
+      },
+      {
+        "name": "Adventure Seekers",
+        "affinity": 0.951
+      },
+      {
+        "name": "Science Minded",
+        "affinity": 0.936
+      }
+    ],
+    "lifestyle": [
+      {
+        "name": "Casual Luxury",
+        "affinity": 0.99
+      },
+      {
+        "name": "Activist",
+        "affinity": 0.988
+      },
+      {
+        "name": "Activism",
+        "affinity": 0.988
+      },
+      {
+        "name": "Happiness",
+        "affinity": 0.986
+      },
+      {
+        "name": "Playfulness",
+        "affinity": 0.985
+      }
+    ]
+  },
+  "sound": {
+    "mainstream": [
+      {
+        "id": "E3BD2650-8E5C-43FB-B5A7-C1C7753A6293",
+        "name": "Mitski",
+        "affinity": 0.977,
+        "popularity": 0.996,
+        "image": "https://images.qloo.com/i/E3BD2650-8E5C-43FB-B5A7-C1C7753A6293-420x-auto.jpg"
+      },
+      {
+        "id": "AFBC71A7-9439-4AB0-AB68-D14B11AAF836",
+        "name": "Phoebe Bridgers",
+        "affinity": 0.966,
+        "popularity": 0.994,
+        "image": "https://images.qloo.com/i/AFBC71A7-9439-4AB0-AB68-D14B11AAF836-420x-auto.jpg"
+      },
+      {
+        "id": "AA21934D-3A6E-4973-983F-28604C44E3AC",
+        "name": "Japanese Breakfast",
+        "affinity": 0.96,
+        "popularity": 0.992,
+        "image": "https://images.qloo.com/i/AA21934D-3A6E-4973-983F-28604C44E3AC-420x-auto.jpg"
+      },
+      {
+        "id": "21E391CC-71CD-480F-B8BA-049BD36C6DA5",
+        "name": "beabadoobee",
+        "affinity": 0.959,
+        "popularity": 0.988,
+        "image": "https://images.qloo.com/i/21E391CC-71CD-480F-B8BA-049BD36C6DA5-420x-auto.jpg"
+      },
+      {
+        "id": "7E57EBD1-1839-464F-A0B8-A3191ED9E804",
+        "name": "Weyes Blood",
+        "affinity": 0.957,
+        "popularity": 0.99,
+        "image": "https://images.qloo.com/i/7E57EBD1-1839-464F-A0B8-A3191ED9E804-420x-auto.jpg"
+      },
+      {
+        "id": "9B2140E4-8DEB-452C-BB75-C3B7B6AD198E",
+        "name": "Clairo",
+        "affinity": 0.957,
+        "popularity": 0.995,
+        "image": "https://images.qloo.com/i/9B2140E4-8DEB-452C-BB75-C3B7B6AD198E-420x-auto.jpg"
+      },
+      {
+        "id": "99FBEE0C-2A8A-4EE2-9B20-8CEBD854CD46",
+        "name": "Lucy Dacus",
+        "affinity": 0.956,
+        "popularity": 0.983,
+        "image": "https://images.qloo.com/i/99FBEE0C-2A8A-4EE2-9B20-8CEBD854CD46-420x-auto.jpg"
+      },
+      {
+        "id": "4607C481-A992-456F-900E-46AB836351EF",
+        "name": "Suki Waterhouse",
+        "affinity": 0.953,
+        "popularity": 0.963,
+        "image": "https://images.qloo.com/i/4607C481-A992-456F-900E-46AB836351EF-420x-auto.jpg"
+      }
+    ],
+    "emerging": [
+      {
+        "id": "FA9CF540-3857-42C3-89DC-DDE58500FC6E",
+        "name": "Quarter-Life Crisis",
+        "affinity": 0.914,
+        "popularity": 0.043,
+        "image": "https://images.qloo.com/i/FA9CF540-3857-42C3-89DC-DDE58500FC6E-420x-auto.jpg"
+      },
+      {
+        "id": "C041A622-DD12-4D73-B939-0A364B0673D8",
+        "name": "Kid Sistr",
+        "affinity": 0.912,
+        "popularity": 0.315,
+        "image": "https://images.qloo.com/i/C041A622-DD12-4D73-B939-0A364B0673D8-420x-auto.jpg"
+      },
+      {
+        "id": "FF2B74F8-4275-4281-A2FE-2722AF061555",
+        "name": "Sofía Valdés",
+        "affinity": 0.909,
+        "popularity": 0.561,
+        "image": "https://images.qloo.com/i/FF2B74F8-4275-4281-A2FE-2722AF061555-420x-auto.jpg"
+      },
+      {
+        "id": "4432EF60-9F12-4EDB-8F94-42EBCD78BEBB",
+        "name": "Grove",
+        "affinity": 0.908,
+        "popularity": 0.544,
+        "image": "https://images.qloo.com/i/4432EF60-9F12-4EDB-8F94-42EBCD78BEBB-420x-auto.jpg"
+      },
+      {
+        "id": "4A051CB2-4600-40CA-8E53-20A239833A84",
+        "name": "Maddie Jay",
+        "affinity": 0.907,
+        "popularity": 0.517,
+        "image": "https://images.qloo.com/i/4A051CB2-4600-40CA-8E53-20A239833A84-420x-auto.jpg"
+      },
+      {
+        "id": "885A7FB4-3B19-4E2A-AD95-0B04116C32FD",
+        "name": "Dresage",
+        "affinity": 0.904,
+        "popularity": 0.442,
+        "image": "https://images.qloo.com/i/885A7FB4-3B19-4E2A-AD95-0B04116C32FD-420x-auto.jpg"
+      },
+      {
+        "id": "2D8922C5-F43D-4613-86B0-0619DDF3201A",
+        "name": "Timothy Heller",
+        "affinity": 0.903,
+        "popularity": 0.563,
+        "image": "https://images.qloo.com/i/2D8922C5-F43D-4613-86B0-0619DDF3201A-420x-auto.jpg"
+      },
+      {
+        "id": "59ECDF28-C27B-4D80-932B-68D074E512BF",
+        "name": "SuperKnova",
+        "affinity": 0.903,
+        "popularity": 0.506,
+        "image": "https://images.qloo.com/i/59ECDF28-C27B-4D80-932B-68D074E512BF-420x-auto.jpg"
+      }
+    ]
+  },
+  "partners": {
+    "picks": [
+      {
+        "id": "4F94C666-5FFA-4A42-8453-24C2F779EC36",
+        "name": "Urban Outfitters",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.873,
+        "brandType": "Retail Brand",
+        "industries": [
+          "Retail",
+          "Fashion & Apparel",
+          "Music"
+        ],
+        "description": "Urban Outfitters is a lifestyle retailer offering clothing, homeware, and accessories inspired by creativity and cultural trends.",
+        "image": "https://images.qloo.com/i/4F94C666-5FFA-4A42-8453-24C2F779EC36-420x-auto.jpg",
+        "site": "http://www.urbanoutfitters.com",
+        "reason": "Lifestyle retail rooted in creativity, music and cultural trends fits this female-leaning, contemporary and humor-loving audience authentically.",
+        "warnings": [
+          "Brand audience peaks at 24 and under, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "24_and_younger",
+            "label": "24 and under",
+            "value": 0.34
+          },
+          "gender": {
+            "side": "female",
+            "strength": "strong",
+            "value": -0.6,
+            "text": "strongly female-leaning"
+          }
+        }
+      },
+      {
+        "id": "3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D",
+        "name": "Calvin Klein",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.885,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Beauty & Personal Care",
+          "Retail"
+        ],
+        "description": "Calvin Klein is a global fashion lifestyle brand known for bold, non-conformist designs, offering apparel, underwear, accessories, and fragrances.",
+        "image": "https://images.qloo.com/i/3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D-420x-auto.jpg",
+        "site": "http://www.calvinklein.com/",
+        "reason": "Bold, non-conformist fashion matches the film's playful identity play and this audience's appetite for expressive, unconventional storytelling.",
+        "warnings": [
+          "Brand audience peaks at 24 and under, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "24_and_younger",
+            "label": "24 and under",
+            "value": 0.39
+          },
+          "gender": {
+            "side": "female",
+            "strength": "slight",
+            "value": -0.11,
+            "text": "slightly female-leaning"
+          }
+        }
+      },
+      {
+        "id": "AA620FF2-87D7-43EC-BFAE-36631D076D8D",
+        "name": "Sony",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.921,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Media & Entertainment",
+          "Technology"
+        ],
+        "description": "Sony is a multinational conglomerate known for electronics, entertainment, gaming, and imaging products and services.",
+        "image": "https://images.qloo.com/i/AA620FF2-87D7-43EC-BFAE-36631D076D8D-420x-auto.jpg",
+        "reason": "Entertainment and imaging heritage makes Sony a credible theatrical partner for a visually inventive, performance-driven release.",
+        "warnings": [
+          "Brand audience skews male, this audience skews female.",
+          "Brand audience peaks at 25 to 29, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "25_to_29",
+            "label": "25 to 29",
+            "value": 0.54
+          },
+          "gender": {
+            "side": "male",
+            "strength": "strong",
+            "value": 0.65,
+            "text": "strongly male-leaning"
+          }
+        }
+      },
+      {
+        "id": "1E74E760-63C9-48E9-89A0-6716C9C14E8B",
+        "name": "Playstation",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.913,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Media & Entertainment",
+          "Consumer Electronics",
+          "Video Games"
+        ],
+        "description": "PlayStation is a brand of video game consoles, games, and related services developed and sold by Sony Interactive Entertainment.",
+        "image": "https://images.qloo.com/i/1E74E760-63C9-48E9-89A0-6716C9C14E8B-420x-auto.jpg",
+        "reason": "PlayStation's alternate-world gaming culture aligns with science-minded adventure seekers open to multiverse storytelling and interactive tie-ins.",
+        "warnings": [
+          "Brand audience skews male, this audience skews female.",
+          "Brand audience peaks at 25 to 29, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "25_to_29",
+            "label": "25 to 29",
+            "value": 0.49
+          },
+          "gender": {
+            "side": "male",
+            "strength": "strong",
+            "value": 0.69,
+            "text": "strongly male-leaning"
+          }
+        }
+      },
+      {
+        "id": "B13C02E3-BA3C-4B39-85B4-ACF12FEBC892",
+        "name": "Starbucks",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.883,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Food & Beverage",
+          "Retail",
+          "Café Chain"
+        ],
+        "description": "Starbucks is a global coffee company known for its handcrafted beverages, coffee products, and café experience.",
+        "image": "https://images.qloo.com/i/B13C02E3-BA3C-4B39-85B4-ACF12FEBC892-420x-auto.jpg",
+        "site": "https://www.starbucks.com",
+        "reason": "The café ritual suits reflective, uplifting conversation and gives fans a natural setting for screening-adjacent community moments.",
+        "warnings": [
+          "Brand audience peaks at 24 and under, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "24_and_younger",
+            "label": "24 and under",
+            "value": 0.35
+          },
+          "gender": {
+            "side": "female",
+            "strength": "strong",
+            "value": -0.32,
+            "text": "strongly female-leaning"
+          }
+        }
+      },
+      {
+        "id": "C3E2F0A8-B55B-4211-9B0C-7EAC72D76C6A",
+        "name": "Skittles",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.876,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Confectionery"
+        ],
+        "description": "Skittles is a popular brand of fruit-flavored candy known for its colorful, chewy sweets and the slogan 'Taste the Rainbow.'",
+        "image": "https://images.qloo.com/i/C3E2F0A8-B55B-4211-9B0C-7EAC72D76C6A-420x-auto.jpg",
+        "reason": "Colourful, playful confectionery echoes the film's exuberant visual chaos and dark humor without feeling forced or overly literal.",
+        "warnings": [
+          "Brand audience peaks at 24 and under, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "24_and_younger",
+            "label": "24 and under",
+            "value": 0.64
+          },
+          "gender": {
+            "side": "female",
+            "strength": "slight",
+            "value": -0.08,
+            "text": "slightly female-leaning"
+          }
+        }
+      }
+    ],
+    "candidates": [
+      {
+        "id": "29B49E3F-A0EC-42C6-A453-38B1C20D8374",
+        "name": "Tesla",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.936,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Energy & Utilities",
+          "Technology"
+        ],
+        "description": "Tesla is a multinational company specializing in electric vehicles, solar energy products, and integrated renewable energy solutions.",
+        "image": "https://images.qloo.com/i/29B49E3F-A0EC-42C6-A453-38B1C20D8374-420x-auto.jpg",
+        "site": "https://www.tesla.com/"
+      },
+      {
+        "id": "AA620FF2-87D7-43EC-BFAE-36631D076D8D",
+        "name": "Sony",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.921,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Media & Entertainment",
+          "Technology"
+        ],
+        "description": "Sony is a multinational conglomerate known for electronics, entertainment, gaming, and imaging products and services.",
+        "image": "https://images.qloo.com/i/AA620FF2-87D7-43EC-BFAE-36631D076D8D-420x-auto.jpg"
+      },
+      {
+        "id": "0F4B20F6-614E-4797-B245-85BA006F1651",
+        "name": "Aston Martin",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.918,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Luxury Goods"
+        ],
+        "description": "Aston Martin is a globally recognized British brand known for ultra-luxury, high-performance sports cars and grand tourers, symbolizing exclusivity, elegance, and innova…",
+        "image": "https://images.qloo.com/i/0F4B20F6-614E-4797-B245-85BA006F1651-420x-auto.jpg",
+        "site": "https://www.astonmartinlagonda.com/"
+      },
+      {
+        "id": "1E74E760-63C9-48E9-89A0-6716C9C14E8B",
+        "name": "Playstation",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.913,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Media & Entertainment",
+          "Consumer Electronics",
+          "Video Games"
+        ],
+        "description": "PlayStation is a brand of video game consoles, games, and related services developed and sold by Sony Interactive Entertainment.",
+        "image": "https://images.qloo.com/i/1E74E760-63C9-48E9-89A0-6716C9C14E8B-420x-auto.jpg"
+      },
+      {
+        "id": "FE5277EC-3921-4422-8503-A281351A4FC0",
+        "name": "Microsoft",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.909,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Technology",
+          "Consumer Electronics",
+          "Media & Entertainment"
+        ],
+        "description": "Microsoft is a global technology company known for software products like Windows, Microsoft 365, Azure cloud services, and gaming with Xbox.",
+        "image": "https://images.qloo.com/i/FE5277EC-3921-4422-8503-A281351A4FC0-420x-auto.jpg",
+        "site": "https://www.microsoft.com/"
+      },
+      {
+        "id": "5F55E5CB-3F3A-4B04-B794-E134A0835CD5",
+        "name": "Nvidia",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.908,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Technology",
+          "Semiconductors"
+        ],
+        "description": "NVIDIA is a global leader in AI computing, graphics processing units (GPUs), and platforms for gaming, autonomous vehicles, robotics, and data centers.",
+        "image": "https://images.qloo.com/i/5F55E5CB-3F3A-4B04-B794-E134A0835CD5-420x-auto.jpg",
+        "site": "https://nvidia.com"
+      },
+      {
+        "id": "DD4D5E9E-108F-4E2D-9E4D-781F58097413",
+        "name": "Google Maps",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.904,
+        "brandType": "Service Brand",
+        "industries": [
+          "Technology",
+          "Navigation Services",
+          "Mapping"
+        ],
+        "description": "Google Maps is a web and mobile mapping service offering local business info, maps, driving directions, live traffic, and real-time GPS navigation.",
+        "image": "https://images.qloo.com/i/DD4D5E9E-108F-4E2D-9E4D-781F58097413-420x-auto.jpg"
+      },
+      {
+        "id": "C94B9E48-ACBB-4124-A2B5-9FA8A3A263BB",
+        "name": "Lamborghini",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.902,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Luxury Goods",
+          "Motorsport"
+        ],
+        "description": "Automobili Lamborghini is an Italian luxury sports car manufacturer known for high-performance supercars like the Huracán, Aventador, and Urus SUV.",
+        "image": "https://images.qloo.com/i/C94B9E48-ACBB-4124-A2B5-9FA8A3A263BB-420x-auto.jpg",
+        "site": "https://lamborghini.com"
+      },
+      {
+        "id": "75D1595F-016E-4050-A30F-2378CDCEB3C0",
+        "name": "Xbox",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.901,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Media & Entertainment",
+          "Video Games"
+        ],
+        "description": "Xbox is a gaming brand offering consoles, games, and community services across console, PC, and cloud platforms.",
+        "image": "https://images.qloo.com/i/75D1595F-016E-4050-A30F-2378CDCEB3C0-420x-auto.jpg",
+        "site": "https://www.xbox.com/"
+      },
+      {
+        "id": "990F972F-20B1-4994-B0AC-0EA39C96B4A3",
+        "name": "Audi",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.9,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Automotive Manufacturing",
+          "Vehicle Construction"
+        ],
+        "description": "Audi is a premium automotive brand known for luxury vehicles including SUVs, sedans, electric vehicles, and high-performance models like the RS range.",
+        "image": "https://images.qloo.com/i/990F972F-20B1-4994-B0AC-0EA39C96B4A3-420x-auto.jpg"
+      },
+      {
+        "id": "9AF96B7A-6AD0-4A20-819F-091582B82B74",
+        "name": "Corsair",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.898,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Technology",
+          "Gaming Hardware"
+        ],
+        "description": "Corsair is a leading brand specializing in high-performance PC components and gaming gear, including keyboards, mice, and headsets.",
+        "image": "https://images.qloo.com/i/9AF96B7A-6AD0-4A20-819F-091582B82B74-420x-auto.jpg"
+      },
+      {
+        "id": "22E949D9-8BAC-4689-8B9D-C7D1E862AB5C",
+        "name": "Rolls-Royce Motor Cars",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.896,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Luxury Goods"
+        ],
+        "description": "Rolls-Royce Motor Cars is a luxury automobile manufacturer known for bespoke, high-end vehicles like the Phantom and Spectre super coupé.",
+        "image": "https://images.qloo.com/i/22E949D9-8BAC-4689-8B9D-C7D1E862AB5C-420x-auto.jpg"
+      },
+      {
+        "id": "0F0382E0-5ADD-41C3-A973-B7E613007F1A",
+        "name": "Rivian Automotive",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.895,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Technology",
+          "Clean Energy"
+        ],
+        "description": "Rivian Automotive is an electric vehicle manufacturer specializing in adventure-ready electric trucks and SUVs, including the R1T and R1S models.",
+        "image": "https://images.qloo.com/i/0F0382E0-5ADD-41C3-A973-B7E613007F1A-420x-auto.jpg",
+        "site": "https://rivian.com"
+      },
+      {
+        "id": "B6AF9615-7872-477F-AD01-86AAF0CC4F6B",
+        "name": "Mercedes-benz",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.894,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Technology",
+          "Mobility Services"
+        ],
+        "description": "Mercedes-Benz is a global luxury automotive brand known for manufacturing premium cars, SUVs, and performance vehicles.",
+        "image": "https://images.qloo.com/i/B6AF9615-7872-477F-AD01-86AAF0CC4F6B-420x-auto.jpg"
+      },
+      {
+        "id": "08E19925-6F70-403D-8AE7-1DAC3FA053E2",
+        "name": "Dodge",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.894,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Performance Vehicles",
+          "Motorsports"
+        ],
+        "description": "Dodge is an American automotive brand known for muscle cars and sports cars, including the Charger, Hornet, and Durango models.",
+        "image": "https://images.qloo.com/i/08E19925-6F70-403D-8AE7-1DAC3FA053E2-420x-auto.jpg",
+        "site": "https://www.dodge.com/"
+      },
+      {
+        "id": "CCBB4FED-745D-42CF-809F-D7B08067245C",
+        "name": "Acura",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.893,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Luxury Vehicles"
+        ],
+        "description": "Acura is the luxury and performance vehicle division of Honda, offering premium sedans and SUVs focused on high-performance and driver experience.",
+        "image": "https://images.qloo.com/i/CCBB4FED-745D-42CF-809F-D7B08067245C-420x-auto.jpg"
+      },
+      {
+        "id": "8CA6EA46-2090-4154-8E26-4399B2BD04E9",
+        "name": "Subaru",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.892,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Aerospace"
+        ],
+        "description": "Subaru is an automotive brand known for its all-wheel-drive vehicles, including popular models like the Outback and Forester.",
+        "image": "https://images.qloo.com/i/8CA6EA46-2090-4154-8E26-4399B2BD04E9-420x-auto.jpg"
+      },
+      {
+        "id": "910CD51E-3521-4A47-A0C5-6066B0116FDA",
+        "name": "Htc",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.89,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Technology",
+          "Virtual Reality"
+        ],
+        "description": "Hung Tat A.I. Garment Machinery Company Limited is a Hong Kong-based company specializing in garment machinery and related equipment.",
+        "image": "https://images.qloo.com/i/910CD51E-3521-4A47-A0C5-6066B0116FDA-420x-auto.jpg"
+      },
+      {
+        "id": "E50919AC-B1FF-410A-9B0D-DFA914286C3C",
+        "name": "Puma",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.887,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Sports & Fitness",
+          "Footwear"
+        ],
+        "description": "PUMA is a German multinational brand designing and manufacturing athletic and casual footwear, apparel, and accessories.",
+        "image": "https://images.qloo.com/i/E50919AC-B1FF-410A-9B0D-DFA914286C3C-420x-auto.jpg",
+        "site": "https://eu.puma.com/de/en/home"
+      },
+      {
+        "id": "3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D",
+        "name": "Calvin Klein",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.885,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Beauty & Personal Care",
+          "Retail"
+        ],
+        "description": "Calvin Klein is a global fashion lifestyle brand known for bold, non-conformist designs, offering apparel, underwear, accessories, and fragrances.",
+        "image": "https://images.qloo.com/i/3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D-420x-auto.jpg",
+        "site": "http://www.calvinklein.com/"
+      },
+      {
+        "id": "B13C02E3-BA3C-4B39-85B4-ACF12FEBC892",
+        "name": "Starbucks",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.883,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Food & Beverage",
+          "Retail",
+          "Café Chain"
+        ],
+        "description": "Starbucks is a global coffee company known for its handcrafted beverages, coffee products, and café experience.",
+        "image": "https://images.qloo.com/i/B13C02E3-BA3C-4B39-85B4-ACF12FEBC892-420x-auto.jpg",
+        "site": "https://www.starbucks.com"
+      },
+      {
+        "id": "25AFF394-1C76-4B08-BE4B-A88EC863169E",
+        "name": "G Fuel",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.882,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Health & Wellness",
+          "Gaming & Esports"
+        ],
+        "description": "G FUEL is a brand offering energy drinks and hydration products designed for gamers and esports enthusiasts, known for its focus-enhancing formulas and variety of flavor…",
+        "image": "https://images.qloo.com/i/25AFF394-1C76-4B08-BE4B-A88EC863169E-420x-auto.jpg",
+        "site": "https://gfuel.com/"
+      },
+      {
+        "id": "E0C26132-AD45-4583-99EC-4E01F7430E72",
+        "name": "NZXT",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.88,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Computer Hardware"
+        ],
+        "description": "NZXT is a gaming hardware brand offering custom and prebuilt gaming PCs, PC components, and gaming peripherals.",
+        "image": "https://images.qloo.com/i/E0C26132-AD45-4583-99EC-4E01F7430E72-420x-auto.jpg",
+        "site": "http://www.nzxt.com"
+      },
+      {
+        "id": "82946F1C-AB10-4669-B9A1-640A01E2A407",
+        "name": "Tommy Hilfiger",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.878,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Accessories"
+        ],
+        "description": "Tommy Hilfiger is a global fashion brand known for its iconic American style apparel, footwear, and accessories for men and women.",
+        "image": "https://images.qloo.com/i/82946F1C-AB10-4669-B9A1-640A01E2A407-420x-auto.jpg"
+      },
+      {
+        "id": "C70CE2B8-0AD1-4150-BF18-5A6347F2E860",
+        "name": "Nike",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.878,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Sports & Fitness",
+          "Retail"
+        ],
+        "description": "Nike is a global brand specializing in athletic footwear, apparel, equipment, and accessories for men, women, and kids.",
+        "image": "https://images.qloo.com/i/C70CE2B8-0AD1-4150-BF18-5A6347F2E860-420x-auto.jpg",
+        "site": "https://www.nike.com"
+      },
+      {
+        "id": "C3E2F0A8-B55B-4211-9B0C-7EAC72D76C6A",
+        "name": "Skittles",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.876,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Confectionery"
+        ],
+        "description": "Skittles is a popular brand of fruit-flavored candy known for its colorful, chewy sweets and the slogan 'Taste the Rainbow.'",
+        "image": "https://images.qloo.com/i/C3E2F0A8-B55B-4211-9B0C-7EAC72D76C6A-420x-auto.jpg"
+      },
+      {
+        "id": "1680C451-3A9C-42F1-AB27-4A55017A545D",
+        "name": "Hyper X",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.876,
+        "brandType": "Product Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Gaming Hardware"
+        ],
+        "description": "HyperX is a brand specializing in high-quality gaming gear including wireless gaming keyboards, mice, headsets, and microphones, known for ergonomic design and customiza…",
+        "image": "https://images.qloo.com/i/1680C451-3A9C-42F1-AB27-4A55017A545D-420x-auto.jpg",
+        "site": "https://www.hyperxgaming.com/"
+      },
+      {
+        "id": "B17B81E9-0DE4-4A82-B307-24F0161CF2AE",
+        "name": "Logitech",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.875,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Computer Peripherals"
+        ],
+        "description": "Logitech G is a brand specializing in advanced gaming gear including mice, keyboards, headsets, and sim racing equipment designed for esports and immersive gaming experi…",
+        "image": "https://images.qloo.com/i/B17B81E9-0DE4-4A82-B307-24F0161CF2AE-420x-auto.jpg",
+        "site": "https://www.logitechg.com/"
+      },
+      {
+        "id": "4F94C666-5FFA-4A42-8453-24C2F779EC36",
+        "name": "Urban Outfitters",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.873,
+        "brandType": "Retail Brand",
+        "industries": [
+          "Retail",
+          "Fashion & Apparel",
+          "Music"
+        ],
+        "description": "Urban Outfitters is a lifestyle retailer offering clothing, homeware, and accessories inspired by creativity and cultural trends.",
+        "image": "https://images.qloo.com/i/4F94C666-5FFA-4A42-8453-24C2F779EC36-420x-auto.jpg",
+        "site": "http://www.urbanoutfitters.com"
+      },
+      {
+        "id": "E2CB4CA2-2B67-435F-8EB0-7CAEB1DA233F",
+        "name": "WorldVentures",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.873,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Direct Selling"
+        ],
+        "description": "WorldVentures is a direct selling company offering travel club memberships and discounted travel packages through a multi-level marketing model.",
+        "image": "https://images.qloo.com/i/E2CB4CA2-2B67-435F-8EB0-7CAEB1DA233F-420x-auto.jpg"
+      },
+      {
+        "id": "C82F718A-D169-43F9-BDCA-179557B81055",
+        "name": "Teddy Fresh",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.872,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel"
+        ],
+        "description": "Teddy Fresh is a contemporary streetwear brand known for colorful hoodies, beanies, sweats, and limited edition collaborations.",
+        "image": "https://images.qloo.com/i/C82F718A-D169-43F9-BDCA-179557B81055-420x-auto.jpg"
+      },
+      {
+        "id": "52267C8F-6034-428C-8803-7CFFD14B9E7C",
+        "name": "Voss Water",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.872,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Bottled Water",
+          "Luxury Goods"
+        ],
+        "description": "Voss Water is a premium bottled water brand known for its distinctive glass bottle and high-quality artesian water.",
+        "image": "https://images.qloo.com/i/52267C8F-6034-428C-8803-7CFFD14B9E7C-420x-auto.jpg"
+      },
+      {
+        "id": "EE2B58FF-37F6-4521-912F-55EBC25D83E2",
+        "name": "Levi Strauss & Co.",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.871,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Textiles"
+        ],
+        "description": "Levi Strauss & Co. is a global apparel company known for its iconic Levi's® jeans, denim, and clothing for men, women, and kids.",
+        "image": "https://images.qloo.com/i/EE2B58FF-37F6-4521-912F-55EBC25D83E2-420x-auto.jpg"
+      },
+      {
+        "id": "FCEA7CA1-1D40-4680-B337-E74594D9BCF1",
+        "name": "Adidas",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.871,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Sports & Fitness",
+          "Footwear"
+        ],
+        "description": "Adidas is a global sportswear brand known for athletic footwear, apparel, and accessories, inspiring athletes worldwide through innovative performance products.",
+        "image": "https://images.qloo.com/i/FCEA7CA1-1D40-4680-B337-E74594D9BCF1-420x-auto.jpg"
+      },
+      {
+        "id": "D3310425-7161-41FC-8C2C-5435AF0F0A5B",
+        "name": "Victoria's Secret",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.871,
+        "brandType": "Retail Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Beauty & Personal Care",
+          "Retail"
+        ],
+        "description": "Victoria's Secret is a leading American retailer specializing in bras, lingerie, sleepwear, swimwear, activewear, beauty products, and accessories.",
+        "image": "https://images.qloo.com/i/D3310425-7161-41FC-8C2C-5435AF0F0A5B-420x-auto.jpg",
+        "site": "https://www.victoriassecret.com/"
+      },
+      {
+        "id": "AC8F9047-F23D-4A54-BBAA-A3CBD2991C02",
+        "name": "Vans",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.87,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Action Sports"
+        ],
+        "description": "Vans is a popular brand known for its skateboarding shoes, apparel, and accessories.",
+        "image": "https://images.qloo.com/i/AC8F9047-F23D-4A54-BBAA-A3CBD2991C02-420x-auto.jpg",
+        "site": "https://www.vans.com/"
+      },
+      {
+        "id": "3D75F994-3385-45CD-B082-03F93944B426",
+        "name": "Oreo",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.869,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods"
+        ],
+        "description": "Oreo is a popular cookie brand known for its sandwich cookies with a sweet creme filling, owned by Mondelez International.",
+        "image": "https://images.qloo.com/i/3D75F994-3385-45CD-B082-03F93944B426-420x-auto.jpg"
+      },
+      {
+        "id": "997A15AA-55DE-46EE-B630-7B35DEF87D72",
+        "name": "Slim Jim",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.868,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods"
+        ],
+        "description": "Slim Jim is an American brand of bold and spicy meat sticks and jerky snacks popular in the United States.",
+        "image": "https://images.qloo.com/i/997A15AA-55DE-46EE-B630-7B35DEF87D72-420x-auto.jpg"
+      },
+      {
+        "id": "24C05ABA-5D77-43A5-B5CC-6814A27190D2",
+        "name": "Arizona Iced Tea",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.868,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods"
+        ],
+        "description": "AriZona Iced Tea is a beverage brand known for its iced teas, juices, coffees, and snacks, popular for its 99-cent large cans.",
+        "image": "https://images.qloo.com/i/24C05ABA-5D77-43A5-B5CC-6814A27190D2-420x-auto.jpg"
+      },
+      {
+        "id": "84B18312-3C2B-41A9-863B-89651C2F6A2C",
+        "name": "Gucci",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.867,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Luxury Goods"
+        ],
+        "description": "Gucci is a luxury Italian fashion brand known for its ready-to-wear clothing, handbags, shoes, and accessories.",
+        "image": "https://images.qloo.com/i/84B18312-3C2B-41A9-863B-89651C2F6A2C-420x-auto.jpg",
+        "site": "https://www.gucci.com/"
+      },
+      {
+        "id": "8376EDE4-3EA9-440B-B424-6BBFB13EB6F0",
+        "name": "Monster Energy",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.866,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Sports & Recreation"
+        ],
+        "description": "Monster Energy is a brand known for its energy drinks, coffee, tea, and juice products, promoting an active lifestyle with the slogan 'Unleash the Beast'.",
+        "image": "https://images.qloo.com/i/8376EDE4-3EA9-440B-B424-6BBFB13EB6F0-420x-auto.jpg",
+        "site": "http://www.monsterenergy.com/"
+      },
+      {
+        "id": "87224F5C-3FCC-425E-9409-11683F1359A6",
+        "name": "Just Water",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.864,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods"
+        ],
+        "description": "JUST Water is a brand offering 100% natural spring water packaged in environmentally friendly plant-based cartons.",
+        "image": "https://images.qloo.com/i/87224F5C-3FCC-425E-9409-11683F1359A6-420x-auto.jpg"
+      },
+      {
+        "id": "409FAF5A-BC5F-4DC3-943D-E3B5F20B471D",
+        "name": "Red Bull",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.864,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Media & Entertainment",
+          "Sports & Fitness"
+        ],
+        "description": "Red Bull is a global brand known for its energy drinks, including original, sugar-free, zero-calorie, and flavored editions, and its involvement in sports and entertainm…",
+        "image": "https://images.qloo.com/i/409FAF5A-BC5F-4DC3-943D-E3B5F20B471D-420x-auto.jpg",
+        "site": "http://www.redbull.com"
+      },
+      {
+        "id": "5760BF0A-EBDF-4B9A-88CD-69F4BF08C362",
+        "name": "Louis Vuitton",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.864,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Luxury Goods"
+        ],
+        "description": "Louis Vuitton is a luxury fashion brand known for its designer handbags, trunks, and high-end accessories.",
+        "image": "https://images.qloo.com/i/5760BF0A-EBDF-4B9A-88CD-69F4BF08C362-420x-auto.jpg",
+        "site": "https://fr.louisvuitton.com/fra-fr/homepage"
+      },
+      {
+        "id": "D5D353B0-FB40-4E2F-8C01-6386CE136E13",
+        "name": "Versace",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.86,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Luxury Goods",
+          "Accessories"
+        ],
+        "description": "Versace is a luxury Italian fashion brand known for high-end clothing, accessories, and watches, founded by Gianni Versace.",
+        "image": "https://images.qloo.com/i/D5D353B0-FB40-4E2F-8C01-6386CE136E13-420x-auto.jpg",
+        "site": "https://www.versace.com/"
+      },
+      {
+        "id": "62D7A5AD-8B07-4A94-9A15-1E54BC42A08E",
+        "name": "Acuvue",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.858,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Optical Care"
+        ],
+        "description": "ACUVUE is a global brand specializing in contact lenses, offering a variety of eye care products trusted by eye care professionals worldwide.",
+        "image": "https://images.qloo.com/i/62D7A5AD-8B07-4A94-9A15-1E54BC42A08E-420x-auto.jpg"
+      },
+      {
+        "id": "8E2CC5DF-6323-4EF6-99B3-130DA3A585A7",
+        "name": "Planet Hollywood",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.858,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Media & Entertainment",
+          "Gaming"
+        ],
+        "description": "Planet Hollywood is a themed restaurant chain and resort brand featuring Hollywood memorabilia, American cuisine, live entertainment, and all-inclusive resorts.",
+        "image": "https://images.qloo.com/i/8E2CC5DF-6323-4EF6-99B3-130DA3A585A7-420x-auto.jpg"
+      },
+      {
+        "id": "56575A08-4A01-494C-B9BD-54D009C5EB08",
+        "name": "OYO",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.857,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Property Management"
+        ],
+        "description": "OYO is an Indian multinational hospitality chain offering leased and franchised hotels, homes, and living spaces with standardized amenities.",
+        "image": "https://images.qloo.com/i/56575A08-4A01-494C-B9BD-54D009C5EB08-420x-auto.jpg"
+      },
+      {
+        "id": "9B5A189C-DD7B-4456-8DFE-CB0699FB9EA6",
+        "name": "Anthony Skincare",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.856,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Health & Wellness",
+          "Men's Grooming"
+        ],
+        "description": "Anthony Skincare is a men's skincare brand offering products tailored to men's specific skin and grooming needs, including facial care and fragrances.",
+        "image": "https://images.qloo.com/i/9B5A189C-DD7B-4456-8DFE-CB0699FB9EA6-420x-auto.jpg"
+      },
+      {
+        "id": "967A90F3-37F9-43CE-8537-522BF5828C68",
+        "name": "StudentUniverse",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.856,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Travel Agency"
+        ],
+        "description": "StudentUniverse is a travel booking platform offering exclusive discounted flights and hotels for students and young adults aged 18-25.",
+        "image": "https://images.qloo.com/i/967A90F3-37F9-43CE-8537-522BF5828C68-420x-auto.jpg"
+      },
+      {
+        "id": "C5E58757-699C-4B97-B733-CCD3D8F8ADC8",
+        "name": "Waze",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.855,
+        "brandType": "Service Brand",
+        "industries": [
+          "Technology",
+          "Automotive Navigation",
+          "Software"
+        ],
+        "description": "Waze is a community-driven navigation app providing real-time driving directions, live traffic updates, and road condition alerts.",
+        "image": "https://images.qloo.com/i/C5E58757-699C-4B97-B733-CCD3D8F8ADC8-420x-auto.jpg",
+        "site": "https://www.waze.com"
+      },
+      {
+        "id": "97AB5221-2AEB-4B66-A722-E088972E8E7F",
+        "name": "Hopper",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.855,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Travel Technology"
+        ],
+        "description": "Hopper is a global travel platform and app that helps users find and book the best prices on flights, hotels, car rentals, and homes.",
+        "image": "https://images.qloo.com/i/97AB5221-2AEB-4B66-A722-E088972E8E7F-420x-auto.jpg",
+        "site": "http://www.hopper.com/"
+      },
+      {
+        "id": "742FBE1B-B70F-471F-AD07-A55C9A903628",
+        "name": "Glossier",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.853,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Retail"
+        ],
+        "description": "Glossier is a beauty brand offering skincare, makeup, and fragrances inspired by real life, emphasizing a 'Skin First. Makeup Second™' philosophy.",
+        "image": "https://images.qloo.com/i/742FBE1B-B70F-471F-AD07-A55C9A903628-420x-auto.jpg",
+        "site": "https://www.glossier.com/"
+      },
+      {
+        "id": "CB8C35FF-D0FC-479B-81D7-7B302A529E2A",
+        "name": "Carbon Coco",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.853,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Consumer Packaged Goods",
+          "Oral Care"
+        ],
+        "description": "Carbon Coco is a brand offering all-natural beauty products made from 100% organic coconut shell activated charcoal, including teeth whitening and skincare items.",
+        "image": "https://images.qloo.com/i/CB8C35FF-D0FC-479B-81D7-7B302A529E2A-420x-auto.jpg"
+      },
+      {
+        "id": "C9049108-80EE-4D52-8433-0661063B1DB0",
+        "name": "The Art Of Shaving",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.852,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Men's Grooming"
+        ],
+        "description": "The Art of Shaving is a premium grooming brand offering barber-quality shaving products including pre-shave oils, shaving creams, aftershave balms, and razors.",
+        "image": "https://images.qloo.com/i/C9049108-80EE-4D52-8433-0661063B1DB0-420x-auto.jpg"
+      },
+      {
+        "id": "D4964802-5028-4800-9A05-23A60E5715A8",
+        "name": "JoJa",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.852,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Sports & Fitness",
+          "Health & Wellness"
+        ],
+        "description": "JOJA is a premium activewear brand founded by Josephine Skriver and Jastookes, offering curated collections designed to empower strength and femininity.",
+        "image": "https://images.qloo.com/i/D4964802-5028-4800-9A05-23A60E5715A8-420x-auto.jpg"
+      },
+      {
+        "id": "A5269DD4-5BCE-4EC7-BD50-355B29F3079F",
+        "name": "Airbnb",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.851,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Digital Marketplace"
+        ],
+        "description": "Airbnb is a global online marketplace for vacation rentals and unique travel experiences, offering homes, cabins, beach houses, and more worldwide.",
+        "image": "https://images.qloo.com/i/A5269DD4-5BCE-4EC7-BD50-355B29F3079F-420x-auto.jpg",
+        "site": "https://www.airbnb.com"
+      }
+    ],
+    "stats": {
+      "fetched": 60,
+      "mediaBrands": 2,
+      "belowScore": 0,
+      "minScore": 0.75
+    }
+  },
+  "places": {
+    "city": "Los Angeles",
+    "venues": [
+      {
+        "id": "E924C82D-F2CE-40A5-902D-66A6E1B47200",
+        "name": "Warner Bros. Studio Tour Hollywood",
+        "type": "place",
+        "description": "Guided behind-the-scenes tour of a working Hollywood studio, featuring iconic backlot sets, Stage 48 exhibits (Central Perk), props, and themed retail and dining.",
+        "image": "https://images.qloo.com/i/E924C82D-F2CE-40A5-902D-66A6E1B47200-420x-auto.jpg",
+        "popularity": 1,
+        "affinity": 0.867
+      },
+      {
+        "id": "47541021-61BC-4676-B765-2A3665DAD343",
+        "name": "Pacific Wheel",
+        "type": "place",
+        "description": "Solar-powered Ferris wheel on the Santa Monica Pier offering panoramic Southern California coastline views and nightly LED light shows.",
+        "image": "https://images.qloo.com/i/47541021-61BC-4676-B765-2A3665DAD343-420x-auto.jpg",
+        "popularity": 0.941,
+        "affinity": 0.849
+      },
+      {
+        "id": "791B60EF-3C42-4A09-BD04-550D74D69762",
+        "name": "Hollywood Wax Museum",
+        "type": "place",
+        "description": "Interactive museum featuring lifelike wax figures of Hollywood stars and photo-ready props on iconic Hollywood Boulevard.",
+        "image": "https://images.qloo.com/i/791B60EF-3C42-4A09-BD04-550D74D69762-420x-auto.jpg",
+        "popularity": 0.999,
+        "affinity": 0.847
+      },
+      {
+        "id": "B80B6A01-60CE-40DF-B57B-853359C32A24",
+        "name": "Jeopardy! - Alex Trebek Stage",
+        "type": "place",
+        "description": "Televised quiz show studio at Sony Pictures in Culver City featuring set exhibits, replica contestant booths, Emmy displays, and live audience tapings.",
+        "image": "https://images.qloo.com/i/B80B6A01-60CE-40DF-B57B-853359C32A24-420x-auto.jpg",
+        "popularity": 0.958,
+        "affinity": 0.846
+      },
+      {
+        "id": "0D147472-BD3E-4655-807F-8E424756366E",
+        "name": "The Futur",
+        "type": "place",
+        "description": "Business and design education focused on creative skills, practical tools, and professional growth in a Santa Monica setting.",
+        "image": "https://images.qloo.com/i/0D147472-BD3E-4655-807F-8E424756366E-420x-auto.jpg",
+        "popularity": 0.711,
+        "affinity": 0.843
+      },
+      {
+        "id": "52076FF8-120E-429C-9C00-0D9BF5AC2701",
+        "name": "Koreatown Galleria",
+        "type": "place",
+        "description": "Salon and personal-care complex located inside a Koreatown shopping galleria on W Olympic Blvd, offering hair, nail, and skincare services.",
+        "image": "https://images.qloo.com/i/52076FF8-120E-429C-9C00-0D9BF5AC2701-420x-auto.jpg",
+        "popularity": 0.849,
+        "affinity": 0.839
+      },
+      {
+        "id": "70D474E9-CC8A-4547-8D64-CADFF1D38001",
+        "name": "AvantStay",
+        "type": "place",
+        "description": "Group-focused vacation rental company offering design-forward short-term homes—beach houses, cabins, and ski lodges with hospitality, property management, and corporate retreat services.",
+        "image": "https://images.qloo.com/i/70D474E9-CC8A-4547-8D64-CADFF1D38001-420x-auto.jpg",
+        "popularity": 0.193,
+        "affinity": 0.839
+      },
+      {
+        "id": "CD66B252-3B77-49F8-B767-C10ED12293FE",
+        "name": "Hollywood Sign",
+        "type": "place",
+        "description": "Iconic 1923 hillside landmark on Mount Lee overlooking Los Angeles, visible from Griffith Park and popular for hikes and viewpoints.",
+        "image": "https://images.qloo.com/i/CD66B252-3B77-49F8-B767-C10ED12293FE-420x-auto.jpg",
+        "popularity": 1,
+        "affinity": 0.838
+      }
+    ],
+    "neighborhoods": [
+      {
+        "id": "1D26AAAD-5470-4975-BB62-A0AC95415187",
+        "name": "Monterey Park",
+        "area": "Monterey Park, Los Angeles, California, United States of America",
+        "affinity": 1
+      },
+      {
+        "id": "C203FCA0-35D8-4AD0-990C-221DFA1115FD",
+        "name": "America/Los Angeles Timezone",
+        "area": "America/Los Angeles Timezone, Humboldt, Nevada, United States of America",
+        "affinity": 0.857
+      },
+      {
+        "id": "C2203E8A-54AC-45FA-94B4-C19688EA9936",
+        "name": "Los Angeles City Council District 7",
+        "area": "Los Angeles City Council District 7, Los Angeles, Los Angeles, California, United States of America",
+        "affinity": 0.833
+      },
+      {
+        "id": "C12E78F6-B8B3-422B-9706-8FBD7DACB4BA",
+        "name": "Pasadena",
+        "area": "Pasadena, Los Angeles, California, United States of America",
+        "affinity": 0.81
+      },
+      {
+        "id": "61426970-6FD4-42BE-A393-D95B77ECF3BA",
+        "name": "Burbank",
+        "area": "Burbank, Los Angeles, California, United States of America",
+        "affinity": 0.786
+      },
+      {
+        "id": "545EE36D-FC66-4005-9EC7-59DCC685A9B0",
+        "name": "Los Angeles City Council District 6",
+        "area": "Los Angeles City Council District 6, Los Angeles, Los Angeles, California, United States of America",
+        "affinity": 0.762
+      },
+      {
+        "id": "D079DA61-9A43-4ADB-9EC4-181C37A82E59",
+        "name": "Culver City",
+        "area": "Culver City, Los Angeles, California, United States of America",
+        "affinity": 0.738
+      },
+      {
+        "id": "C0C504CA-9CFC-44F2-B133-4A021974499A",
+        "name": "Los Feliz Neighborhood Council District",
+        "area": "Los Feliz Neighborhood Council District, Los Angeles, Los Angeles, California, United States of America",
+        "affinity": 0.714
+      }
+    ]
+  },
+  "timing": {
+    "direction": "steady",
+    "delta": 0,
+    "from": "2026-05-07",
+    "to": "2026-10-29",
+    "series": [
+      {
+        "date": "2026-05-07",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-05-14",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-05-21",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-05-28",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-04",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-11",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-18",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-25",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-02",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-09",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-16",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-23",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-30",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-06",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-13",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-20",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-27",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-03",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-10",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-17",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-24",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-01",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-08",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-15",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-22",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-29",
+        "population_percentile": 0.9010670128499726,
+        "population_rank": "275",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      }
+    ],
+    "start": "2026-04-30",
+    "end": "2026-10-29"
+  },
+  "editor": {
+    "source": "llm",
+    "headline": "A reflective, darkly funny multiverse story needs partners as bold, heartfelt and culturally curious as its audience.",
+    "audienceSummary": "This audience peaks in an older adult band than the target and leans strongly female, with tastes spanning fiction, literature, short stories, humor and contemporary work. They accept partners that feel thoughtful, uplifting and a little offbeat, not generic spectacle or hard-sell luxury.",
+    "launchAngles": [
+      "Bookish, reflective screening events pairing short-story and contemporary fiction conversations with heartwarming, thought-provoking discussion",
+      "Music-led social content drawing on the introspective indie sensibility of the artists this audience also loves",
+      "Playful multiverse activations using dark humor and science-minded curiosity to invite adventure seekers into alternate-life storytelling"
+    ],
+    "caveats": [
+      "Measured peak sits above the intended target, so creative should bridge toward younger viewers without alienating the core audience.",
+      "High-fit automotive and luxury candidates were skipped as they risk feeling generic and inauthentic for this heartfelt, literary-leaning audience.",
+      "Gaming tie-ins should stay rooted in storytelling and world-hopping, not hardware performance, to remain credible with this audience."
+    ]
+  },
+  "cliche": {
+    "prompt": "A team is preparing the launch of the movie \"Everything Everywhere All at Once\", aimed at 25 to 29. Which 5 brands would be the best partners, and which 5 music artists best fit its audience? Return JSON: {\"brands\": [\"name\", ...], \"artists\": [\"name\", ...]}",
+    "brands": {
+      "llm": [
+        {
+          "name": "Uniqlo",
+          "qlooName": "Uniqlo",
+          "id": "46C9F889-EC89-4715-A767-DEABACF52C41",
+          "affinity": 0.816,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 9
+        },
+        {
+          "name": "Glossier",
+          "qlooName": "Glossier",
+          "id": "742FBE1B-B70F-471F-AD07-A55C9A903628",
+          "affinity": 0.853,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 8
+        },
+        {
+          "name": "Liquid Death",
+          "qlooName": "Liquid Death",
+          "id": "4DF7C265-52D9-4A99-8803-F62C2302D561",
+          "affinity": 0.729,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 10
+        },
+        {
+          "name": "Duolingo",
+          "qlooName": "Duolingo",
+          "id": "F1048212-3E4C-485C-9186-BA63F813C3F0",
+          "affinity": 0.906,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 3
+        },
+        {
+          "name": "Spotify",
+          "qlooName": "Spotify",
+          "id": "99CBD9B1-F023-4034-97E7-E95A4A85BDD2",
+          "affinity": 0.877,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 6
+        }
+      ],
+      "ours": [
+        {
+          "id": "4F94C666-5FFA-4A42-8453-24C2F779EC36",
+          "name": "Urban Outfitters",
+          "affinity": 0.873,
+          "rank": 7
+        },
+        {
+          "id": "3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D",
+          "name": "Calvin Klein",
+          "affinity": 0.885,
+          "rank": 4
+        },
+        {
+          "id": "AA620FF2-87D7-43EC-BFAE-36631D076D8D",
+          "name": "Sony",
+          "affinity": 0.921,
+          "rank": 1
+        },
+        {
+          "id": "1E74E760-63C9-48E9-89A0-6716C9C14E8B",
+          "name": "Playstation",
+          "affinity": 0.913,
+          "rank": 2
+        },
+        {
+          "id": "B13C02E3-BA3C-4B39-85B4-ACF12FEBC892",
+          "name": "Starbucks",
+          "affinity": 0.883,
+          "rank": 5
+        }
+      ],
+      "summary": {
+        "llmAverage": 0.836,
+        "oursAverage": 0.895,
+        "llmBelowOurFloor": 3,
+        "overlap": 0,
+        "notInQloo": 0,
+        "scored": 5
+      }
+    },
+    "artists": {
+      "llm": [
+        {
+          "name": "Mitski",
+          "qlooName": "Mitski",
+          "id": "E3BD2650-8E5C-43FB-B5A7-C1C7753A6293",
+          "affinity": 0.976,
+          "inOurPicks": true,
+          "found": true,
+          "rank": 1
+        },
+        {
+          "name": "Billie Eilish",
+          "qlooName": "Billie Eilish",
+          "id": "D7BCE4CD-5135-4608-8A7D-78E08FFD52F3",
+          "affinity": 0.956,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 5
+        },
+        {
+          "name": "Tyler, The Creator",
+          "qlooName": "Tyler, the Creator",
+          "id": "375758AA-B0FA-4508-8EC1-D7FBFE3A4B3C",
+          "affinity": 0.937,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 7
+        },
+        {
+          "name": "Phoebe Bridgers",
+          "qlooName": "Phoebe Bridgers",
+          "id": "AFBC71A7-9439-4AB0-AB68-D14B11AAF836",
+          "affinity": 0.969,
+          "inOurPicks": true,
+          "found": true,
+          "rank": 2
+        },
+        {
+          "name": "Anderson .Paak",
+          "qlooName": "Anderson Paak",
+          "id": "08D996D4-D481-4D0D-89CD-1C8B0F143F6A",
+          "inOurPicks": false,
+          "found": true
+        }
+      ],
+      "ours": [
+        {
+          "id": "E3BD2650-8E5C-43FB-B5A7-C1C7753A6293",
+          "name": "Mitski",
+          "affinity": 0.976
+        },
+        {
+          "id": "AFBC71A7-9439-4AB0-AB68-D14B11AAF836",
+          "name": "Phoebe Bridgers",
+          "affinity": 0.969
+        },
+        {
+          "id": "AA21934D-3A6E-4973-983F-28604C44E3AC",
+          "name": "Japanese Breakfast",
+          "affinity": 0.96,
+          "rank": 4
+        },
+        {
+          "id": "21E391CC-71CD-480F-B8BA-049BD36C6DA5",
+          "name": "beabadoobee",
+          "affinity": 0.969,
+          "rank": 3
+        },
+        {
+          "id": "7E57EBD1-1839-464F-A0B8-A3191ED9E804",
+          "name": "Weyes Blood",
+          "affinity": 0.95,
+          "rank": 6
+        }
+      ],
+      "summary": {
+        "llmAverage": 0.959,
+        "oursAverage": 0.965,
+        "llmBelowOurFloor": 1,
+        "overlap": 2,
+        "notInQloo": 0,
+        "scored": 4
+      }
+    }
+  },
+  "provenance": [
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "filter.tag.types": "urn:tag:emotional_tone:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&filter.tag.types=urn%3Atag%3Aemotional_tone%3Aqloo&take=8",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "filter.tag.types": "urn:tag:audience:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&filter.tag.types=urn%3Atag%3Aaudience%3Aqloo&take=8",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "filter.tag.types": "urn:tag:genre:media",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&filter.tag.types=urn%3Atag%3Agenre%3Amedia&take=8",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "filter.tag.types": "urn:tag:lifestyle:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&filter.tag.types=urn%3Atag%3Alifestyle%3Aqloo&take=8",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.tags": "urn:tag:genre:brand:fashion",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.tags=urn%3Atag%3Agenre%3Abrand%3Afashion&take=10",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "sound",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "take": 14,
+        "filter.popularity.max": 0.6
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&take=14&filter.popularity.max=0.6",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.tags": "urn:tag:genre:brand:food_and_beverage",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.tags=urn%3Atag%3Agenre%3Abrand%3Afood_and_beverage&take=10",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "sound",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "take": 14
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&take=14",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.tags": "urn:tag:genre:brand:health_and_beauty",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.tags=urn%3Atag%3Agenre%3Abrand%3Ahealth_and_beauty&take=10",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "places",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:place",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "filter.location.query": "Los Angeles",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Aentity%3Aplace&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&filter.location.query=Los+Angeles&take=8",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "timing",
+      "path": "/v2/trending",
+      "params": {
+        "filter.type": "urn:entity:movie",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "filter.start_date": "2026-04-30",
+        "filter.end_date": "2026-10-29",
+        "take": 26
+      },
+      "query": "filter.type=urn%3Aentity%3Amovie&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&filter.start_date=2026-04-30&filter.end_date=2026-10-29&take=26",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.tags": "urn:tag:genre:brand:travel",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.tags=urn%3Atag%3Agenre%3Abrand%3Atravel&take=10",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.tags": "urn:tag:genre:brand:automotive",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.tags=urn%3Atag%3Agenre%3Abrand%3Aautomotive&take=10",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.tags": "urn:tag:genre:brand:electronics:gaming",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.tags=urn%3Atag%3Agenre%3Abrand%3Aelectronics%3Agaming&take=10",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "places",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:heatmap",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "filter.location.query": "Los Angeles",
+        "output.heatmap.boundary": "urn:entity:locality",
+        "take": 20
+      },
+      "query": "filter.type=urn%3Aheatmap&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&filter.location.query=Los+Angeles&output.heatmap.boundary=urn%3Aentity%3Alocality&take=20",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "AA620FF2-87D7-43EC-BFAE-36631D076D8D"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=AA620FF2-87D7-43EC-BFAE-36631D076D8D",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "4F94C666-5FFA-4A42-8453-24C2F779EC36"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=4F94C666-5FFA-4A42-8453-24C2F779EC36",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "1E74E760-63C9-48E9-89A0-6716C9C14E8B"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=1E74E760-63C9-48E9-89A0-6716C9C14E8B",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "C3E2F0A8-B55B-4211-9B0C-7EAC72D76C6A"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=C3E2F0A8-B55B-4211-9B0C-7EAC72D76C6A",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "B13C02E3-BA3C-4B39-85B4-ACF12FEBC892"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=B13C02E3-BA3C-4B39-85B4-ACF12FEBC892",
+      "status": 200,
+      "ms": 920,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Mitski",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Mitski&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Billie Eilish",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Billie+Eilish&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Tyler, The Creator",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Tyler%2C+The+Creator&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Phoebe Bridgers",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Phoebe+Bridgers&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Uniqlo",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Uniqlo&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 968,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Glossier",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Glossier&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Anderson .Paak",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Anderson+.Paak&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 1054,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Liquid Death",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Liquid+Death&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 428,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.results.entities": [
+          "E3BD2650-8E5C-43FB-B5A7-C1C7753A6293",
+          "AFBC71A7-9439-4AB0-AB68-D14B11AAF836",
+          "AA21934D-3A6E-4973-983F-28604C44E3AC",
+          "21E391CC-71CD-480F-B8BA-049BD36C6DA5",
+          "7E57EBD1-1839-464F-A0B8-A3191ED9E804",
+          "D7BCE4CD-5135-4608-8A7D-78E08FFD52F3",
+          "375758AA-B0FA-4508-8EC1-D7FBFE3A4B3C",
+          "08D996D4-D481-4D0D-89CD-1C8B0F143F6A"
+        ],
+        "take": 13
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.results.entities=E3BD2650-8E5C-43FB-B5A7-C1C7753A6293%2CAFBC71A7-9439-4AB0-AB68-D14B11AAF836%2CAA21934D-3A6E-4973-983F-28604C44E3AC%2C21E391CC-71CD-480F-B8BA-049BD36C6DA5%2C7E57EBD1-1839-464F-A0B8-A3191ED9E804%2CD7BCE4CD-5135-4608-8A7D-78E08FFD52F3%2C375758AA-B0FA-4508-8EC1-D7FBFE3A4B3C%2C08D996D4-D481-4D0D-89CD-1C8B0F143F6A&take=13",
+      "status": 200,
+      "ms": 606,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Duolingo",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Duolingo&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 383,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Spotify",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Spotify&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "F0D354AA-BA7E-49D2-8ABA-9A8250F5C852",
+        "signal.demographics.age": "25_to_29",
+        "filter.results.entities": [
+          "4F94C666-5FFA-4A42-8453-24C2F779EC36",
+          "3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D",
+          "AA620FF2-87D7-43EC-BFAE-36631D076D8D",
+          "1E74E760-63C9-48E9-89A0-6716C9C14E8B",
+          "B13C02E3-BA3C-4B39-85B4-ACF12FEBC892",
+          "46C9F889-EC89-4715-A767-DEABACF52C41",
+          "742FBE1B-B70F-471F-AD07-A55C9A903628",
+          "4DF7C265-52D9-4A99-8803-F62C2302D561",
+          "F1048212-3E4C-485C-9186-BA63F813C3F0",
+          "99CBD9B1-F023-4034-97E7-E95A4A85BDD2"
+        ],
+        "take": 15
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=F0D354AA-BA7E-49D2-8ABA-9A8250F5C852&signal.demographics.age=25_to_29&filter.results.entities=4F94C666-5FFA-4A42-8453-24C2F779EC36%2C3EC9E7DF-1497-44C4-8642-E7FA2FF3A99D%2CAA620FF2-87D7-43EC-BFAE-36631D076D8D%2C1E74E760-63C9-48E9-89A0-6716C9C14E8B%2CB13C02E3-BA3C-4B39-85B4-ACF12FEBC892%2C46C9F889-EC89-4715-A767-DEABACF52C41%2C742FBE1B-B70F-471F-AD07-A55C9A903628%2C4DF7C265-52D9-4A99-8803-F62C2302D561%2CF1048212-3E4C-485C-9186-BA63F813C3F0%2C99CBD9B1-F023-4034-97E7-E95A4A85BDD2&take=15",
+      "status": 200,
+      "ms": 589,
+      "cached": false
+    }
+  ],
+  "modules": {
+    "profile": {
+      "status": "done",
+      "ms": 10
+    },
+    "sound": {
+      "status": "done",
+      "ms": 14
+    },
+    "timing": {
+      "status": "done",
+      "ms": 30
+    },
+    "partners": {
+      "status": "done",
+      "ms": 40
+    },
+    "places": {
+      "status": "done",
+      "ms": 56
+    },
+    "editor": {
+      "status": "done",
+      "ms": 12213
+    },
+    "check": {
+      "status": "done",
+      "ms": 942
+    },
+    "cliche": {
+      "status": "done",
+      "ms": 8770
+    }
+  }
+}

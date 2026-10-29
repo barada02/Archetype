@@ -178,6 +178,9 @@ function renderBrief(brief) {
   };
   const target = [input.ageBand && AGE_LABELS[input.ageBand], input.gender && (input.gender === "female" ? "women" : "men")].filter(Boolean).join(", ");
   $("brief").replaceChildren(
+    brief.sample ? h("div", { class: "samplebar" },
+      h("span", {}, h("b", {}, "Sample brief. "), `Built from live Qloo data on ${new Date(brief.createdAt).toLocaleDateString()}. Everything below is real output.`),
+      h("button", { class: "small primary", onclick: goHome }, "Build your own")) : "",
     h("div", { class: "bhead", style: e.image ? `--poster:url("${imgSrc(e.image)}")` : undefined },
       e.image ? h("img", { class: "thumb", src: imgSrc(e.image), alt: "" }) : h("div", { class: "thumb" }),
       h("div", { class: "grow" },
@@ -188,8 +191,9 @@ function renderBrief(brief) {
         h("button", { class: "small", onclick: () => navigator.clipboard?.writeText(location.href).then(() => toast("Link copied")) }, "Copy link"),
         h("button", { class: "small", onclick: () => window.print() }, "Print / PDF"),
         h("a", { class: "small", href: `/api/brief/${brief.id}`, download: `archetype-${brief.id}.json` }, h("button", { class: "small" }, "JSON")),
-        h("button", { class: "small primary", onclick: () => { history.pushState({}, "", "/"); show("start"); } }, "New brief"))),
+        h("button", { class: "small primary", onclick: goHome }, "New brief"))),
     h("div", { class: "headline" }, h("b", {}, editor.headline), editor.source === "fallback" ? h("span", { class: "muted small" }, "Written without the language model (fallback text).") : ""),
+    guide(brief),
     bento(brief, select),
     h("div", { class: "tabs", role: "tablist" }, tabs.map(([k, label]) => h("button", { class: "tab", id: "tab-" + k, role: "tab", "aria-selected": "false", onclick: () => select(k) }, label))),
     ...tabs.map(([k, , panel]) => h("div", { class: "panel", id: "panel-" + k, role: "tabpanel", hidden: true }, panel)),
@@ -198,11 +202,52 @@ function renderBrief(brief) {
   show("brief");
 }
 
+const goHome = () => { history.pushState({}, "", "/"); show("start"); };
+
+// A small ⓘ with an explanation, shown on hover or keyboard focus (and tap, which focuses it).
+const hint = (text) => h("span", { class: "hint", tabindex: "0", role: "img", "aria-label": text, "data-tip": text }, "ⓘ");
+
+// "How to read this brief": open the first time, then remembers whether the viewer closed it.
+function guide({ editor, model }) {
+  let open = true;
+  try { open = localStorage.getItem("guideOpen") !== "0"; } catch {}
+  const el = h("details", { class: "guide", open },
+    h("summary", {}, "How to read this brief"),
+    h("ul", {},
+      h("li", {}, h("b", {}, "Start with the tiles. "), "Each one opens the tab with the evidence behind it."),
+      h("li", {}, h("b", {}, "Fit scores run from 0 to 1. "), "They are Qloo affinity: how strongly this audience is drawn to a brand or artist compared with people in general. Higher is a stronger fit."),
+      h("li", {}, h("b", {}, "Age and gender values are skew indices, "), "measured against the average audience. They are not percentages."),
+      h("li", {}, h("b", {}, "⚠ warnings "), "mean a partner's own customers skew a different age or gender than this audience."),
+      h("li", {}, h("b", {}, "Where the AI is used. "), editor.source === "fallback"
+        ? "This brief was built without the language model: the text is template text and partners are simply the best-ranked by fit."
+        : `Qloo measured every number. The language model${model ? ` (${model})` : ""} wrote the headline, summary, angles and partner reasons, and chose partners only from Qloo's ranked list. Any text with a number it was not given is replaced.`)));
+  el.addEventListener("toggle", () => { try { localStorage.setItem("guideOpen", el.open ? "1" : "0"); } catch {} });
+  return el;
+}
+
+function renderSamples(list) {
+  if (!list?.length) return;
+  $("samples").hidden = false; $("heroCta").hidden = false;
+  $("sampleBtn").onclick = () => openSample(list[0].id);
+  $("sampleCards").replaceChildren(...list.map((s) => {
+    const target = [s.ageBand && AGE_LABELS[s.ageBand], s.gender && (s.gender === "female" ? "women" : "men")].filter(Boolean).join(", ");
+    return h("a", { class: "sample card", href: `/b/${s.id}`, onclick: (ev) => { ev.preventDefault(); openSample(s.id); } },
+      s.image ? h("img", { src: imgSrc(s.image), alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
+      h("div", { class: "body" },
+        h("span", { class: "kicker" }, [TYPE_LABELS[s.type], s.goal].filter(Boolean).join(" · ")),
+        h("b", {}, s.name),
+        h("span", { class: "muted small" }, s.headline),
+        h("span", { class: "muted small" }, [target && `Target: ${target}`, s.city].filter(Boolean).join(" · ")),
+        h("span", { class: "open" }, "Open sample →")));
+  }));
+}
+function openSample(id) { history.pushState({}, "", `/b/${id}`); loadSaved(id); }
+
 // At-a-glance tiles above the tabs. Each one opens the tab with the evidence behind it.
 function bento({ audience, partners, timing, cliche }, select) {
   const tile = (tab, wide, k, v, s) => h("button", { type: "button", class: "tile" + (wide ? " wide" : ""), onclick: () => { select(tab); $("tab-" + tab).scrollIntoView({ block: "nearest", behavior: "smooth" }); } },
     h("span", { class: "k" }, k), h("span", { class: "v" }, v), h("span", { class: "s" }, s));
-  const top = partners.picks[0];
+  const top = [...partners.picks].sort((a, b) => (b.affinity ?? 0) - (a.affinity ?? 0))[0]; // highest measured fit, not the editor's first pick
   const flagged = partners.picks.filter((p) => p.warnings?.length).length;
   const clearPeak = (audience.peakAge?.value ?? 0) >= 0.1;
   const plain = cliche?.brands.summary;
@@ -233,7 +278,7 @@ function panelAudience({ audience, editor }) {
     editor.caveats.length ? h("p", { class: "warnbox" }, "Watch out: ", editor.caveats.join(" ")) : "",
     h("div", { class: "cols" },
       h("div", { class: "card" },
-        h("h2", {}, "Who they are"),
+        h("h2", {}, "Who they are ", hint("Each bar compares this audience with the average audience. Right of the centre line means over-represented, left means under-represented. These are indices, not percentages.")),
         h("p", { class: "muted small" }, "Skew index against the average audience. Right of the line over-indexes, left under-indexes. Not a percentage."),
         ages.map((b) => h("div", { class: "kv" }, AGE_LABELS[b], divBar(audience.ageIndex[b]), h("span", { class: "num" }, audience.ageIndex[b].toFixed(2)))),
         typeof male === "number" ? h("div", { class: "kv" }, h("span", { style: "white-space:nowrap" }, "Women ◂ Men ▸"), divBar(male), h("span", { class: "num" }, male.toFixed(2))) : "",
@@ -263,7 +308,7 @@ function panelPartners({ partners, input }) {
   const pickedIds = new Set(partners.picks.map((p) => p.id));
   const others = partners.candidates.filter((c) => !pickedIds.has(c.id));
   return [
-    h("p", { class: "muted small" }, `Ranked by measured fit for ${input.ageBand || input.gender ? "the target audience" : "this audience"}. Dropped ${s.mediaBrands ?? 0} media brands and ${s.belowScore ?? 0} below the minimum fit of ${s.minScore}. Each partner's own audience is checked against this one.`),
+    h("p", { class: "muted small" }, `Ranked by measured fit for ${input.ageBand || input.gender ? "the target audience" : "this audience"}. Dropped ${s.mediaBrands ?? 0} media brands and ${s.belowScore ?? 0} below the minimum fit of ${s.minScore}. Each partner's own audience is checked against this one.`, " ", hint("Fit is Qloo affinity from 0 to 1: how strongly this audience is drawn to the brand compared with people in general. Higher is a stronger fit.")),
     !partners.picks.length ? h("p", { class: "warnbox" }, "No partners cleared the minimum fit score. Lower it under Partner categories and minimum fit.") : "",
     ...[...groups].map(([label, list]) => h("div", { class: "card pcat" }, h("h2", {}, label), list.map((p) =>
       h("div", { class: "pcard" },
@@ -296,7 +341,7 @@ function sparkline(series) {
 function panelWhere({ places, timing, modules, input }) {
   const timingBlock = timing
     ? [h("p", {}, `Interest is ${timing.direction} between ${timing.from} and ${timing.to}.`, ` Popularity percentile moved ${timing.delta >= 0 ? "+" : ""}${timing.delta} from the first third of the period to the last third.`),
-       sparkline(timing.series), h("p", { class: "muted small" }, "Weekly popularity percentile from Qloo. Higher means more popular than a larger share of titles.")]
+       sparkline(timing.series), h("p", { class: "muted small" }, "Weekly popularity percentile from Qloo. Higher means more popular than a larger share of titles. ", hint("Rising, steady or falling compares the average of the last third of the period with the first third."))]
     : h("p", { class: "muted" }, modules.timing?.reason ?? modules.timing?.error ?? "No trend data.");
   const placeBlock = places
     ? [h("div", { class: "cols" },
@@ -326,7 +371,7 @@ function panelCliche({ cliche, input, model }) {
       h("div", { class: "cols" }, clicheColumn("Plain model guessed", "No data, just its own knowledge.", data.llm, floor), clicheColumn("Archetype picks", "Chosen from measured audience fit.", data.ours, floor, true))];
   };
   return [
-    h("p", { class: "muted small" }, `Same question, asked of ${model ?? "the language model"} with no data: "${cliche.prompt}" Each suggestion was then looked up in Qloo and scored against this audience. Our picks were selected from that same ranking, so read this as "does the guess hold up in the data", not as an independent contest.`),
+    h("p", { class: "muted small" }, `Same question, asked of ${model ?? "the language model"} with no data: "${cliche.prompt}" Each suggestion was then looked up in Qloo and scored against this audience. Our picks were selected from that same ranking, so read this as "does the guess hold up in the data", not as an independent contest.`, " ", hint("A plain AI was asked for partners with no data. Each name it gave was looked up in Qloo and scored for this audience. A guess below our lowest pick is one the data does not support.")),
     block("Partner brands", cliche.brands), block("Artists", cliche.artists),
   ];
 }
@@ -381,6 +426,7 @@ async function init() {
   $("examples").replaceChildren(...EXAMPLES.map((ex) => h("button", { type: "button", class: "ex", onclick: () => { fillForm(ex); $("q").focus(); } }, h("span", {}, TYPE_LABELS[ex.type]), ex.q)));
   if (!config.hasQloo) $("startMsg").textContent = "QLOO_API_KEY is missing on the server.";
   else if (!config.hasLlm) $("startMsg").textContent = "META_API_KEY and BASETEN_API_KEY are missing: briefs will use fallback text and skip the plain AI vs data comparison.";
+  renderSamples(config.samples);
   const saved = /^\/b\/([0-9a-f]{12})$/.exec(location.pathname);
   if (saved) loadSaved(saved[1]);
 }

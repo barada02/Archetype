@@ -163,3 +163,14 @@ test("decodeEntities turns Qloo's HTML-encoded text into plain text, once", () =
   assert.equal(clip("Tom &amp; Jerry<br>cartoon", 50), "Tom & Jerry cartoon");
   assert.equal(normName("Jackals &amp; the Truth"), normName("Jackals & the Truth"));
 });
+
+test("committed sample briefs exist and are complete, so the demo always opens", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const ids = JSON.parse(await readFile(new URL("../samples/index.json", import.meta.url), "utf8"));
+  assert.ok(ids.length >= 1);
+  for (const id of ids) {
+    const b = JSON.parse(await readFile(new URL(`../samples/${id}.json`, import.meta.url), "utf8"));
+    assert.equal(b.id, id);
+    assert.ok(b.input.entity.name && b.editor.headline && b.partners.picks.length > 0 && b.provenance.length > 0, `${id} is incomplete`);
+  }
+});

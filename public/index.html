@@ -14,7 +14,7 @@
 <header class="top">
   <a class="brand" href="/" aria-label="Archetype home"><span class="mark">A</span> Archetype</a>
   <span class="tagline">Brand partners your audience will actually accept.</span>
-  <nav class="nav"><a href="/#how">How it works</a><a href="/#contents">What's in a brief</a></nav>
+  <nav class="nav"><a href="/#samples">Sample briefs</a><a href="/#how">How it works</a><a href="/#contents">What's in a brief</a></nav>
   <button id="themeBtn" class="icon" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
 </header>
 
@@ -30,6 +30,10 @@
           <li><b>Screening cities</b> where fans cluster, and whether interest is rising into launch.</li>
           <li><b>Every number sourced</b> to a Qloo call. The AI writes the prose, never the numbers.</li>
         </ul>
+        <div class="hero-cta" id="heroCta" hidden>
+          <button class="secondary" type="button" id="sampleBtn">See a sample brief →</button>
+          <span class="muted small">Opens instantly. Built from live Qloo data.</span>
+        </div>
       </div>
       <div class="hero-form">
       <form id="startForm" class="card form" autocomplete="off">
@@ -60,6 +64,11 @@
       <div class="examples"><span class="muted">Try:</span> <span id="examples" style="display:contents"></span></div>
       </div>
     </div>
+
+    <section id="samples" class="band" hidden>
+      <div class="band-head"><span class="kicker">Sample briefs</span><h2 class="display">See a finished brief before you build one</h2></div>
+      <div id="sampleCards" class="samples"></div>
+    </section>
 
     <section id="how" class="band">
       <div class="band-head"><span class="kicker">How it works</span><h2 class="display">From title to partner meeting in three steps</h2></div>

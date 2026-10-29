@@ -1,0 +1,2266 @@
+{
+  "id": "edc62a55c830",
+  "createdAt": "2026-10-29T15:35:54.806Z",
+  "model": "muse-wonder-1.0",
+  "input": {
+    "entity": {
+      "id": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+      "name": "The Bear",
+      "type": "tv_show",
+      "description": "The Bear (2022) is a comedy-drama starring Jeremy Allen White, Ebon Moss-Bachrach, and Ayo Edebiri about a world-class young chef who returns to Chicago to run his late brother's failing sandwich sho…",
+      "image": "https://images.qloo.com/i/4C305B2F-5A46-4885-A6DA-5E22D11E86E0-420x-auto.jpg",
+      "popularity": 0.992,
+      "year": 2022
+    },
+    "goal": "Season premiere brand tie-ins",
+    "ageBand": "30_to_34",
+    "city": "Chicago",
+    "categories": [
+      "fashion",
+      "food_drink",
+      "beauty",
+      "travel",
+      "automotive",
+      "gaming"
+    ],
+    "minScore": 0.75
+  },
+  "audience": {
+    "ageIndex": {
+      "24_and_younger": -0.23,
+      "25_to_29": -0.46,
+      "30_to_34": 0,
+      "35_to_44": 0.62,
+      "45_to_54": 0.30000000000000004,
+      "55_and_older": -0.74
+    },
+    "genderIndex": {
+      "male": 0.35000000000000003,
+      "female": -0.35000000000000003
+    },
+    "peakAge": {
+      "band": "35_to_44",
+      "label": "35 to 44",
+      "value": 0.62
+    },
+    "gender": {
+      "side": "male",
+      "strength": "strong",
+      "value": 0.35,
+      "text": "strongly male-leaning"
+    },
+    "genres": [
+      {
+        "name": "Thriller",
+        "affinity": 0.96
+      },
+      {
+        "name": "Mystery",
+        "affinity": 0.92
+      },
+      {
+        "name": "Crime",
+        "affinity": 0.9
+      },
+      {
+        "name": "Drama",
+        "affinity": 0.9
+      },
+      {
+        "name": "Fantasy",
+        "affinity": 0.9
+      },
+      {
+        "name": "Horror",
+        "affinity": 0.88
+      }
+    ],
+    "moods": [
+      {
+        "name": "Family-Oriented",
+        "affinity": 0.998
+      },
+      {
+        "name": "Family-Friendly",
+        "affinity": 0.991
+      },
+      {
+        "name": "beauty",
+        "affinity": 0.99
+      },
+      {
+        "name": "Thoughtful",
+        "affinity": 0.986
+      },
+      {
+        "name": "Accessibility",
+        "affinity": 0.983
+      }
+    ],
+    "traits": [
+      {
+        "name": "Food Loving",
+        "affinity": 0.986
+      },
+      {
+        "name": "Fitness Enthusiast",
+        "affinity": 0.978
+      },
+      {
+        "name": "Hardcore",
+        "affinity": 0.976
+      },
+      {
+        "name": "Extreme",
+        "affinity": 0.96
+      },
+      {
+        "name": "Technical",
+        "affinity": 0.955
+      }
+    ],
+    "lifestyle": [
+      {
+        "name": "Craftsmanship",
+        "affinity": 0.988
+      },
+      {
+        "name": "heritage-rich",
+        "affinity": 0.988
+      },
+      {
+        "name": "Motorcycling",
+        "affinity": 0.985
+      },
+      {
+        "name": "Skate Culture",
+        "affinity": 0.984
+      },
+      {
+        "name": "Surf Culture",
+        "affinity": 0.98
+      }
+    ]
+  },
+  "sound": {
+    "mainstream": [
+      {
+        "id": "13CDFAD4-D5BC-4417-AB83-AC7DD856AD2C",
+        "name": "Father John Misty",
+        "affinity": 0.958,
+        "popularity": 0.996,
+        "image": "https://images.qloo.com/i/13CDFAD4-D5BC-4417-AB83-AC7DD856AD2C-420x-auto.jpg"
+      },
+      {
+        "id": "20FDF28C-1980-43B4-B699-BEC3827B9B88",
+        "name": "Parquet Courts",
+        "affinity": 0.943,
+        "popularity": 0.992,
+        "image": "https://images.qloo.com/i/20FDF28C-1980-43B4-B699-BEC3827B9B88-420x-auto.jpg"
+      },
+      {
+        "id": "64AD0902-0A1A-4121-9BB2-7AA76E380AAB",
+        "name": "Angel Olsen",
+        "affinity": 0.939,
+        "popularity": 0.994,
+        "image": "https://images.qloo.com/i/64AD0902-0A1A-4121-9BB2-7AA76E380AAB-420x-auto.jpg"
+      },
+      {
+        "id": "BF5EE94C-B390-4774-9546-2AAFD16CF672",
+        "name": "The War on Drugs",
+        "affinity": 0.939,
+        "popularity": 0.997,
+        "image": "https://images.qloo.com/i/BF5EE94C-B390-4774-9546-2AAFD16CF672-420x-auto.jpg"
+      },
+      {
+        "id": "000C4948-CC6C-47A4-8D7E-D257BB9805BE",
+        "name": "Kurt Vile",
+        "affinity": 0.938,
+        "popularity": 0.996,
+        "image": "https://images.qloo.com/i/000C4948-CC6C-47A4-8D7E-D257BB9805BE-420x-auto.jpg"
+      },
+      {
+        "id": "3460E83E-DCD5-4D1B-B3BF-1B6C1D6D2BB8",
+        "name": "Beach House",
+        "affinity": 0.934,
+        "popularity": 0.999,
+        "image": "https://images.qloo.com/i/3460E83E-DCD5-4D1B-B3BF-1B6C1D6D2BB8-420x-auto.jpg"
+      },
+      {
+        "id": "C813AD3D-AFCB-4500-A665-7EC103FECCD1",
+        "name": "Courtney Barnett",
+        "affinity": 0.933,
+        "popularity": 0.994,
+        "image": "https://images.qloo.com/i/C813AD3D-AFCB-4500-A665-7EC103FECCD1-420x-auto.jpg"
+      },
+      {
+        "id": "D1AE8792-9129-46E0-AEE7-2C3A81E91385",
+        "name": "Tame Impala",
+        "affinity": 0.932,
+        "popularity": 0.999,
+        "image": "https://images.qloo.com/i/D1AE8792-9129-46E0-AEE7-2C3A81E91385-420x-auto.jpg"
+      }
+    ],
+    "emerging": [
+      {
+        "id": "206F70A7-A8BF-489A-8257-F594D60B3994",
+        "name": "Elizabeth Moen",
+        "affinity": 0.912,
+        "popularity": 0.16,
+        "image": "https://images.qloo.com/i/206F70A7-A8BF-489A-8257-F594D60B3994-420x-auto.jpg"
+      },
+      {
+        "id": "89A8B8DC-CAF8-49A9-9E13-CBCB8CEE15EC",
+        "name": "Sour Widows",
+        "affinity": 0.907,
+        "popularity": 0.481,
+        "image": "https://images.qloo.com/i/89A8B8DC-CAF8-49A9-9E13-CBCB8CEE15EC-420x-auto.jpg"
+      },
+      {
+        "id": "12D06C1F-1489-4A95-919C-BADF6C2038E0",
+        "name": "Dawg Yawp",
+        "affinity": 0.9,
+        "popularity": 0.497,
+        "image": "https://images.qloo.com/i/12D06C1F-1489-4A95-919C-BADF6C2038E0-420x-auto.jpg"
+      },
+      {
+        "id": "EEC4315B-9ACB-4F91-B043-26CFE704D2EE",
+        "name": "Monde UFO",
+        "affinity": 0.894,
+        "popularity": 0.457,
+        "image": "https://images.qloo.com/i/EEC4315B-9ACB-4F91-B043-26CFE704D2EE-420x-auto.jpg"
+      },
+      {
+        "id": "32113A2E-E3B5-4CD3-A748-DB1596AFDD01",
+        "name": "Reverend Baron",
+        "affinity": 0.893,
+        "popularity": 0.45,
+        "image": "https://images.qloo.com/i/32113A2E-E3B5-4CD3-A748-DB1596AFDD01-420x-auto.jpg"
+      },
+      {
+        "id": "81E760CC-2211-4F41-8713-D8BC9B387C7D",
+        "name": "Matt Sweeney",
+        "affinity": 0.893,
+        "popularity": 0.544,
+        "image": "https://images.qloo.com/i/81E760CC-2211-4F41-8713-D8BC9B387C7D-420x-auto.jpg"
+      },
+      {
+        "id": "4179B50C-06E1-4BF2-85DE-7DD369C80FC9",
+        "name": "Whitmer Thomas",
+        "affinity": 0.888,
+        "popularity": 0.554,
+        "image": "https://images.qloo.com/i/4179B50C-06E1-4BF2-85DE-7DD369C80FC9-420x-auto.jpg"
+      },
+      {
+        "id": "F88ACF1D-B547-4312-A3BE-F736D8C8D24B",
+        "name": "Jasmin Kaset",
+        "affinity": 0.888,
+        "popularity": 0.259,
+        "image": "https://images.qloo.com/i/F88ACF1D-B547-4312-A3BE-F736D8C8D24B-420x-auto.jpg"
+      }
+    ]
+  },
+  "partners": {
+    "picks": [
+      {
+        "id": "BAC37074-9EEC-4EB2-AF9F-09906B48CBBE",
+        "name": "Tillamook",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.92,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Food & Beverage",
+          "Dairy Industry",
+          "Agriculture"
+        ],
+        "description": "Tillamook is a farmer-owned dairy brand known for its extraordinary cheese, ice cream, yogurt, butter, and cream cheese products.",
+        "image": "https://images.qloo.com/i/BAC37074-9EEC-4EB2-AF9F-09906B48CBBE-420x-auto.jpg",
+        "site": "https://www.tillamook.com",
+        "reason": "Farmer-owned dairy with strong food credentials fits food-loving viewers and supports credible premiere tasting and recipe-led tie-ins.",
+        "warnings": [
+          "Brand audience peaks at 24 and under, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "24_and_younger",
+            "label": "24 and under",
+            "value": 0.93
+          },
+          "gender": {
+            "side": "female",
+            "strength": "slight",
+            "value": -0.14,
+            "text": "slightly female-leaning"
+          }
+        }
+      },
+      {
+        "id": "F67C515B-D34C-439B-99AD-BC70302D54DE",
+        "name": "BOU",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.914,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods"
+        ],
+        "description": "BOU is an American food brand producing bouillon cubes, miso broth cubes, gravy cubes, and instant soup cups focused on better-for-you ingredients.",
+        "image": "https://images.qloo.com/i/F67C515B-D34C-439B-99AD-BC70302D54DE-420x-auto.jpg",
+        "reason": "Broth and soup essentials speak directly to kitchen craft, making cooking demonstrations and at-home premiere kits feel authentic.",
+        "warnings": [
+          "Brand audience skews female, this audience skews male."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "30_to_34",
+            "label": "30 to 34",
+            "value": 0.83
+          },
+          "gender": {
+            "side": "female",
+            "strength": "strong",
+            "value": -0.77,
+            "text": "strongly female-leaning"
+          }
+        }
+      },
+      {
+        "id": "DD3167CE-71AE-45D4-9820-651732113958",
+        "name": "Beekman1802",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.91,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Health & Wellness",
+          "Skincare"
+        ],
+        "description": "Beekman 1802 is a skincare and bodycare brand known for clinically tested, goat milk-based products designed for sensitive skin and cruelty-free practices.",
+        "image": "https://images.qloo.com/i/DD3167CE-71AE-45D4-9820-651732113958-420x-auto.jpg",
+        "reason": "Sensitive-skin, cruelty-free bodycare matches the beauty mood in the data without pulling the premiere away from its core.",
+        "warnings": [
+          "Brand audience skews female, this audience skews male."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "45_to_54",
+            "label": "45 to 54",
+            "value": 0.72
+          },
+          "gender": {
+            "side": "female",
+            "strength": "strong",
+            "value": -0.54,
+            "text": "strongly female-leaning"
+          }
+        }
+      },
+      {
+        "id": "FF8BB83C-AC0D-46AF-9410-9563636DF431",
+        "name": "ClassPass",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.877,
+        "brandType": "Service Brand",
+        "industries": [
+          "Health & Wellness",
+          "Technology",
+          "Fitness Services"
+        ],
+        "description": "ClassPass is a fitness app that allows users to book thousands of workout classes and appointments across various studios and gyms.",
+        "image": "https://images.qloo.com/i/FF8BB83C-AC0D-46AF-9410-9563636DF431-420x-auto.jpg",
+        "site": "https://classpass.com",
+        "reason": "Fitness access fits the fitness enthusiast trait and gives the launch a balanced, post-premiere wellness angle.",
+        "warnings": [
+          "Brand audience skews female, this audience skews male.",
+          "Brand audience peaks at 24 and under, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "24_and_younger",
+            "label": "24 and under",
+            "value": 0.49
+          },
+          "gender": {
+            "side": "female",
+            "strength": "strong",
+            "value": -0.6,
+            "text": "strongly female-leaning"
+          }
+        }
+      },
+      {
+        "id": "78A44C09-E691-42DA-A553-5CDE6EE9B18A",
+        "name": "Allbirds",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.903,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Consumer Goods"
+        ],
+        "description": "Allbirds is a global footwear and apparel brand known for comfortable, sustainable shoes made with innovative natural materials.",
+        "image": "https://images.qloo.com/i/78A44C09-E691-42DA-A553-5CDE6EE9B18A-420x-auto.jpg",
+        "reason": "Comfortable, sustainable footwear feels accessible and thoughtful, suiting an audience that favors practical quality over flash.",
+        "warnings": [
+          "Brand audience skews female, this audience skews male."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "30_to_34",
+            "label": "30 to 34",
+            "value": 0.42
+          },
+          "gender": {
+            "side": "female",
+            "strength": "strong",
+            "value": -0.33,
+            "text": "strongly female-leaning"
+          }
+        }
+      }
+    ],
+    "candidates": [
+      {
+        "id": "BAC37074-9EEC-4EB2-AF9F-09906B48CBBE",
+        "name": "Tillamook",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.92,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Food & Beverage",
+          "Dairy Industry",
+          "Agriculture"
+        ],
+        "description": "Tillamook is a farmer-owned dairy brand known for its extraordinary cheese, ice cream, yogurt, butter, and cream cheese products.",
+        "image": "https://images.qloo.com/i/BAC37074-9EEC-4EB2-AF9F-09906B48CBBE-420x-auto.jpg",
+        "site": "https://www.tillamook.com"
+      },
+      {
+        "id": "F67C515B-D34C-439B-99AD-BC70302D54DE",
+        "name": "BOU",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.914,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods"
+        ],
+        "description": "BOU is an American food brand producing bouillon cubes, miso broth cubes, gravy cubes, and instant soup cups focused on better-for-you ingredients.",
+        "image": "https://images.qloo.com/i/F67C515B-D34C-439B-99AD-BC70302D54DE-420x-auto.jpg"
+      },
+      {
+        "id": "42778DBA-4650-4FF3-AF1E-D8DCA6C81CC0",
+        "name": "Boar's Head",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.912,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Deli"
+        ],
+        "description": "Boar's Head is a premium brand offering a variety of high-quality deli meats, cheeses, and specialty foods known for traditional and bold flavors.",
+        "image": "https://images.qloo.com/i/42778DBA-4650-4FF3-AF1E-D8DCA6C81CC0-420x-auto.jpg",
+        "site": "http://www.boarshead.com/"
+      },
+      {
+        "id": "2C650D56-15FB-40F6-85B7-4EC772AA7CE6",
+        "name": "Milk Bar",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.91,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Bakery"
+        ],
+        "description": "Milk Bar is a popular bakery brand known for its innovative desserts, shipping nationwide and available in major US cities and retail stores.",
+        "image": "https://images.qloo.com/i/2C650D56-15FB-40F6-85B7-4EC772AA7CE6-420x-auto.jpg"
+      },
+      {
+        "id": "DD3167CE-71AE-45D4-9820-651732113958",
+        "name": "Beekman1802",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.91,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Health & Wellness",
+          "Skincare"
+        ],
+        "description": "Beekman 1802 is a skincare and bodycare brand known for clinically tested, goat milk-based products designed for sensitive skin and cruelty-free practices.",
+        "image": "https://images.qloo.com/i/DD3167CE-71AE-45D4-9820-651732113958-420x-auto.jpg"
+      },
+      {
+        "id": "258A7FE6-BA28-4802-90DC-8B40815A89C3",
+        "name": "Coolhaus",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.905,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Dairy"
+        ],
+        "description": "Coolhaus is a women and LGBTQ+ founded American ice cream brand known for premium ice cream sandwiches, cones, and pints, including dairy-free options.",
+        "image": "https://images.qloo.com/i/258A7FE6-BA28-4802-90DC-8B40815A89C3-420x-auto.jpg",
+        "site": "https://cool.haus/"
+      },
+      {
+        "id": "78A44C09-E691-42DA-A553-5CDE6EE9B18A",
+        "name": "Allbirds",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.903,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Consumer Goods"
+        ],
+        "description": "Allbirds is a global footwear and apparel brand known for comfortable, sustainable shoes made with innovative natural materials.",
+        "image": "https://images.qloo.com/i/78A44C09-E691-42DA-A553-5CDE6EE9B18A-420x-auto.jpg"
+      },
+      {
+        "id": "331FEFDC-047C-4772-99B1-4324B9A23C32",
+        "name": "Butcher Box",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.903,
+        "brandType": "Service Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Subscription Services"
+        ],
+        "description": "ButcherBox is a subscription service delivering high-quality, humanely-raised meat and seafood directly to customers' doors.",
+        "image": "https://images.qloo.com/i/331FEFDC-047C-4772-99B1-4324B9A23C32-420x-auto.jpg"
+      },
+      {
+        "id": "B3E9A194-A8CA-4B06-ABCA-9505036A33A7",
+        "name": "SmartyPants Vitamins",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.903,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Consumer Packaged Goods",
+          "Vitamins And Supplements"
+        ],
+        "description": "SmartyPants Vitamins is a brand offering premium gummy vitamins with thoughtfully-selected nutrients like folate, probiotics, vitamin B12, omegas, and more.",
+        "image": "https://images.qloo.com/i/B3E9A194-A8CA-4B06-ABCA-9505036A33A7-420x-auto.jpg"
+      },
+      {
+        "id": "7F98C5B4-666B-4E6A-9851-2AA73A64B066",
+        "name": "Vionic Shoes",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.9,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Health & Wellness"
+        ],
+        "description": "Vionic Shoes offers comfortable, stylish footwear including sandals, sneakers, and boots with podiatrist-approved arch support and foot health technology.",
+        "image": "https://images.qloo.com/i/7F98C5B4-666B-4E6A-9851-2AA73A64B066-420x-auto.jpg"
+      },
+      {
+        "id": "019CA275-3055-444F-ABB0-85DD1A1BCD18",
+        "name": "Nut Pods",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.9,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Health & Wellness"
+        ],
+        "description": "Nutpods is a brand offering dairy-free, plant-based coffee creamers made from almonds and coconuts, catering to vegan, keto, Whole30, and gluten-free diets.",
+        "image": "https://images.qloo.com/i/019CA275-3055-444F-ABB0-85DD1A1BCD18-420x-auto.jpg"
+      },
+      {
+        "id": "23014D34-14E3-462C-8271-21DF573A0546",
+        "name": "Teavana",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.899,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Retail"
+        ],
+        "description": "Teavana is a tea brand and tea room chain offering a variety of teas and tea-related products, with locations in the Middle East.",
+        "image": "https://images.qloo.com/i/23014D34-14E3-462C-8271-21DF573A0546-420x-auto.jpg",
+        "site": "http://www.teavana.com"
+      },
+      {
+        "id": "C58C13B2-2E67-4B54-B27A-1A5CA87DDDC2",
+        "name": "Sir Kensington’s",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.897,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Condiments",
+          "Specialty Foods"
+        ],
+        "description": "Sir Kensington's is a brand known for its all-natural, Non-GMO certified condiments including mayonnaise, sauces, and mustards made from high-quality ingredients.",
+        "image": "https://images.qloo.com/i/C58C13B2-2E67-4B54-B27A-1A5CA87DDDC2-420x-auto.jpg",
+        "site": "http://sirkensingtons.com/"
+      },
+      {
+        "id": "55305CEC-273F-4A48-A28C-988D42E5BCDE",
+        "name": "Black Forest",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.897,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Confectionery"
+        ],
+        "description": "Black Forest is a brand offering organic and classic gummy bears and fruit snacks made with real fruit juice and natural colors and flavors.",
+        "image": "https://images.qloo.com/i/55305CEC-273F-4A48-A28C-988D42E5BCDE-420x-auto.jpg"
+      },
+      {
+        "id": "3CCFFED9-1A30-4DF2-908C-9689F471DB34",
+        "name": "J.r. Watkins",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.897,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Food & Beverage",
+          "Household Goods"
+        ],
+        "description": "J.R. Watkins is a heritage brand offering natural personal care and apothecary remedies, including hand soaps, body care, and wellness products.",
+        "image": "https://images.qloo.com/i/3CCFFED9-1A30-4DF2-908C-9689F471DB34-420x-auto.jpg"
+      },
+      {
+        "id": "E2915C8E-D6D1-4918-88EB-A65ACA77A3E5",
+        "name": "Bogs Footwear",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.894,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Footwear"
+        ],
+        "description": "BOGS Footwear designs and sells waterproof, durable boots for men, women, and kids, suitable for outdoor, farm, and winter use.",
+        "image": "https://images.qloo.com/i/E2915C8E-D6D1-4918-88EB-A65ACA77A3E5-420x-auto.jpg"
+      },
+      {
+        "id": "73C7B56C-99D8-415C-8570-E540E4582F02",
+        "name": "21 Day Fix",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.893,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Sports & Fitness",
+          "Nutrition"
+        ],
+        "description": "21 Day Fix is a fitness and nutrition program featuring daily 30-minute workouts and portion control meal plans created by Autumn Calabrese.",
+        "image": "https://images.qloo.com/i/73C7B56C-99D8-415C-8570-E540E4582F02-420x-auto.jpg"
+      },
+      {
+        "id": "CE63F19E-DAF8-4A7E-865E-0BC0EA2983C8",
+        "name": "Flamingo",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.892,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Health & Wellness"
+        ],
+        "description": "Flamingo is an award-winning women's body, hair removal, and care brand offering thoughtfully designed razors and personal care products.",
+        "image": "https://images.qloo.com/i/CE63F19E-DAF8-4A7E-865E-0BC0EA2983C8-420x-auto.jpg"
+      },
+      {
+        "id": "33697949-06C0-4010-90CA-2A1A8431ED24",
+        "name": "Schmidt's Naturals",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.889,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Consumer Packaged Goods"
+        ],
+        "description": "Schmidt's Naturals is a natural personal care brand known for its plant and mineral-based deodorants offering all-day odor protection without harmful chemicals.",
+        "image": "https://images.qloo.com/i/33697949-06C0-4010-90CA-2A1A8431ED24-420x-auto.jpg"
+      },
+      {
+        "id": "95664504-5759-4D5D-885A-417025BC7F43",
+        "name": "Native",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.888,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Consumer Packaged Goods"
+        ],
+        "description": "Native is a personal care brand known for clean, simple, and effective deodorants with natural ingredients and long-lasting odor protection.",
+        "image": "https://images.qloo.com/i/95664504-5759-4D5D-885A-417025BC7F43-420x-auto.jpg"
+      },
+      {
+        "id": "F941EF69-F3DE-424E-989B-0B6110E557D2",
+        "name": "Divvyup",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.887,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Social Enterprise"
+        ],
+        "description": "DivvyUp is a custom sock company known for personalized logo and face socks, using a one-for-one model to donate socks to the homeless.",
+        "image": "https://images.qloo.com/i/F941EF69-F3DE-424E-989B-0B6110E557D2-420x-auto.jpg"
+      },
+      {
+        "id": "0E708F34-7410-4B22-B017-EEDC8C7EE2D2",
+        "name": "Bryan Anthonys",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.885,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Jewelry"
+        ],
+        "description": "Bryan Anthonys is a woman-owned jewelry brand offering meaningful, sentimental necklaces and bracelets with powerful messages.",
+        "image": "https://images.qloo.com/i/0E708F34-7410-4B22-B017-EEDC8C7EE2D2-420x-auto.jpg"
+      },
+      {
+        "id": "2A88D01D-DE7A-410C-9A96-AA079C9AAF59",
+        "name": "Eddie Bauer",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.881,
+        "brandType": "Retail Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Outdoor Equipment"
+        ],
+        "description": "Eddie Bauer is an outdoor lifestyle brand offering performance outerwear, apparel, footwear, accessories, and gear designed for outdoor adventures.",
+        "image": "https://images.qloo.com/i/2A88D01D-DE7A-410C-9A96-AA079C9AAF59-420x-auto.jpg",
+        "site": "https://www.eddiebauer.com/"
+      },
+      {
+        "id": "B76AD4FA-FEAD-4B01-BC38-D1281D023468",
+        "name": "Vital Proteins",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.881,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Beauty & Personal Care",
+          "Nutrition"
+        ],
+        "description": "Vital Proteins is a brand specializing in collagen protein powders and supplements that support skin, hair, nails, bone, and joint health.",
+        "image": "https://images.qloo.com/i/B76AD4FA-FEAD-4B01-BC38-D1281D023468-420x-auto.jpg"
+      },
+      {
+        "id": "1A954128-89B1-453A-BE9A-AF8E38059F2F",
+        "name": "dōTERRA",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.881,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Health & Wellness",
+          "Aromatherapy"
+        ],
+        "description": "doTERRA is a multi-level marketing company specializing in pure, natural essential oils and related wellness products sourced globally.",
+        "image": "https://images.qloo.com/i/1A954128-89B1-453A-BE9A-AF8E38059F2F-420x-auto.jpg"
+      },
+      {
+        "id": "632FE105-DF1C-4279-85BD-5E86858E5981",
+        "name": "Madewell",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.88,
+        "brandType": "Retail Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail"
+        ],
+        "description": "Madewell is a clothing brand known for women's and men's jeans, clothing, shoes, and bags, emphasizing quality denim and casual style.",
+        "image": "https://images.qloo.com/i/632FE105-DF1C-4279-85BD-5E86858E5981-420x-auto.jpg"
+      },
+      {
+        "id": "FF8BB83C-AC0D-46AF-9410-9563636DF431",
+        "name": "ClassPass",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.877,
+        "brandType": "Service Brand",
+        "industries": [
+          "Health & Wellness",
+          "Technology",
+          "Fitness Services"
+        ],
+        "description": "ClassPass is a fitness app that allows users to book thousands of workout classes and appointments across various studios and gyms.",
+        "image": "https://images.qloo.com/i/FF8BB83C-AC0D-46AF-9410-9563636DF431-420x-auto.jpg",
+        "site": "https://classpass.com"
+      },
+      {
+        "id": "81EC4A41-53FB-47FD-995A-B8AE3EE90652",
+        "name": "Old Navy",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.876,
+        "brandType": "Retail Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "General Merchandise"
+        ],
+        "description": "Old Navy is a retail clothing brand offering stylish and affordable apparel for the whole family, including women, men, and kids.",
+        "image": "https://images.qloo.com/i/81EC4A41-53FB-47FD-995A-B8AE3EE90652-420x-auto.jpg"
+      },
+      {
+        "id": "5C02346A-67EB-4A00-8BB3-39EF14645379",
+        "name": "Rareform",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.876,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Sustainability"
+        ],
+        "description": "Rareform is a brand that upcycles over 80% of U.S. billboards into unique, colorful bags and accessories.",
+        "image": "https://images.qloo.com/i/5C02346A-67EB-4A00-8BB3-39EF14645379-420x-auto.jpg"
+      },
+      {
+        "id": "0489F9F7-B3BA-4424-88BB-CC2D733C8476",
+        "name": "Tipsy Elves",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.875,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "E-commerce"
+        ],
+        "description": "Tipsy Elves is a clothing brand known for its unique, outrageous holiday-themed apparel including ugly Christmas sweaters and snow suits, emphasizing fun and high-qualit…",
+        "image": "https://images.qloo.com/i/0489F9F7-B3BA-4424-88BB-CC2D733C8476-420x-auto.jpg"
+      },
+      {
+        "id": "00CB8FC0-C3DF-49A8-B699-19E801CC4744",
+        "name": "Kampgrounds Of America",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.863,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Outdoor Recreation"
+        ],
+        "description": "KOA is the world's largest network of privately owned campgrounds offering diverse camping options including RV sites, tents, cabins, and unique glamping accommodations…",
+        "image": "https://images.qloo.com/i/00CB8FC0-C3DF-49A8-B699-19E801CC4744-420x-auto.jpg",
+        "site": "https://koa.com/"
+      },
+      {
+        "id": "3F9F014D-93F2-4362-8B4E-D55A10745B01",
+        "name": "Homeaway",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.863,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Vacation Rental Marketplace"
+        ],
+        "description": "Abritel-HomeAway is a vacation rental platform offering a wide range of properties including bungalows, chalets, and apartments for short-term stays worldwide.",
+        "image": "https://images.qloo.com/i/3F9F014D-93F2-4362-8B4E-D55A10745B01-420x-auto.jpg"
+      },
+      {
+        "id": "1DA3EB67-5AA9-402B-9023-AC4F0194DEE9",
+        "name": "Luxury Retreats",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.852,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Vacation Rentals"
+        ],
+        "description": "Luxury Retreats is a travel company offering luxury vacation rentals worldwide with premium amenities and inspiring views.",
+        "image": "https://images.qloo.com/i/1DA3EB67-5AA9-402B-9023-AC4F0194DEE9-420x-auto.jpg"
+      },
+      {
+        "id": "7EFEBE89-05A1-4AAB-A8CB-A12A3EE2A8AA",
+        "name": "Even Hotels",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.851,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Health & Wellness"
+        ],
+        "description": "EVEN Hotels is a wellness-focused hotel brand by IHG offering accommodations designed to support guests' health and self-care routines with fitness amenities, healthy di…",
+        "image": "https://images.qloo.com/i/7EFEBE89-05A1-4AAB-A8CB-A12A3EE2A8AA-420x-auto.jpg",
+        "site": "http://evenhotels.com/"
+      },
+      {
+        "id": "9FA9101A-512F-4D4A-B944-C45063C8EDFE",
+        "name": "Joie de Vivre Hotels",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.843,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Boutique Hotels"
+        ],
+        "description": "JdV by Hyatt is a collection of vibrant, independent boutique hotels across the US, known for their eclectic design, signature restaurants, and community-focused experie…",
+        "image": "https://images.qloo.com/i/9FA9101A-512F-4D4A-B944-C45063C8EDFE-420x-auto.jpg"
+      },
+      {
+        "id": "044A091F-D06D-460D-B3CA-5FD2EED578CF",
+        "name": "GetYourGuide",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.842,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Tourism"
+        ],
+        "description": "GetYourGuide is a platform to find, compare, and book tours, attractions, and activities worldwide, offering over 75,000 experiences.",
+        "image": "https://images.qloo.com/i/044A091F-D06D-460D-B3CA-5FD2EED578CF-420x-auto.jpg"
+      },
+      {
+        "id": "95390CEE-4F18-440A-B6FD-BF8BE0B9C4AD",
+        "name": "Lido House",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.842,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Fine Dining",
+          "Wellness"
+        ],
+        "description": "Lido House is a boutique hotel in Newport Beach offering a stylish beach house experience with amenities for guests and event hosting.",
+        "image": "https://images.qloo.com/i/95390CEE-4F18-440A-B6FD-BF8BE0B9C4AD-420x-auto.jpg"
+      },
+      {
+        "id": "230962E4-AA1A-4233-B5F8-C93FE0B8AA30",
+        "name": "Vespa",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.835,
+        "brandType": "Product Brand",
+        "industries": [
+          "Automotive",
+          "Motorcycles"
+        ],
+        "description": "Vespa is an iconic Italian brand known for its stylish and functional scooters, popular worldwide since 1946.",
+        "image": "https://images.qloo.com/i/230962E4-AA1A-4233-B5F8-C93FE0B8AA30-420x-auto.jpg"
+      },
+      {
+        "id": "19B44110-5BB8-409E-B39B-6D1F3378E626",
+        "name": "Azulik",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.83,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Wellness",
+          "Art & Culture"
+        ],
+        "description": "Azulik is a unique eco-resort in Tulum offering villas with distinctive architecture, wellness experiences, and a connection to nature and Mayan culture.",
+        "image": "https://images.qloo.com/i/19B44110-5BB8-409E-B39B-6D1F3378E626-420x-auto.jpg"
+      },
+      {
+        "id": "B3651440-3168-42A8-AF58-FB3703D54F40",
+        "name": "Waldorf Astoria Hotels And Resorts",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.823,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Luxury Hospitality"
+        ],
+        "description": "Waldorf Astoria Hotels and Resorts is a luxury hotel brand offering sophisticated accommodations and amenities across iconic global destinations.",
+        "image": "https://images.qloo.com/i/B3651440-3168-42A8-AF58-FB3703D54F40-420x-auto.jpg",
+        "site": "https://www.hilton.com/en/waldorf-astoria/"
+      },
+      {
+        "id": "0C1E67AF-AD74-4817-BDA0-93E521785981",
+        "name": "Dreams Resorts & Spas",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.822,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Resort Hotels"
+        ],
+        "description": "Dreams Resorts & Spas is a luxury all-inclusive resort brand offering unforgettable beachfront vacations for families and couples across Mexico, the Caribbean, Central A…",
+        "image": "https://images.qloo.com/i/0C1E67AF-AD74-4817-BDA0-93E521785981-420x-auto.jpg"
+      },
+      {
+        "id": "A6BE3083-033A-4E24-AEA1-6C6A6F834114",
+        "name": "Weathertech",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.802,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Home Goods",
+          "Pet Care"
+        ],
+        "description": "WeatherTech is an American company specializing in custom fit automotive protection products such as floor mats, trunk liners, and rain guards.",
+        "image": "https://images.qloo.com/i/A6BE3083-033A-4E24-AEA1-6C6A6F834114-420x-auto.jpg"
+      },
+      {
+        "id": "58BFAC63-0F84-4E47-A4B2-C66A9008030E",
+        "name": "Turtle Wax",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.8,
+        "brandType": "Product Brand",
+        "industries": [
+          "Consumer Packaged Goods",
+          "Automotive Aftermarket"
+        ],
+        "description": "Turtle Wax is a leading brand offering innovative car care and detailing products, including ceramic waxes, polishes, and protective coatings.",
+        "image": "https://images.qloo.com/i/58BFAC63-0F84-4E47-A4B2-C66A9008030E-420x-auto.jpg",
+        "site": "https://www.turtlewax.com/en-us/"
+      },
+      {
+        "id": "C043C1C4-062B-43E4-80DF-D4F58B802C94",
+        "name": "Uconnect",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.8,
+        "brandType": "Product Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Technology",
+          "Automotive Telematics"
+        ],
+        "description": "Uconnect is a connected vehicle infotainment and telematics system used in Jeep, Ram, Dodge, and Chrysler vehicles, offering features like navigation, vehicle health mon…",
+        "image": "https://images.qloo.com/i/C043C1C4-062B-43E4-80DF-D4F58B802C94-420x-auto.jpg"
+      },
+      {
+        "id": "F2ED2D8B-C91A-425E-9F65-241F905C6232",
+        "name": "Bfgoodrich Tires",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.792,
+        "brandType": "Product Brand",
+        "industries": [
+          "Automotive",
+          "Tire Manufacturing"
+        ],
+        "description": "BFGoodrich Tires is a brand specializing in high-performance and off-road tires known for durability and race-proven engineering across various terrains.",
+        "image": "https://images.qloo.com/i/F2ED2D8B-C91A-425E-9F65-241F905C6232-420x-auto.jpg"
+      },
+      {
+        "id": "AD49C7B3-F699-4EB9-AA55-A67D63BB1E74",
+        "name": "Triumph Motorcycles",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.788,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Motorcycle Manufacturing"
+        ],
+        "description": "Triumph Motorcycles is a British motorcycle manufacturer known for iconic, stylish, and performance-oriented motorcycles designed by riders for riders.",
+        "image": "https://images.qloo.com/i/AD49C7B3-F699-4EB9-AA55-A67D63BB1E74-420x-auto.jpg"
+      },
+      {
+        "id": "64B8B573-69D1-426F-A1AC-691FF7A65A31",
+        "name": "Toyo Tire Corporation",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.783,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Rubber Manufacturing"
+        ],
+        "description": "Toyo Tire Corporation is a Japanese company specializing in manufacturing premium tires for trucks, SUVs, sports cars, and luxury vehicles.",
+        "image": "https://images.qloo.com/i/64B8B573-69D1-426F-A1AC-691FF7A65A31-420x-auto.jpg",
+        "site": "http://www.toyo-rubber.co.jp/"
+      },
+      {
+        "id": "83C8E95E-A528-4609-873C-0C10904D51DF",
+        "name": "Arch Motorcycle",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.782,
+        "brandType": "Product Brand",
+        "industries": [
+          "Automotive",
+          "Motorcycles"
+        ],
+        "description": "ARCH Motorcycle is a California-based company specializing in bespoke American motorcycles with a focus on performance, customization, and craftsmanship.",
+        "image": "https://images.qloo.com/i/83C8E95E-A528-4609-873C-0C10904D51DF-420x-auto.jpg",
+        "site": "http://www.archmotorcycle.com/"
+      },
+      {
+        "id": "6E2A5735-7C3E-4D6C-AC73-7421DBE17803",
+        "name": "KW Suspension",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.781,
+        "brandType": "Product Brand",
+        "industries": [
+          "Automotive",
+          "Motorsport"
+        ],
+        "description": "KW Suspension is a brand specializing in high-performance coilover suspension systems for street and racing applications, offering tuning, lowering, and ride comfort sol…",
+        "image": "https://images.qloo.com/i/6E2A5735-7C3E-4D6C-AC73-7421DBE17803-420x-auto.jpg"
+      },
+      {
+        "id": "42BC56E1-0667-49AF-B0F3-13C58816F53D",
+        "name": "Morgan Motor Company",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.779,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Luxury Goods"
+        ],
+        "description": "Morgan Motor Company is a British motor car manufacturer known for handcrafted sports cars featuring classic design and modern BMW engines.",
+        "image": "https://images.qloo.com/i/42BC56E1-0667-49AF-B0F3-13C58816F53D-420x-auto.jpg"
+      },
+      {
+        "id": "E0C26132-AD45-4583-99EC-4E01F7430E72",
+        "name": "NZXT",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.77,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Computer Hardware"
+        ],
+        "description": "NZXT is a gaming hardware brand offering custom and prebuilt gaming PCs, PC components, and gaming peripherals.",
+        "image": "https://images.qloo.com/i/E0C26132-AD45-4583-99EC-4E01F7430E72-420x-auto.jpg",
+        "site": "http://www.nzxt.com"
+      },
+      {
+        "id": "75D1595F-016E-4050-A30F-2378CDCEB3C0",
+        "name": "Xbox",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.764,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Media & Entertainment",
+          "Video Games"
+        ],
+        "description": "Xbox is a gaming brand offering consoles, games, and community services across console, PC, and cloud platforms.",
+        "image": "https://images.qloo.com/i/75D1595F-016E-4050-A30F-2378CDCEB3C0-420x-auto.jpg",
+        "site": "https://www.xbox.com/"
+      },
+      {
+        "id": "1E74E760-63C9-48E9-89A0-6716C9C14E8B",
+        "name": "Playstation",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.76,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Media & Entertainment",
+          "Consumer Electronics",
+          "Video Games"
+        ],
+        "description": "PlayStation is a brand of video game consoles, games, and related services developed and sold by Sony Interactive Entertainment.",
+        "image": "https://images.qloo.com/i/1E74E760-63C9-48E9-89A0-6716C9C14E8B-420x-auto.jpg"
+      }
+    ],
+    "stats": {
+      "fetched": 60,
+      "mediaBrands": 0,
+      "belowScore": 7,
+      "minScore": 0.75
+    }
+  },
+  "places": {
+    "city": "Chicago",
+    "venues": [
+      {
+        "id": "16C25AD1-9D91-40CD-B5F7-D13B4E7D36F9",
+        "name": "Parachute",
+        "type": "place",
+        "description": "Funky-chic Avondale restaurant serving inventive Korean‑American dishes with a listening bar, cocktails and wine.",
+        "image": "https://images.qloo.com/i/16C25AD1-9D91-40CD-B5F7-D13B4E7D36F9-420x-auto.jpg",
+        "popularity": 0.945,
+        "affinity": 0.892
+      },
+      {
+        "id": "149FBA00-E55D-412E-A445-DDFFA6D59831",
+        "name": "The Publican",
+        "type": "place",
+        "description": "A Fulton Market beer-hall blending farm-to-table seafood, heritage pork and housemade charcuterie with global beers and communal tables in an energetic urban setting.",
+        "image": "https://images.qloo.com/i/149FBA00-E55D-412E-A445-DDFFA6D59831-420x-auto.jpg",
+        "popularity": 0.995,
+        "affinity": 0.89
+      },
+      {
+        "id": "1ACC379E-687D-4157-8FD8-675EBFC3778C",
+        "name": "Alinea",
+        "type": "place",
+        "description": "Innovative New American tasting menus with theatrical presentations in a modernist setting, offering a unique multi-sensory dining experience.",
+        "image": "https://images.qloo.com/i/1ACC379E-687D-4157-8FD8-675EBFC3778C-420x-auto.jpg",
+        "popularity": 0.997,
+        "affinity": 0.889
+      },
+      {
+        "id": "C43A8299-A2B4-442F-83D2-E66AE81CF30D",
+        "name": "United Polaris Lounge",
+        "type": "place",
+        "description": "Premium international business-class airport lounge offering full-service dining, a full bar, private restrooms, showers, nap rooms, and extensive seating in Terminal 1 Concourse C.",
+        "image": "https://images.qloo.com/i/C43A8299-A2B4-442F-83D2-E66AE81CF30D-420x-auto.jpg",
+        "popularity": 0.924,
+        "affinity": 0.888
+      },
+      {
+        "id": "21BB8258-60D2-42A4-9B0F-32E29C3F5B44",
+        "name": "Smyth",
+        "type": "place",
+        "description": "Rustic-chic venue offering inventive, high-end New American tasting menus with wine pairings in a warm, intimate setting with open kitchen views.",
+        "image": "https://images.qloo.com/i/21BB8258-60D2-42A4-9B0F-32E29C3F5B44-420x-auto.jpg",
+        "popularity": 0.984,
+        "affinity": 0.887
+      },
+      {
+        "id": "DCD7BA9F-E978-4B04-BF3B-A3BBD06C7F9D",
+        "name": "Publican Quality Meats",
+        "type": "place",
+        "description": "American café and market offering charcuterie, pastries, sandwiches, and an on-site butcher.",
+        "image": "https://images.qloo.com/i/DCD7BA9F-E978-4B04-BF3B-A3BBD06C7F9D-420x-auto.jpg",
+        "popularity": 0.968,
+        "affinity": 0.887
+      },
+      {
+        "id": "4E518E9B-D893-4632-8618-C1B2676DED64",
+        "name": "The Aviary",
+        "type": "place",
+        "description": "Swanky cocktail lounge offering intricate, creatively presented cocktails and clever small bites in a sensory-driven tasting experience.",
+        "image": "https://images.qloo.com/i/4E518E9B-D893-4632-8618-C1B2676DED64-420x-auto.jpg",
+        "popularity": 0.995,
+        "affinity": 0.887
+      },
+      {
+        "id": "15E0CBD1-38A1-4FF6-A282-4A0991678F77",
+        "name": "Cloud Gate",
+        "type": "place",
+        "description": "Large mirrored sculpture in a city park, known for its reflective surface and unusual bean-like form.",
+        "image": "https://images.qloo.com/i/15E0CBD1-38A1-4FF6-A282-4A0991678F77-420x-auto.jpg",
+        "popularity": 1,
+        "affinity": 0.887
+      }
+    ],
+    "neighborhoods": [
+      {
+        "id": "7D0E709C-9871-4A47-B0B3-C9EE48FA6269",
+        "name": "Logan Square",
+        "area": "Logan Square, Chicago, Cook County, Illinois, United States of America",
+        "affinity": 0.989
+      },
+      {
+        "id": "0B43AA36-DDB2-4C46-BB7F-158FB0D557DC",
+        "name": "Lincoln Square",
+        "area": "Lincoln Square, Chicago, Cook County, Illinois, United States of America",
+        "affinity": 0.978
+      },
+      {
+        "id": "A7BAB1DB-AFB7-4EAC-A5AD-CAB5261E3769",
+        "name": "North Center",
+        "area": "North Center, Chicago, Cook County, Illinois, United States of America",
+        "affinity": 0.967
+      },
+      {
+        "id": "6D0BEE3C-CC98-4B23-89B9-8F0AE2E65D79",
+        "name": "West Chicago Township",
+        "area": "West Chicago Township, Cook County, Illinois, United States of America",
+        "affinity": 0.923
+      },
+      {
+        "id": "ACBDA821-AC95-47DE-B342-33AEB57D9729",
+        "name": "Lincoln Park",
+        "area": "Lincoln Park, Chicago, Cook County, Illinois, United States of America",
+        "affinity": 0.912
+      },
+      {
+        "id": "9F0F68F2-601A-4B4D-ABB9-EBE51B2B323A",
+        "name": "Lake View",
+        "area": "Lake View, Chicago, Cook County, Illinois, United States of America",
+        "affinity": 0.901
+      },
+      {
+        "id": "3CC5A5AA-DF59-4C9D-972F-F218376609A5",
+        "name": "Irving Park",
+        "area": "Irving Park, Chicago, Cook County, Illinois, United States of America",
+        "affinity": 0.89
+      },
+      {
+        "id": "79DD26D7-8286-4729-BFB7-7BC558C7D89F",
+        "name": "Near North Side",
+        "area": "Near North Side, Chicago, Cook County, Illinois, United States of America",
+        "affinity": 0.879
+      }
+    ]
+  },
+  "timing": {
+    "direction": "steady",
+    "delta": 0,
+    "from": "2026-05-08",
+    "to": "2026-10-29",
+    "series": [
+      {
+        "date": "2026-05-08",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-05-14",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-05-21",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-05-28",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-04",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-11",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-18",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-06-25",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-02",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-09",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-16",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-23",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-07-30",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-06",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-13",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-20",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-08-27",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-03",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-10",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-17",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-09-24",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-01",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-08",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-15",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-22",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      },
+      {
+        "date": "2026-10-29",
+        "population_percentile": 0.9467135561256274,
+        "population_rank": "88",
+        "population_rank_velocity": 0,
+        "velocity_fold_change": 0,
+        "population_percent_delta": 0
+      }
+    ],
+    "start": "2026-04-30",
+    "end": "2026-10-29"
+  },
+  "editor": {
+    "source": "llm",
+    "headline": "For The Bear season premiere, lead with food-first partners this thoughtful, food-loving audience will find credible.",
+    "audienceSummary": "This audience has a clear peak in mid-adulthood and leans strongly male, with tastes spanning drama, thriller, crime, mystery, fantasy and horror. They over-index as food loving and fitness minded, and accept thoughtful, family-oriented, accessible ideas over generic spectacle.",
+    "launchAngles": [
+      "Premiere-night tasting tie-ins built around serious cooking, quality ingredients and hands-on kitchen craft",
+      "Thoughtful screening suppers pairing dramatic storytelling with chef-led menus and ingredient storytelling",
+      "Indie-leaning music moments at food activations, echoing the reflective artists this audience also loves"
+    ],
+    "caveats": [
+      "Target age sits just below the clear audience peak, so creative should not assume the target and core audience are identical.",
+      "Genre breadth is wide, so food authenticity should anchor the idea rather than leaning on any single genre cue.",
+      "Beauty and fitness picks are secondary fits and should support, not dilute, the food-first premiere positioning."
+    ]
+  },
+  "cliche": {
+    "prompt": "A team is preparing the launch of the tv show \"The Bear\", aimed at 30 to 34. Which 5 brands would be the best partners, and which 5 music artists best fit its audience? Return JSON: {\"brands\": [\"name\", ...], \"artists\": [\"name\", ...]}",
+    "brands": {
+      "llm": [
+        {
+          "name": "Made In",
+          "qlooName": "Made In Cookware",
+          "id": "7C9EEC34-46A0-4C58-81B0-57B32D968844",
+          "affinity": 0.836,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 7
+        },
+        {
+          "name": "Hedley & Bennett",
+          "qlooName": "Hedley & Bennett",
+          "id": "8B3C9561-0413-41F0-90CD-1047D7A6B359",
+          "affinity": 0.806,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 9
+        },
+        {
+          "name": "Birkenstock",
+          "qlooName": "Birkenstock",
+          "id": "E43E58D0-7342-496E-BEE3-0022BFEB1AFC",
+          "affinity": 0.844,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 6
+        },
+        {
+          "name": "Carhartt WIP",
+          "qlooName": "Carhartt",
+          "id": "2D69DB33-B4DF-4879-B3DC-308E3402A1FD",
+          "affinity": 0.817,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 8
+        },
+        {
+          "name": "Resy",
+          "qlooName": "Resy",
+          "id": "209D3781-7505-47FC-A727-00D1ACD0BA63",
+          "affinity": 0.779,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 10
+        }
+      ],
+      "ours": [
+        {
+          "id": "BAC37074-9EEC-4EB2-AF9F-09906B48CBBE",
+          "name": "Tillamook",
+          "affinity": 0.92,
+          "rank": 1
+        },
+        {
+          "id": "F67C515B-D34C-439B-99AD-BC70302D54DE",
+          "name": "BOU",
+          "affinity": 0.914,
+          "rank": 2
+        },
+        {
+          "id": "DD3167CE-71AE-45D4-9820-651732113958",
+          "name": "Beekman1802",
+          "affinity": 0.91,
+          "rank": 3
+        },
+        {
+          "id": "FF8BB83C-AC0D-46AF-9410-9563636DF431",
+          "name": "ClassPass",
+          "affinity": 0.877,
+          "rank": 5
+        },
+        {
+          "id": "78A44C09-E691-42DA-A553-5CDE6EE9B18A",
+          "name": "Allbirds",
+          "affinity": 0.903,
+          "rank": 4
+        }
+      ],
+      "summary": {
+        "llmAverage": 0.816,
+        "oursAverage": 0.905,
+        "llmBelowOurFloor": 5,
+        "overlap": 0,
+        "notInQloo": 0,
+        "scored": 5
+      }
+    },
+    "artists": {
+      "llm": [
+        {
+          "name": "Wilco",
+          "qlooName": "Wilco",
+          "id": "6995D1B6-D894-44B6-AE06-3B5D22F8C8F1",
+          "affinity": 0.792,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 8
+        },
+        {
+          "name": "The National",
+          "qlooName": "The National",
+          "id": "192BB96E-F4BD-4A76-B24E-CD049EC9DFA2",
+          "affinity": 0.804,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 7
+        },
+        {
+          "name": "LCD Soundsystem",
+          "qlooName": "LCD Soundsystem",
+          "id": "E454D97B-AF51-4D81-A32A-D8EE4B40BFB1",
+          "affinity": 0.773,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 10
+        },
+        {
+          "name": "Radiohead",
+          "qlooName": "Radiohead",
+          "id": "70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C",
+          "affinity": 0.783,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 9
+        },
+        {
+          "name": "Taylor Swift",
+          "qlooName": "Taylor Swift",
+          "id": "4BBEF799-A0C4-4110-AB01-39216993C312",
+          "affinity": 0.859,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 3
+        }
+      ],
+      "ours": [
+        {
+          "id": "13CDFAD4-D5BC-4417-AB83-AC7DD856AD2C",
+          "name": "Father John Misty",
+          "affinity": 0.833,
+          "rank": 4
+        },
+        {
+          "id": "20FDF28C-1980-43B4-B699-BEC3827B9B88",
+          "name": "Parquet Courts",
+          "affinity": 0.9,
+          "rank": 2
+        },
+        {
+          "id": "64AD0902-0A1A-4121-9BB2-7AA76E380AAB",
+          "name": "Angel Olsen",
+          "affinity": 0.941,
+          "rank": 1
+        },
+        {
+          "id": "BF5EE94C-B390-4774-9546-2AAFD16CF672",
+          "name": "The War on Drugs",
+          "affinity": 0.819,
+          "rank": 5
+        },
+        {
+          "id": "000C4948-CC6C-47A4-8D7E-D257BB9805BE",
+          "name": "Kurt Vile",
+          "affinity": 0.818,
+          "rank": 6
+        }
+      ],
+      "summary": {
+        "llmAverage": 0.802,
+        "oursAverage": 0.862,
+        "llmBelowOurFloor": 4,
+        "overlap": 0,
+        "notInQloo": 0,
+        "scored": 5
+      }
+    }
+  },
+  "provenance": [
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+      "status": 200,
+      "ms": 944,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "filter.tag.types": "urn:tag:genre:media",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&filter.tag.types=urn%3Atag%3Agenre%3Amedia&take=8",
+      "status": 200,
+      "ms": 1240,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "filter.tag.types": "urn:tag:emotional_tone:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&filter.tag.types=urn%3Atag%3Aemotional_tone%3Aqloo&take=8",
+      "status": 200,
+      "ms": 1738,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "filter.tag.types": "urn:tag:audience:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&filter.tag.types=urn%3Atag%3Aaudience%3Aqloo&take=8",
+      "status": 200,
+      "ms": 674,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "filter.tag.types": "urn:tag:lifestyle:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&filter.tag.types=urn%3Atag%3Alifestyle%3Aqloo&take=8",
+      "status": 200,
+      "ms": 1244,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.tags": "urn:tag:genre:brand:fashion",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.tags=urn%3Atag%3Agenre%3Abrand%3Afashion&take=10",
+      "status": 200,
+      "ms": 704,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.tags": "urn:tag:genre:brand:health_and_beauty",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.tags=urn%3Atag%3Agenre%3Abrand%3Ahealth_and_beauty&take=10",
+      "status": 200,
+      "ms": 634,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.tags": "urn:tag:genre:brand:food_and_beverage",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.tags=urn%3Atag%3Agenre%3Abrand%3Afood_and_beverage&take=10",
+      "status": 200,
+      "ms": 341,
+      "cached": false
+    },
+    {
+      "module": "sound",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "take": 14,
+        "filter.popularity.max": 0.6
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&take=14&filter.popularity.max=0.6",
+      "status": 200,
+      "ms": 2341,
+      "cached": false
+    },
+    {
+      "module": "places",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:place",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "filter.location.query": "Chicago",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Aentity%3Aplace&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&filter.location.query=Chicago&take=8",
+      "status": 200,
+      "ms": 1291,
+      "cached": false
+    },
+    {
+      "module": "sound",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "take": 14
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&take=14",
+      "status": 200,
+      "ms": 3556,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.tags": "urn:tag:genre:brand:travel",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.tags=urn%3Atag%3Agenre%3Abrand%3Atravel&take=10",
+      "status": 200,
+      "ms": 378,
+      "cached": false
+    },
+    {
+      "module": "timing",
+      "path": "/v2/trending",
+      "params": {
+        "filter.type": "urn:entity:tv_show",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "filter.start_date": "2026-04-30",
+        "filter.end_date": "2026-10-29",
+        "take": 26
+      },
+      "query": "filter.type=urn%3Aentity%3Atv_show&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&filter.start_date=2026-04-30&filter.end_date=2026-10-29&take=26",
+      "status": 200,
+      "ms": 523,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.tags": "urn:tag:genre:brand:automotive",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.tags=urn%3Atag%3Agenre%3Abrand%3Aautomotive&take=10",
+      "status": 200,
+      "ms": 344,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.tags": "urn:tag:genre:brand:electronics:gaming",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.tags=urn%3Atag%3Agenre%3Abrand%3Aelectronics%3Agaming&take=10",
+      "status": 200,
+      "ms": 328,
+      "cached": false
+    },
+    {
+      "module": "places",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:heatmap",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "filter.location.query": "Chicago",
+        "output.heatmap.boundary": "urn:entity:locality",
+        "take": 20
+      },
+      "query": "filter.type=urn%3Aheatmap&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&filter.location.query=Chicago&output.heatmap.boundary=urn%3Aentity%3Alocality&take=20",
+      "status": 200,
+      "ms": 2535,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "BAC37074-9EEC-4EB2-AF9F-09906B48CBBE"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=BAC37074-9EEC-4EB2-AF9F-09906B48CBBE",
+      "status": 200,
+      "ms": 878,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "FF8BB83C-AC0D-46AF-9410-9563636DF431"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=FF8BB83C-AC0D-46AF-9410-9563636DF431",
+      "status": 200,
+      "ms": 309,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "F67C515B-D34C-439B-99AD-BC70302D54DE"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=F67C515B-D34C-439B-99AD-BC70302D54DE",
+      "status": 200,
+      "ms": 1353,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "DD3167CE-71AE-45D4-9820-651732113958"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=DD3167CE-71AE-45D4-9820-651732113958",
+      "status": 200,
+      "ms": 1379,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "78A44C09-E691-42DA-A553-5CDE6EE9B18A"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=78A44C09-E691-42DA-A553-5CDE6EE9B18A",
+      "status": 200,
+      "ms": 290,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Made In",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Made+In&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 943,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Wilco",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Wilco&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 955,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "The National",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=The+National&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 339,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "LCD Soundsystem",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=LCD+Soundsystem&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 397,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Hedley & Bennett",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Hedley+%26+Bennett&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 1000,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Radiohead",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Radiohead&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 337,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Taylor Swift",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Taylor+Swift&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Birkenstock",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Birkenstock&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 445,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.results.entities": [
+          "13CDFAD4-D5BC-4417-AB83-AC7DD856AD2C",
+          "20FDF28C-1980-43B4-B699-BEC3827B9B88",
+          "64AD0902-0A1A-4121-9BB2-7AA76E380AAB",
+          "BF5EE94C-B390-4774-9546-2AAFD16CF672",
+          "000C4948-CC6C-47A4-8D7E-D257BB9805BE",
+          "6995D1B6-D894-44B6-AE06-3B5D22F8C8F1",
+          "192BB96E-F4BD-4A76-B24E-CD049EC9DFA2",
+          "E454D97B-AF51-4D81-A32A-D8EE4B40BFB1",
+          "70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C",
+          "4BBEF799-A0C4-4110-AB01-39216993C312"
+        ],
+        "take": 15
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.results.entities=13CDFAD4-D5BC-4417-AB83-AC7DD856AD2C%2C20FDF28C-1980-43B4-B699-BEC3827B9B88%2C64AD0902-0A1A-4121-9BB2-7AA76E380AAB%2CBF5EE94C-B390-4774-9546-2AAFD16CF672%2C000C4948-CC6C-47A4-8D7E-D257BB9805BE%2C6995D1B6-D894-44B6-AE06-3B5D22F8C8F1%2C192BB96E-F4BD-4A76-B24E-CD049EC9DFA2%2CE454D97B-AF51-4D81-A32A-D8EE4B40BFB1%2C70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2C4BBEF799-A0C4-4110-AB01-39216993C312&take=15",
+      "status": 200,
+      "ms": 597,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Carhartt WIP",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Carhartt+WIP&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 375,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Resy",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Resy&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 394,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "4C305B2F-5A46-4885-A6DA-5E22D11E86E0",
+        "signal.demographics.age": "30_to_34",
+        "filter.results.entities": [
+          "BAC37074-9EEC-4EB2-AF9F-09906B48CBBE",
+          "F67C515B-D34C-439B-99AD-BC70302D54DE",
+          "DD3167CE-71AE-45D4-9820-651732113958",
+          "FF8BB83C-AC0D-46AF-9410-9563636DF431",
+          "78A44C09-E691-42DA-A553-5CDE6EE9B18A",
+          "7C9EEC34-46A0-4C58-81B0-57B32D968844",
+          "8B3C9561-0413-41F0-90CD-1047D7A6B359",
+          "E43E58D0-7342-496E-BEE3-0022BFEB1AFC",
+          "2D69DB33-B4DF-4879-B3DC-308E3402A1FD",
+          "209D3781-7505-47FC-A727-00D1ACD0BA63"
+        ],
+        "take": 15
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=4C305B2F-5A46-4885-A6DA-5E22D11E86E0&signal.demographics.age=30_to_34&filter.results.entities=BAC37074-9EEC-4EB2-AF9F-09906B48CBBE%2CF67C515B-D34C-439B-99AD-BC70302D54DE%2CDD3167CE-71AE-45D4-9820-651732113958%2CFF8BB83C-AC0D-46AF-9410-9563636DF431%2C78A44C09-E691-42DA-A553-5CDE6EE9B18A%2C7C9EEC34-46A0-4C58-81B0-57B32D968844%2C8B3C9561-0413-41F0-90CD-1047D7A6B359%2CE43E58D0-7342-496E-BEE3-0022BFEB1AFC%2C2D69DB33-B4DF-4879-B3DC-308E3402A1FD%2C209D3781-7505-47FC-A727-00D1ACD0BA63&take=15",
+      "status": 200,
+      "ms": 323,
+      "cached": false
+    }
+  ],
+  "modules": {
+    "profile": {
+      "status": "done",
+      "ms": 2195
+    },
+    "sound": {
+      "status": "done",
+      "ms": 5519
+    },
+    "timing": {
+      "status": "done",
+      "ms": 5955
+    },
+    "partners": {
+      "status": "done",
+      "ms": 6272
+    },
+    "places": {
+      "status": "done",
+      "ms": 6430
+    },
+    "editor": {
+      "status": "done",
+      "ms": 12046
+    },
+    "check": {
+      "status": "done",
+      "ms": 1486
+    },
+    "cliche": {
+      "status": "done",
+      "ms": 8984
+    }
+  }
+}
