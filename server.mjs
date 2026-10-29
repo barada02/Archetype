@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { loadConfig, redactor } from "./src/config.mjs";
 import { createQloo } from "./src/qloo.mjs";
 import { createLlm } from "./src/llm.mjs";
+import { CHAT_SYSTEM, chatContext, cleanMessages, unsupportedNumbers } from "./src/chat.mjs";
 import { buildBrief, resolveEntities, ENTITY_TYPES, PARTNER_CATEGORIES, DEFAULT_MIN_SCORE } from "./src/pipeline.mjs";
 import { AGE_BANDS } from "./src/util.mjs";
 
@@ -18,20 +19,45 @@ const redact = redactor(config);
 const qloo = createQloo({ apiKey: config.qlooKey, baseUrl: config.qlooBase, cacheDir: join(ROOT, "data", "cache") });
 const llm = createLlm(config);
 
+// Sample briefs are committed under samples/ (data/ is not), so a fresh deploy always has a
+// demo to open without spending Qloo or LLM calls. samples/index.json sets the order; the first is featured.
+const SAMPLES = join(ROOT, "samples");
+const samples = [];
+try {
+  for (const id of JSON.parse(await readFile(join(SAMPLES, "index.json"), "utf8"))) {
+    const b = JSON.parse(await readFile(join(SAMPLES, `${id}.json`), "utf8"));
+    samples.push({ id: b.id, name: b.input.entity.name, type: b.input.entity.type, image: b.input.entity.image, goal: b.input.goal, city: b.input.city, ageBand: b.input.ageBand, gender: b.input.gender, headline: b.editor.headline });
+  }
+} catch (error) {
+  if (error.code !== "ENOENT") console.error(`samples: ${error.message}`);
+}
+const sampleIds = new Set(samples.map((s) => s.id));
+
+// A saved brief by id: committed samples first, then briefs built on this server.
+async function loadBrief(id) {
+  const isSample = sampleIds.has(id);
+  try { return { ...JSON.parse(await readFile(join(isSample ? SAMPLES : BRIEFS, `${id}.json`), "utf8")), ...(isSample ? { sample: true } : {}) }; }
+  catch { throw fail(404, "No such brief"); }
+}
+
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml" };
 const MAX_BODY = 20_000;
 const fail = (status, message) => Object.assign(new Error(message), { status });
 
-// Per-visitor limit on brief builds, so a public demo cannot burn the Qloo quota.
-const buildLog = new Map();
-function allowBuild(ip) {
-  const now = Date.now();
-  const recent = (buildLog.get(ip) ?? []).filter((t) => now - t < 3600_000);
-  if (recent.length >= config.briefsPerHour) return false;
-  recent.push(now);
-  buildLog.set(ip, recent);
-  return true;
+// Per-visitor hourly limits, so a public demo cannot burn the Qloo or LLM quota.
+function hourlyLimit(perHour) {
+  const log = new Map();
+  return (ip) => {
+    const now = Date.now();
+    const recent = (log.get(ip) ?? []).filter((t) => now - t < 3600_000);
+    if (recent.length >= perHour) return false;
+    recent.push(now);
+    log.set(ip, recent);
+    return true;
+  };
 }
+const allowBuild = hourlyLimit(config.briefsPerHour);
+const allowChat = hourlyLimit(config.chatsPerHour);
 // Behind the local nginx proxy every socket is loopback; nginx appends the real
 // client as the last X-Forwarded-For entry (earlier entries can be spoofed).
 function clientIp(req) {
@@ -97,11 +123,36 @@ async function handleBuild(req, res) {
   }
 }
 
+// Ask about one brief, streamed. The server loads the brief itself; the browser only sends its
+// id and the conversation. Problems found before streaming starts come back as normal JSON errors.
+async function handleChat(req, res) {
+  if (!llm) throw fail(503, "No language-model key is set on the server");
+  const body = await readJson(req);
+  const id = str(body.id, 12);
+  if (!/^[0-9a-f]{12}$/.test(id)) throw fail(400, "id must be a brief id");
+  const messages = cleanMessages(body.messages);
+  if (!messages.length) throw fail(400, "Ask a question first");
+  const context = JSON.stringify(chatContext(await loadBrief(id)));
+  if (!allowChat(clientIp(req))) throw fail(429, "Too many questions from this address. Try again later.");
+  res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive" });
+  const send = (event, data) => res.write(`event: ${event}\ndata: ${redact(data)}\n\n`);
+  try {
+    const reply = await llm.stream({ system: `${CHAT_SYSTEM}\n\nBRIEF DATA:\n${context}`, messages, onDelta: (text) => send("delta", { text }) });
+    const answer = String(reply).trim().replace(/\*\*(.+?)\*\*/g, "$1").slice(0, 4000); // plain text: drop markdown bold
+    send("done", { answer, model: llm.model, unsupported: unsupportedNumbers(answer, context) });
+  } catch (error) {
+    send("failure", { error: error.message });
+  } finally {
+    res.end();
+  }
+}
+
 const api = {
   "GET /api/config": async () => ({
     hasQloo: Boolean(config.qlooKey), hasLlm: Boolean(llm), model: llm?.model,
     types: ENTITY_TYPES, ageBands: AGE_BANDS, minScore: DEFAULT_MIN_SCORE,
     categories: Object.entries(PARTNER_CATEGORIES).map(([key, c]) => ({ key, label: c.label })),
+    samples,
   }),
   "POST /api/resolve": async (req) => {
     const body = await readJson(req);
@@ -143,13 +194,13 @@ const server = createServer(async (req, res) => {
   const { pathname, searchParams } = new URL(req.url, "http://x");
   try {
     if (req.method === "POST" && pathname === "/api/brief") return await handleBuild(req, res);
+    if (req.method === "POST" && pathname === "/api/chat") return await handleChat(req, res);
     if (req.method === "GET" && pathname === "/img") return await proxyImage(res, searchParams.get("u") ?? "");
     const handler = api[`${req.method} ${pathname}`];
     if (handler) return json(res, 200, await handler(req));
     const saved = req.method === "GET" && pathname.match(/^\/api\/brief\/([0-9a-f]{12})$/);
     if (saved) {
-      try { return json(res, 200, JSON.parse(await readFile(join(BRIEFS, `${saved[1]}.json`), "utf8"))); }
-      catch { throw fail(404, "No such brief"); }
+      return json(res, 200, await loadBrief(saved[1]));
     }
     if (req.method !== "GET") throw fail(405, "Method not allowed");
     if (pathname === "/" || /^\/b\/[0-9a-f]{12}$/.test(pathname)) return await serveStatic(res, "index.html");

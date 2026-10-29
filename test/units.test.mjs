@@ -6,6 +6,7 @@ import { buildUrl, createQloo } from "../src/qloo.mjs";
 import { matchesName, rankPool } from "../src/cliche.mjs";
 import { loadConfig, redactor } from "../src/config.mjs";
 import { createLlm, parseJson } from "../src/llm.mjs";
+import { chatContext, cleanMessages, unsupportedNumbers } from "../src/chat.mjs";
 
 test("normName ignores case, accents and punctuation", () => {
   assert.equal(normName("Beyoncé & Jay-Z"), "beyonce and jay z");
@@ -162,4 +163,55 @@ test("decodeEntities turns Qloo's HTML-encoded text into plain text, once", () =
   assert.equal(decodeEntities(undefined), undefined);
   assert.equal(clip("Tom &amp; Jerry<br>cartoon", 50), "Tom & Jerry cartoon");
   assert.equal(normName("Jackals &amp; the Truth"), normName("Jackals & the Truth"));
+});
+
+test("committed sample briefs exist and are complete, so the demo always opens", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const ids = JSON.parse(await readFile(new URL("../samples/index.json", import.meta.url), "utf8"));
+  assert.ok(ids.length >= 1);
+  for (const id of ids) {
+    const b = JSON.parse(await readFile(new URL(`../samples/${id}.json`, import.meta.url), "utf8"));
+    assert.equal(b.id, id);
+    assert.ok(b.input.entity.name && b.editor.headline && b.partners.picks.length > 0 && b.provenance.length > 0, `${id} is incomplete`);
+  }
+});
+
+test("chat: cleanMessages keeps the last turns, starting and ending with the user", () => {
+  const raw = [{ role: "assistant", content: "hi" }, { role: "user", content: "q1" }, { role: "system", content: "evil" }, { role: "assistant", content: "a1" }, { role: "user", content: "x".repeat(900) }];
+  const out = cleanMessages(raw);
+  assert.deepEqual(out.map((m) => m.role), ["user", "assistant", "user"]);
+  assert.equal(out.at(-1).content.length, 500);
+  assert.deepEqual(cleanMessages([{ role: "user", content: "q" }, { role: "assistant", content: "a" }]), []);
+  assert.deepEqual(cleanMessages("nope"), []);
+});
+
+test("chat: numbers not in the brief are flagged, roundings and small counts are not", () => {
+  const ctx = JSON.stringify({ fit: 0.873, peak: "35 to 44", year: "2026-05-07" });
+  assert.deepEqual(unsupportedNumbers("Fit 0.87 (0.873), peaks 35 to 44, 3 of 5 partners.", ctx), []);
+  assert.deepEqual(unsupportedNumbers("About 87% of fans are women, up 12.5 points.", ctx), ["87", "12.5"]);
+});
+
+test("chat: the context covers what a reader sees, from a committed sample", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const [id] = JSON.parse(await readFile(new URL("../samples/index.json", import.meta.url), "utf8"));
+  const brief = JSON.parse(await readFile(new URL(`../samples/${id}.json`, import.meta.url), "utf8"));
+  const ctx = chatContext(brief);
+  assert.equal(ctx.release.title, brief.input.entity.name);
+  assert.equal(ctx.partnerShortlist.length, brief.partners.picks.length);
+  assert.ok(ctx.glossary.fitScore && ctx.audience.genres.length);
+  assert.ok(!JSON.stringify(ctx).includes("provenance"));
+});
+
+test("createLlm stream() falls back only while nothing has been streamed", async () => {
+  const fake = (name, mode) => () => ({ name, model: name, async json() {},
+    async stream({ onDelta }) { if (mode === "fail") throw new Error("down"); onDelta(`${name} `); if (mode === "midway") throw new Error("cut"); return `from ${name}`; } });
+  const quiet = console.error; console.error = () => {};
+  try {
+    const pieces = [];
+    const ok = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", "fail"), baseten: fake("baseten", "ok") });
+    assert.equal(await ok.stream({ system: "s", messages: [], onDelta: (p) => pieces.push(p) }), "from baseten");
+    assert.deepEqual(pieces, ["baseten "]);
+    const cut = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", "midway"), baseten: fake("baseten", "ok") });
+    await assert.rejects(cut.stream({ system: "s", messages: [], onDelta: () => {} }), /cut/);
+  } finally { console.error = quiet; }
 });

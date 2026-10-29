@@ -6,7 +6,8 @@ import { clip, decodeEntities, round, normName, peakAge, genderLean, trendDirect
 import { editorPrompt, validateEditor, fallbackReason, EDITOR_SYSTEM } from "./editor.mjs";
 import { clicheCheck } from "./cliche.mjs";
 
-export const ENTITY_TYPES = ["book", "movie", "tv_show", "videogame", "podcast", "artist", "brand"];
+// Film and TV first: the product is built for release co-marketing; other kinds still work.
+export const ENTITY_TYPES = ["movie", "tv_show", "book", "videogame", "podcast", "artist", "brand"];
 
 export const PARTNER_CATEGORIES = {
   fashion: { label: "Fashion and apparel", tag: "urn:tag:genre:brand:fashion" },
@@ -215,14 +216,14 @@ export async function buildBrief({ input, qloo, llm, emit = () => {}, now = new 
   });
 
   const clicheP = llm
-    ? step("cliche", "Cliché check: plain LLM vs the data", async () => {
+    ? step("cliche", "Plain AI vs data: score an unaided guess", async () => {
         const ourBrands = picks.slice(0, 5).map((p) => ({ id: p.id, name: p.name, affinity: p.affinity }));
         const ourArtists = sound.mainstream.slice(0, 5).map((a) => ({ id: a.id, name: a.name, affinity: a.affinity }));
         const data = await clicheCheck({ llm, call, entity, target, signal: { ...signal, ...demoSignal }, oursBrands: ourBrands, oursArtists: ourArtists });
         const s = data.brands.summary;
         return { data, detail: `${s.scored} of ${data.brands.llm.length} LLM brands scored, ${s.llmBelowOurFloor} below our floor` };
       })
-    : (skip("cliche", "Cliché check", "LLM key missing"), Promise.resolve(undefined));
+    : (skip("cliche", "Plain AI vs data", "LLM key missing"), Promise.resolve(undefined));
 
   const [, cliche] = await Promise.all([checkP, clicheP]);
   picks = picks.map((p) => ({ ...p, reason: p.reason || fallbackReason(p, entity.name) }));

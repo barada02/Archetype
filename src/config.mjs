@@ -14,6 +14,7 @@ export function loadConfig(env = process.env) {
     port: Number(pick("PORT") || 3100),
     host: pick("HOST") || "127.0.0.1",
     briefsPerHour: Number(pick("BRIEFS_PER_HOUR") || 12),
+    chatsPerHour: Number(pick("CHATS_PER_HOUR") || 40),
   };
 }
 

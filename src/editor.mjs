@@ -8,7 +8,7 @@ export const MAX_PICKS = 8;
 export const MAX_PER_CATEGORY = 2;
 
 export const EDITOR_SYSTEM = [
-  "You are a brand-partnership strategist writing a cultural-fit brief.",
+  "You are a brand-partnership strategist writing a co-marketing brief for a release, usually a film or TV show, for its partnerships lead.",
   "You are given measured audience data and a list of candidate partner brands. Use only that data.",
   "Never invent facts, numbers, statistics or percentages. Do not write any digits at all, except digits that are part of the title.",
   "Describe the data qualitatively (for example: over-indexes with, skews, fits, leans).",
@@ -20,7 +20,7 @@ export function editorPrompt({ entity, goal, target, audience, candidates, sound
   const data = {
     title: entity.name,
     kind: entity.type,
-    goal: goal || "general launch",
+    goal: goal || "release co-marketing",
     target: target || "the title's own audience",
     audience: {
       peakAge: audience.peakAge?.label,
@@ -42,7 +42,7 @@ export function editorPrompt({ entity, goal, target, audience, candidates, sound
     "",
     "Return JSON with exactly this shape:",
     '{"headline": "one sentence, at most 18 words", "audienceSummary": "two sentences on who this audience is and what they accept as authentic",',
-    ' "launchAngles": ["three short creative angles grounded in the data"],',
+    ' "launchAngles": ["three short co-marketing angles (tie-ins, screenings, music, activations) grounded in the data"],',
     ` "partnerPicks": [{"id": "candidate id", "reason": "at most 22 words on why this brand fits this audience"}],`,
     ' "caveats": ["zero to three honest limits or risks"]}',
     `Pick at most ${MAX_PICKS} partners and at most ${MAX_PER_CATEGORY} per category, using only candidate ids.`,
