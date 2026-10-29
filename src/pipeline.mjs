@@ -2,7 +2,7 @@
 // and explains what came back. Every Qloo call is recorded for provenance.
 import { randomBytes } from "node:crypto";
 import { listOf, errorOf } from "./qloo.mjs";
-import { clip, round, normName, peakAge, genderLean, trendDirection, skewWarnings, dateWindow, mapLimit } from "./util.mjs";
+import { clip, decodeEntities, round, normName, peakAge, genderLean, trendDirection, skewWarnings, dateWindow, mapLimit } from "./util.mjs";
 import { editorPrompt, validateEditor, fallbackReason, EDITOR_SYSTEM } from "./editor.mjs";
 import { clicheCheck } from "./cliche.mjs";
 
@@ -28,7 +28,7 @@ export function entityCard(e) {
   const p = e.properties ?? {};
   return {
     id: e.entity_id ?? e.id,
-    name: e.name,
+    name: decodeEntities(e.name),
     type: typeOf(e),
     description: clip(p.short_description ?? p.description, 200),
     image: p.image?.url,
@@ -43,13 +43,13 @@ export async function resolveEntities({ qloo, query, type }) {
   return listOf(res.body).map((e) => ({ ...entityCard(e), type }));
 }
 
-const tagList = (res, n) => (res.ok ? listOf(res.body).slice(0, n).map((t) => ({ name: t.name, affinity: round(t.query?.affinity) })) : []);
+const tagList = (res, n) => (res.ok ? listOf(res.body).slice(0, n).map((t) => ({ name: decodeEntities(t.name), affinity: round(t.query?.affinity) })) : []);
 
 function brandCard(e, key) {
   const p = e.properties ?? {};
   return {
     id: e.entity_id,
-    name: e.name,
+    name: decodeEntities(e.name),
     category: key,
     categoryLabel: PARTNER_CATEGORIES[key].label,
     affinity: round(e.query?.affinity),
@@ -61,7 +61,7 @@ function brandCard(e, key) {
   };
 }
 
-const artistCard = (e) => ({ id: e.entity_id, name: e.name, affinity: round(e.query?.affinity), popularity: round(e.popularity), image: e.properties?.image?.url });
+const artistCard = (e) => ({ id: e.entity_id, name: decodeEntities(e.name), affinity: round(e.query?.affinity), popularity: round(e.popularity), image: e.properties?.image?.url });
 
 // input: { entity:{id,name,type,...}, goal, ageBand, gender, city, categories, minScore }
 export async function buildBrief({ input, qloo, llm, emit = () => {}, now = new Date() }) {
@@ -156,7 +156,7 @@ export async function buildBrief({ input, qloo, llm, emit = () => {}, now = new 
           .filter((h) => h.name && normName(h.name) !== city && !/united states|contiguous|county|community board|island/i.test(h.name))
           .filter((h) => normName(h.disambiguation ?? "").includes(city))
           .slice(0, 8)
-          .map((h) => ({ id: h.entity_id, name: h.name, area: h.disambiguation, affinity: round(h.query?.affinity) }));
+          .map((h) => ({ id: h.entity_id, name: decodeEntities(h.name), area: decodeEntities(h.disambiguation), affinity: round(h.query?.affinity) }));
         const venues = (places.ok ? listOf(places.body) : []).map((p) => ({ ...entityCard(p), affinity: round(p.query?.affinity) }));
         return { data: { city: input.city, venues, neighborhoods }, detail: `${venues.length} venues, ${neighborhoods.length} neighborhoods` };
       })

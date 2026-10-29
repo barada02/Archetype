@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { normName, trendDirection, genderLean, peakAge, skewWarnings, dateWindow, mapLimit, clip } from "../src/util.mjs";
+import { normName, decodeEntities, trendDirection, genderLean, peakAge, skewWarnings, dateWindow, mapLimit, clip } from "../src/util.mjs";
 import { validateEditor, unsupportedDigits, MAX_PER_CATEGORY, MAX_PICKS } from "../src/editor.mjs";
 import { buildUrl, createQloo } from "../src/qloo.mjs";
 import { matchesName, rankPool } from "../src/cliche.mjs";
@@ -153,4 +153,13 @@ test("createLlm tries the primary first and falls back to the backup", async () 
   } finally { console.error = quiet; }
   assert.equal(createLlm({}), undefined);
   assert.equal(createLlm({ basetenKey: "b", basetenModel: "bm" }).label, "baseten:bm");
+});
+
+test("decodeEntities turns Qloo's HTML-encoded text into plain text, once", () => {
+  assert.equal(decodeEntities("Economic Hit Men, Jackals &amp; the Truth"), "Economic Hit Men, Jackals & the Truth");
+  assert.equal(decodeEntities("&quot;Hi&quot; &#39;x&#39; &#x2014; &amp;lt;"), "\"Hi\" 'x' — &lt;");
+  assert.equal(decodeEntities("&bogus; stays"), "&bogus; stays");
+  assert.equal(decodeEntities(undefined), undefined);
+  assert.equal(clip("Tom &amp; Jerry<br>cartoon", 50), "Tom & Jerry cartoon");
+  assert.equal(normName("Jackals &amp; the Truth"), normName("Jackals & the Truth"));
 });

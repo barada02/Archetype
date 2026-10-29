@@ -1,6 +1,6 @@
 // The cliché check: ask the plain LLM (no data) for partners and artists, then score
 // its suggestions with Qloo against the same audience, next to our data-backed picks.
-import { normName, round } from "./util.mjs";
+import { normName, round, decodeEntities } from "./util.mjs";
 import { listOf } from "./qloo.mjs";
 
 const SYSTEM = "You are a marketing strategist. Use only your own knowledge. Answer with JSON only.";
@@ -29,7 +29,7 @@ async function resolveNames(call, names, type) {
   for (const name of names) {
     const res = await call("cliche", "/search", { query: name, types: `urn:entity:${type}`, take: 3 });
     const hit = res.ok ? listOf(res.body).find((e) => matchesName(name, e.name)) : undefined;
-    out.push({ name, id: hit?.entity_id, resolvedName: hit?.name });
+    out.push({ name, id: hit?.entity_id, resolvedName: decodeEntities(hit?.name) });
   }
   return out;
 }
