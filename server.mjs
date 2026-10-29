@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { loadConfig, redactor } from "./src/config.mjs";
 import { createQloo } from "./src/qloo.mjs";
 import { createLlm } from "./src/llm.mjs";
+import { CHAT_SYSTEM, chatContext, cleanMessages, unsupportedNumbers } from "./src/chat.mjs";
 import { buildBrief, resolveEntities, ENTITY_TYPES, PARTNER_CATEGORIES, DEFAULT_MIN_SCORE } from "./src/pipeline.mjs";
 import { AGE_BANDS } from "./src/util.mjs";
 
@@ -32,20 +33,31 @@ try {
 }
 const sampleIds = new Set(samples.map((s) => s.id));
 
+// A saved brief by id: committed samples first, then briefs built on this server.
+async function loadBrief(id) {
+  const isSample = sampleIds.has(id);
+  try { return { ...JSON.parse(await readFile(join(isSample ? SAMPLES : BRIEFS, `${id}.json`), "utf8")), ...(isSample ? { sample: true } : {}) }; }
+  catch { throw fail(404, "No such brief"); }
+}
+
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml" };
 const MAX_BODY = 20_000;
 const fail = (status, message) => Object.assign(new Error(message), { status });
 
-// Per-visitor limit on brief builds, so a public demo cannot burn the Qloo quota.
-const buildLog = new Map();
-function allowBuild(ip) {
-  const now = Date.now();
-  const recent = (buildLog.get(ip) ?? []).filter((t) => now - t < 3600_000);
-  if (recent.length >= config.briefsPerHour) return false;
-  recent.push(now);
-  buildLog.set(ip, recent);
-  return true;
+// Per-visitor hourly limits, so a public demo cannot burn the Qloo or LLM quota.
+function hourlyLimit(perHour) {
+  const log = new Map();
+  return (ip) => {
+    const now = Date.now();
+    const recent = (log.get(ip) ?? []).filter((t) => now - t < 3600_000);
+    if (recent.length >= perHour) return false;
+    recent.push(now);
+    log.set(ip, recent);
+    return true;
+  };
 }
+const allowBuild = hourlyLimit(config.briefsPerHour);
+const allowChat = hourlyLimit(config.chatsPerHour);
 // Behind the local nginx proxy every socket is loopback; nginx appends the real
 // client as the last X-Forwarded-For entry (earlier entries can be spoofed).
 function clientIp(req) {
@@ -126,6 +138,20 @@ const api = {
     if (!config.qlooKey) throw fail(503, "QLOO_API_KEY is not set");
     return { candidates: await resolveEntities({ qloo, query, type }) };
   },
+  // Ask about one brief. The server loads the brief itself; the browser only sends its id and the conversation.
+  "POST /api/chat": async (req) => {
+    if (!llm) throw fail(503, "No language-model key is set on the server");
+    const body = await readJson(req);
+    const id = str(body.id, 12);
+    if (!/^[0-9a-f]{12}$/.test(id)) throw fail(400, "id must be a brief id");
+    const messages = cleanMessages(body.messages);
+    if (!messages.length) throw fail(400, "Ask a question first");
+    if (!allowChat(clientIp(req))) throw fail(429, "Too many questions from this address. Try again later.");
+    const context = JSON.stringify(chatContext(await loadBrief(id)));
+    const reply = await llm.text({ system: `${CHAT_SYSTEM}\n\nBRIEF DATA:\n${context}`, messages });
+    const answer = String(reply).trim().replace(/\*\*(.+?)\*\*/g, "$1").slice(0, 4000); // plain text: drop markdown bold
+    return { answer, model: llm.model, unsupported: unsupportedNumbers(answer, context) };
+  },
 };
 
 // Qloo images are served from our origin, so browser blockers and hotlink rules on
@@ -163,10 +189,7 @@ const server = createServer(async (req, res) => {
     if (handler) return json(res, 200, await handler(req));
     const saved = req.method === "GET" && pathname.match(/^\/api\/brief\/([0-9a-f]{12})$/);
     if (saved) {
-      const id = saved[1];
-      const isSample = sampleIds.has(id);
-      try { return json(res, 200, { ...JSON.parse(await readFile(join(isSample ? SAMPLES : BRIEFS, `${id}.json`), "utf8")), ...(isSample ? { sample: true } : {}) }); }
-      catch { throw fail(404, "No such brief"); }
+      return json(res, 200, await loadBrief(saved[1]));
     }
     if (req.method !== "GET") throw fail(405, "Method not allowed");
     if (pathname === "/" || /^\/b\/[0-9a-f]{12}$/.test(pathname)) return await serveStatic(res, "index.html");

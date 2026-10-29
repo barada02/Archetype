@@ -11,6 +11,8 @@ one-page brief for the person who has to sign the partnership deals:
 - **Screenings and timing**: venues and neighborhoods where fans cluster, and whether interest is rising or falling.
 - **Plain AI vs data**: what a plain language model suggests with no data, scored in Qloo against the same audience, next to the data-backed picks.
 - **Sources**: every Qloo call behind every number.
+- **Ask about this brief**: a chat panel that explains any part of the brief in plain words. The server loads the brief itself and the model answers only from its data; any number in an answer that is not in the brief is flagged.
+- **Guided tour**: an optional, skippable walkthrough from the landing page that fills in an example and walks through a finished sample brief.
 
 It also works for books, games, podcasts and artists, but it is designed around film and TV releases.
 

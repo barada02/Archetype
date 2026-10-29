@@ -197,12 +197,134 @@ function renderBrief(brief) {
     bento(brief, select),
     h("div", { class: "tabs", role: "tablist" }, tabs.map(([k, label]) => h("button", { class: "tab", id: "tab-" + k, role: "tab", "aria-selected": "false", onclick: () => select(k) }, label))),
     ...tabs.map(([k, , panel]) => h("div", { class: "panel", id: "panel-" + k, role: "tabpanel", hidden: true }, panel)),
+    ...chatPanel(brief),
   );
   select("partners");
   show("brief");
 }
 
 const goHome = () => { history.pushState({}, "", "/"); show("start"); };
+
+// ---------- ask about this brief ----------
+// A side panel that sends the brief id and the conversation to /api/chat. The server loads the
+// brief itself and answers only from its data; numbers the data does not contain are flagged.
+function chatPanel(brief) {
+  if (!config?.hasLlm) return [];
+  const turns = [];
+  const top = [...brief.partners.picks].sort((a, b) => (b.affinity ?? 0) - (a.affinity ?? 0))[0];
+  const flagged = brief.partners.picks.find((p) => p.warnings?.length);
+  const suggestions = [
+    "Which partner should we approach first?",
+    top && `Why is ${top.name} a good fit?`,
+    flagged && `Why is ${flagged.name} flagged?`,
+    brief.cliche ? "What does the plain AI vs data result mean?" : "Explain this audience in plain words",
+  ].filter(Boolean);
+  const log = h("div", { class: "chat-log", role: "log", "aria-live": "polite" });
+  const input = h("textarea", { rows: "2", maxlength: "500", placeholder: "Ask anything about this brief…", "aria-label": "Your question" });
+  const sendBtn = h("button", { class: "primary small", type: "submit" }, "Send");
+  const suggest = h("div", { class: "chips chat-suggest" }, suggestions.map((q) => h("button", { type: "button", class: "chip", onclick: () => ask(q) }, q)));
+  const bubble = (kind, text, extra) => h("div", { class: `msg ${kind}` }, text, extra ?? "");
+  async function ask(raw) {
+    const question = raw.trim();
+    if (!question || sendBtn.disabled) return;
+    suggest.hidden = true; input.value = "";
+    turns.push({ role: "user", content: question });
+    log.append(bubble("user", question));
+    const pending = bubble("assistant pending", "Thinking…");
+    log.append(pending); log.scrollTop = log.scrollHeight;
+    sendBtn.disabled = true;
+    try {
+      const { answer, unsupported } = await api("/api/chat", { id: brief.id, messages: turns });
+      turns.push({ role: "assistant", content: answer });
+      pending.replaceWith(bubble("assistant", answer, unsupported?.length ? h("div", { class: "warn" }, `⚠ Mentions ${unsupported.join(", ")}, which is not in this brief's data. Check the tabs before using it.`) : ""));
+    } catch (e) {
+      turns.pop();
+      pending.replaceWith(bubble("assistant error", `Could not answer: ${e.message}`));
+    } finally {
+      sendBtn.disabled = false; log.scrollTop = log.scrollHeight; input.focus();
+    }
+  }
+  input.onkeydown = (ev) => { if (ev.key === "Enter" && !ev.shiftKey) { ev.preventDefault(); ask(input.value); } };
+  const panel = h("aside", { class: "chat", id: "chat", hidden: true, "aria-label": "Ask about this brief" },
+    h("div", { class: "chat-head" },
+      h("div", { title: config.model ? `Model: ${config.model}` : undefined }, h("b", {}, "Ask about this brief"), h("span", { class: "muted small" }, "AI answers from this brief's data only")),
+      h("button", { class: "icon", type: "button", "aria-label": "Close", onclick: () => toggle(false) }, "×")),
+    log, suggest,
+    h("form", { class: "chat-form", onsubmit: (ev) => { ev.preventDefault(); ask(input.value); } }, input, sendBtn));
+  const fab = h("button", { class: "chat-fab", id: "chatFab", type: "button", "aria-controls": "chat", "aria-expanded": "false", onclick: () => toggle(panel.hidden) }, "✦ Ask about this brief");
+  function toggle(open) { panel.hidden = !open; fab.setAttribute("aria-expanded", String(open)); if (open) input.focus(); }
+  log.append(bubble("assistant", `Ask me anything about the brief for ${brief.input.entity.name}: why a partner fits, what a score means, or what to do next.`));
+  return [fab, panel];
+}
+
+// ---------- guided tour ----------
+// Opt-in and skippable: fills the form with an example, explains the build, then opens the
+// featured sample and points at each part. A step whose element is missing is skipped.
+const TOUR = [
+  { target: () => $("startForm"), title: "Name your release", text: "Type a film or show, who you want to reach and the city you open in. We've filled in an example for you.", before: () => { if ($("view-start").hidden) goHome(); fillForm(EXAMPLES[0]); } },
+  { target: () => $("findBtn"), title: "Find and build", text: "Find my title confirms the right match in Qloo, then builds the brief live in about 30 seconds. For this tour we'll open one that was built exactly this way." },
+  { target: () => document.querySelector(".bhead"), title: "Your co-marketing brief", text: "The release, its target audience and city, with buttons to share, print or download the brief.", before: () => openSample(config.samples[0].id) },
+  { target: () => document.querySelector(".headline"), title: "The one-line summary", text: "Written by the AI from the measured audience. The AI never supplies a number: every number comes from Qloo." },
+  { target: () => document.querySelector(".bento"), title: "At a glance", text: "Top partner, audience peak, launch window, the plain AI comparison and the shortlist. Click any tile to open the evidence behind it." },
+  { target: () => document.querySelector(".pcat"), title: "Partner shortlist", text: "Each brand has a Qloo fit score from 0 to 1 and a reason. ⚠ means the brand's own customers skew a different age or gender than this audience.", before: () => $("tab-partners")?.click() },
+  { target: () => $("tab-cliche"), title: "Plain AI vs data", text: "What a plain AI would suggest with no data, scored against this same audience. It shows what the data adds." },
+  { target: () => $("chatFab"), title: "Ask anything", text: "Ask the AI to explain any part of the brief in plain words. It answers only from this brief's data." },
+];
+
+let touring = false;
+function startTour() {
+  if (touring) return;
+  touring = true;
+  const spot = h("div", { class: "tour-spot", "aria-hidden": "true" });
+  const title = h("b", {}), text = h("p", {}), count = h("span", { class: "muted small" });
+  const back = h("button", { class: "small", type: "button" }, "Back");
+  const next = h("button", { class: "small primary", type: "button" }, "Next");
+  const skip = h("button", { class: "small ghost", type: "button" }, "Skip tour");
+  const pop = h("div", { class: "tour-pop", role: "dialog", "aria-label": "Guided tour" },
+    h("div", { class: "tour-top" }, count, skip), title, text, h("div", { class: "tour-actions" }, back, next));
+  document.body.append(spot, pop);
+  let index = -1, target = null;
+  const place = () => {
+    if (!target) return;
+    const r = target.getBoundingClientRect(), pad = 8;
+    Object.assign(spot.style, { top: `${r.top - pad}px`, left: `${r.left - pad}px`, width: `${r.width + pad * 2}px`, height: `${r.height + pad * 2}px` });
+    // Below the element, else above, else beside it, else docked at the bottom of the screen.
+    const ph = pop.offsetHeight, pw = pop.offsetWidth, vw = document.documentElement.clientWidth, vh = innerHeight, gap = 16, header = 76;
+    const clampTop = (y) => Math.min(Math.max(header, y), vh - ph - 12);
+    let top, left = Math.min(Math.max(12, r.left), vw - pw - 12);
+    if (r.bottom + gap + ph <= vh - 12) top = r.bottom + gap;
+    else if (r.top - gap - ph >= header) top = r.top - gap - ph;
+    else if (r.left - gap - pw >= 12) { left = r.left - gap - pw; top = clampTop(r.top); }
+    else if (vw - r.right - gap - pw >= 12) { left = r.right + gap; top = clampTop(r.top); }
+    else top = vh - ph - 16;
+    Object.assign(pop.style, { top: `${top}px`, left: `${left}px` });
+  };
+  const onKey = (ev) => { if (ev.key === "Escape") end(); else if (ev.key === "ArrowRight") next.click(); else if (ev.key === "ArrowLeft" && !back.disabled) back.click(); };
+  function end() {
+    removeEventListener("scroll", place, true); removeEventListener("resize", place); removeEventListener("keydown", onKey);
+    spot.remove(); pop.remove(); touring = false;
+  }
+  async function go(i, dir = 1) {
+    if (i < 0 || i >= TOUR.length) { next.disabled = false; back.disabled = index <= 0; return; }
+    const step = TOUR[i];
+    next.disabled = back.disabled = true;
+    try { await step.before?.(); } catch {}
+    const el = step.target();
+    if (!el || (!el.offsetParent && getComputedStyle(el).position !== "fixed")) return go(i + dir, dir);
+    index = i; target = el;
+    title.textContent = step.title; text.textContent = step.text; count.textContent = `Step ${i + 1} of ${TOUR.length}`;
+    back.disabled = i === 0; next.disabled = false;
+    next.textContent = i === TOUR.length - 1 ? "Build your own" : "Next";
+    el.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    place(); setTimeout(place, 450);
+    next.focus({ preventScroll: true });
+  }
+  next.onclick = () => { if (index === TOUR.length - 1) { end(); goHome(); $("q").focus(); } else go(index + 1); };
+  back.onclick = () => go(index - 1, -1);
+  skip.onclick = end;
+  addEventListener("scroll", place, true); addEventListener("resize", place); addEventListener("keydown", onKey);
+  go(0);
+}
 
 // A small ⓘ with an explanation, shown on hover or keyboard focus (and tap, which focuses it).
 const hint = (text) => h("span", { class: "hint", tabindex: "0", role: "img", "aria-label": text, "data-tip": text }, "ⓘ");
@@ -229,6 +351,7 @@ function renderSamples(list) {
   if (!list?.length) return;
   $("samples").hidden = false; $("heroCta").hidden = false;
   $("sampleBtn").onclick = () => openSample(list[0].id);
+  $("tourBtn").onclick = startTour;
   $("sampleCards").replaceChildren(...list.map((s) => {
     const target = [s.ageBand && AGE_LABELS[s.ageBand], s.gender && (s.gender === "female" ? "women" : "men")].filter(Boolean).join(", ");
     return h("a", { class: "sample card", href: `/b/${s.id}`, onclick: (ev) => { ev.preventDefault(); openSample(s.id); } },
@@ -241,7 +364,7 @@ function renderSamples(list) {
         h("span", { class: "open" }, "Open sample →")));
   }));
 }
-function openSample(id) { history.pushState({}, "", `/b/${id}`); loadSaved(id); }
+function openSample(id) { history.pushState({}, "", `/b/${id}`); return loadSaved(id); }
 
 // At-a-glance tiles above the tabs. Each one opens the tab with the evidence behind it.
 function bento({ audience, partners, timing, cliche }, select) {

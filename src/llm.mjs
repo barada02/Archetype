@@ -37,42 +37,48 @@ export function parseJson(text) {
 }
 
 // Meta API, Responses format. Reasoning is kept minimal: these are short editing tasks.
+// json() answers one prompt as JSON; text() continues a conversation in plain text (the brief chat).
 export function createMeta({ apiKey, model }) {
-  async function json({ system, prompt }) {
+  async function respond({ system, input, format }) {
     const body = await post("https://api.meta.ai/v1/responses", apiKey, {
       model,
       instructions: system,
-      input: [{ role: "user", content: prompt }],
+      input,
       temperature: 0.4,
       max_output_tokens: 8000,
       reasoning: { effort: "minimal" },
-      text: { format: { type: "json_object" } },
+      ...(format ? { text: { format } } : {}),
     });
     if (body.status && body.status !== "completed") throw new Error(`response ${body.status}: ${body.incomplete_details?.reason ?? body.error?.message ?? "no detail"}`);
-    const text = (body.output ?? [])
+    return (body.output ?? [])
       .filter((o) => o.type === "message")
       .flatMap((o) => o.content ?? [])
       .filter((c) => c.type === "output_text")
       .map((c) => c.text)
       .join("");
-    return parseJson(text);
   }
-  return { name: "meta", model, json };
+  const json = async ({ system, prompt }) => parseJson(await respond({ system, input: [{ role: "user", content: prompt }], format: { type: "json_object" } }));
+  const text = async ({ system, messages }) => respond({ system, input: messages });
+  return { name: "meta", model, json, text };
 }
 
 // Baseten, OpenAI-compatible chat completions.
 export function createBaseten({ apiKey, model }) {
-  async function json({ system, prompt }) {
+  async function complete({ system, messages, format }) {
     const body = await post("https://inference.baseten.co/v1/chat/completions", apiKey, {
       model,
-      messages: [{ role: "system", content: system }, { role: "user", content: prompt }],
+      messages: [{ role: "system", content: system }, ...messages],
       temperature: 0.4,
       max_tokens: 8000,
-      response_format: { type: "json_object" },
+      ...(format ? { response_format: format } : {}),
     });
-    return parseJson(body.choices?.[0]?.message?.content);
+    const content = body.choices?.[0]?.message?.content;
+    if (!content) throw new Error("empty response");
+    return content;
   }
-  return { name: "baseten", model, json };
+  const json = async ({ system, prompt }) => parseJson(await complete({ system, messages: [{ role: "user", content: prompt }], format: { type: "json_object" } }));
+  const text = async ({ system, messages }) => complete({ system, messages });
+  return { name: "baseten", model, json, text };
 }
 
 // Returns undefined when no provider has a key, so callers fall back to deterministic text.
@@ -85,10 +91,10 @@ export function createLlm(config, factories = { meta: createMeta, baseten: creat
   const providers = order.map((name) => available[name]).filter(Boolean);
   if (!providers.length) return undefined;
 
-  async function json(request) {
+  async function withFallback(method, request) {
     for (const [i, provider] of providers.entries()) {
       try {
-        return await provider.json(request);
+        return await provider[method](request);
       } catch (error) {
         const next = providers[i + 1];
         if (!next) throw error;
@@ -97,5 +103,10 @@ export function createLlm(config, factories = { meta: createMeta, baseten: creat
     }
   }
 
-  return { json, model: providers[0].model, label: providers.map((p) => `${p.name}:${p.model}`).join(" > ") };
+  return {
+    json: (request) => withFallback("json", request),
+    text: (request) => withFallback("text", request),
+    model: providers[0].model,
+    label: providers.map((p) => `${p.name}:${p.model}`).join(" > "),
+  };
 }
