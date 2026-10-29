@@ -202,11 +202,16 @@ test("chat: the context covers what a reader sees, from a committed sample", asy
   assert.ok(!JSON.stringify(ctx).includes("provenance"));
 });
 
-test("createLlm text() falls back to the backup like json()", async () => {
-  const fake = (name, fails) => () => ({ name, model: name, async json() {}, async text() { if (fails) throw new Error("down"); return `from ${name}`; } });
+test("createLlm stream() falls back only while nothing has been streamed", async () => {
+  const fake = (name, mode) => () => ({ name, model: name, async json() {},
+    async stream({ onDelta }) { if (mode === "fail") throw new Error("down"); onDelta(`${name} `); if (mode === "midway") throw new Error("cut"); return `from ${name}`; } });
   const quiet = console.error; console.error = () => {};
   try {
-    const llm = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", true), baseten: fake("baseten", false) });
-    assert.equal(await llm.text({ system: "s", messages: [] }), "from baseten");
+    const pieces = [];
+    const ok = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", "fail"), baseten: fake("baseten", "ok") });
+    assert.equal(await ok.stream({ system: "s", messages: [], onDelta: (p) => pieces.push(p) }), "from baseten");
+    assert.deepEqual(pieces, ["baseten "]);
+    const cut = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", "midway"), baseten: fake("baseten", "ok") });
+    await assert.rejects(cut.stream({ system: "s", messages: [], onDelta: () => {} }), /cut/);
   } finally { console.error = quiet; }
 });

@@ -124,11 +124,13 @@ async function onBuild() {
   }
 }
 
-async function streamBrief(input, onProgress) {
-  const res = await fetch("/api/brief", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(input) });
+// POSTs JSON to a server-sent-events endpoint and calls onEvent(event, payload) for each event.
+// Errors raised before the stream starts come back as JSON with a status code.
+async function postStream(path, body, onEvent) {
+  const res = await fetch(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
   if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error ?? res.statusText);
   const reader = res.body.getReader(), decoder = new TextDecoder();
-  let buffer = "", result;
+  let buffer = "";
   while (true) {
     const { value, done } = await reader.read();
     if (done) break;
@@ -137,13 +139,18 @@ async function streamBrief(input, onProgress) {
     while ((end = buffer.indexOf("\n\n")) >= 0) {
       const block = buffer.slice(0, end); buffer = buffer.slice(end + 2);
       const event = /^event: (.+)$/m.exec(block)?.[1], data = /^data: (.+)$/m.exec(block)?.[1];
-      if (!event || !data) continue;
-      const payload = JSON.parse(data);
-      if (event === "progress") onProgress(payload);
-      else if (event === "done") result = payload;
-      else if (event === "failure") throw new Error(payload.error);
+      if (event && data) onEvent(event, JSON.parse(data));
     }
   }
+}
+
+async function streamBrief(input, onProgress) {
+  let result;
+  await postStream("/api/brief", input, (event, payload) => {
+    if (event === "progress") onProgress(payload);
+    else if (event === "done") result = payload;
+    else if (event === "failure") throw new Error(payload.error);
+  });
   if (!result) throw new Error("The connection ended before the brief was ready.");
   return result;
 }
@@ -234,7 +241,19 @@ function chatPanel(brief) {
     log.append(pending); log.scrollTop = log.scrollHeight;
     sendBtn.disabled = true;
     try {
-      const { answer, unsupported } = await api("/api/chat", { id: brief.id, messages: turns });
+      // The answer streams into the bubble as it is written; the final event carries the cleaned text.
+      let streamed = "", final;
+      await postStream("/api/chat", { id: brief.id, messages: turns }, (event, payload) => {
+        if (event === "delta") {
+          streamed += payload.text;
+          pending.className = "msg assistant streaming";
+          pending.textContent = streamed.replace(/\*\*/g, "");
+          log.scrollTop = log.scrollHeight;
+        } else if (event === "done") final = payload;
+        else if (event === "failure") throw new Error(payload.error);
+      });
+      if (!final) throw new Error("The connection ended before the answer was complete.");
+      const { answer, unsupported } = final;
       turns.push({ role: "assistant", content: answer });
       pending.replaceWith(bubble("assistant", answer, unsupported?.length ? h("div", { class: "warn" }, `⚠ Mentions ${unsupported.join(", ")}, which is not in this brief's data. Check the tabs before using it.`) : ""));
     } catch (e) {
@@ -357,12 +376,17 @@ function renderSamples(list) {
     return h("a", { class: "sample card", href: `/b/${s.id}`, onclick: (ev) => { ev.preventDefault(); openSample(s.id); } },
       s.image ? h("img", { src: imgSrc(s.image), alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
       h("div", { class: "body" },
-        h("span", { class: "kicker" }, [TYPE_LABELS[s.type], s.goal].filter(Boolean).join(" · ")),
-        h("b", {}, s.name),
-        h("span", { class: "muted small" }, s.headline),
-        h("span", { class: "muted small" }, [target && `Target: ${target}`, s.city].filter(Boolean).join(" · ")),
+        h("span", { class: "kicker" }, TYPE_LABELS[s.type]),
+        h("b", { title: s.name }, s.name),
+        h("span", { class: "goal", title: s.goal }, s.goal || "Release co-marketing"),
+        h("span", { class: "hl muted small" }, s.headline),
+        h("span", { class: "meta muted small" }, [target && `Target: ${target}`, s.city].filter(Boolean).join(" · ")),
         h("span", { class: "open" }, "Open sample →")));
   }));
+}
+function scrollToSection(hash) {
+  const el = document.getElementById(hash.replace(/^#/, ""));
+  if (el && !el.hidden) el.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
 }
 function openSample(id) { history.pushState({}, "", `/b/${id}`); return loadSaved(id); }
 
@@ -550,6 +574,18 @@ async function init() {
   if (!config.hasQloo) $("startMsg").textContent = "QLOO_API_KEY is missing on the server.";
   else if (!config.hasLlm) $("startMsg").textContent = "META_API_KEY and BASETEN_API_KEY are missing: briefs will use fallback text and skip the plain AI vs data comparison.";
   renderSamples(config.samples);
+  // Header links (/#samples, /#how, /#contents) work from any view: show the landing page, then scroll
+  // once it is rendered. Left to the browser, the jump fired before the sample cards existed.
+  for (const a of document.querySelectorAll('.nav a[href^="/#"]')) {
+    a.onclick = (ev) => {
+      ev.preventDefault();
+      const hash = a.getAttribute("href").slice(1);
+      if ($("view-start").hidden) show("start");
+      if (location.pathname + location.hash !== `/${hash}`) history.pushState({}, "", `/${hash}`);
+      requestAnimationFrame(() => scrollToSection(hash));
+    };
+  }
+  if (location.pathname === "/" && location.hash) requestAnimationFrame(() => scrollToSection(location.hash));
   const saved = /^\/b\/([0-9a-f]{12})$/.exec(location.pathname);
   if (saved) loadSaved(saved[1]);
 }

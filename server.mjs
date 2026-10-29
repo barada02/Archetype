@@ -123,6 +123,30 @@ async function handleBuild(req, res) {
   }
 }
 
+// Ask about one brief, streamed. The server loads the brief itself; the browser only sends its
+// id and the conversation. Problems found before streaming starts come back as normal JSON errors.
+async function handleChat(req, res) {
+  if (!llm) throw fail(503, "No language-model key is set on the server");
+  const body = await readJson(req);
+  const id = str(body.id, 12);
+  if (!/^[0-9a-f]{12}$/.test(id)) throw fail(400, "id must be a brief id");
+  const messages = cleanMessages(body.messages);
+  if (!messages.length) throw fail(400, "Ask a question first");
+  const context = JSON.stringify(chatContext(await loadBrief(id)));
+  if (!allowChat(clientIp(req))) throw fail(429, "Too many questions from this address. Try again later.");
+  res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive" });
+  const send = (event, data) => res.write(`event: ${event}\ndata: ${redact(data)}\n\n`);
+  try {
+    const reply = await llm.stream({ system: `${CHAT_SYSTEM}\n\nBRIEF DATA:\n${context}`, messages, onDelta: (text) => send("delta", { text }) });
+    const answer = String(reply).trim().replace(/\*\*(.+?)\*\*/g, "$1").slice(0, 4000); // plain text: drop markdown bold
+    send("done", { answer, model: llm.model, unsupported: unsupportedNumbers(answer, context) });
+  } catch (error) {
+    send("failure", { error: error.message });
+  } finally {
+    res.end();
+  }
+}
+
 const api = {
   "GET /api/config": async () => ({
     hasQloo: Boolean(config.qlooKey), hasLlm: Boolean(llm), model: llm?.model,
@@ -137,20 +161,6 @@ const api = {
     if (!ENTITY_TYPES.includes(type)) throw fail(400, "type is not valid");
     if (!config.qlooKey) throw fail(503, "QLOO_API_KEY is not set");
     return { candidates: await resolveEntities({ qloo, query, type }) };
-  },
-  // Ask about one brief. The server loads the brief itself; the browser only sends its id and the conversation.
-  "POST /api/chat": async (req) => {
-    if (!llm) throw fail(503, "No language-model key is set on the server");
-    const body = await readJson(req);
-    const id = str(body.id, 12);
-    if (!/^[0-9a-f]{12}$/.test(id)) throw fail(400, "id must be a brief id");
-    const messages = cleanMessages(body.messages);
-    if (!messages.length) throw fail(400, "Ask a question first");
-    if (!allowChat(clientIp(req))) throw fail(429, "Too many questions from this address. Try again later.");
-    const context = JSON.stringify(chatContext(await loadBrief(id)));
-    const reply = await llm.text({ system: `${CHAT_SYSTEM}\n\nBRIEF DATA:\n${context}`, messages });
-    const answer = String(reply).trim().replace(/\*\*(.+?)\*\*/g, "$1").slice(0, 4000); // plain text: drop markdown bold
-    return { answer, model: llm.model, unsupported: unsupportedNumbers(answer, context) };
   },
 };
 
@@ -184,6 +194,7 @@ const server = createServer(async (req, res) => {
   const { pathname, searchParams } = new URL(req.url, "http://x");
   try {
     if (req.method === "POST" && pathname === "/api/brief") return await handleBuild(req, res);
+    if (req.method === "POST" && pathname === "/api/chat") return await handleChat(req, res);
     if (req.method === "GET" && pathname === "/img") return await proxyImage(res, searchParams.get("u") ?? "");
     const handler = api[`${req.method} ${pathname}`];
     if (handler) return json(res, 200, await handler(req));
