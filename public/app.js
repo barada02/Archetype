@@ -17,14 +17,15 @@ function h(tag, attrs = {}, ...children) {
 
 const TYPE_LABELS = { book: "Book", movie: "Film", tv_show: "TV show", videogame: "Game", podcast: "Podcast", artist: "Artist", brand: "Brand" };
 const AGE_LABELS = { "24_and_younger": "24 and under", "25_to_29": "25 to 29", "30_to_34": "30 to 34", "35_to_44": "35 to 44", "45_to_54": "45 to 54", "55_and_older": "55 and over" };
+// Independent-scale releases, matching who Archetype is for: partnership leads at smaller studios and streamers.
 const EXAMPLES = [
-  { q: "The Secret History", type: "book", age: "25_to_29", city: "New York", goal: "Series adaptation launch" },
-  { q: "Elden Ring", type: "videogame", age: "25_to_29", goal: "Merch and sponsor partnerships" },
-  { q: "Huberman Lab", type: "podcast", goal: "Find sponsors" },
-  { q: "Dune", type: "movie", goal: "Brand collaboration" },
+  { q: "Everything Everywhere All at Once", type: "movie", age: "25_to_29", city: "Los Angeles", goal: "Theatrical release co-marketing" },
+  { q: "Talk to Me", type: "movie", age: "24_and_younger", city: "Chicago", goal: "Screening tour and pop-ups" },
+  { q: "Past Lives", type: "movie", age: "30_to_34", city: "New York", goal: "Awards-season screenings and partners" },
+  { q: "The Bear", type: "tv_show", age: "30_to_34", city: "Chicago", goal: "Season premiere brand tie-ins" },
 ];
 
-let config, chosenType = "book", candidates = [], formState = null;
+let config, chosenType = "movie", candidates = [], formState = null;
 const chosenCats = new Set();
 
 async function api(path, body) {
@@ -92,9 +93,11 @@ async function onBuild() {
   const picked = document.querySelector('input[name="cand"]:checked');
   const entity = candidates[Number(picked?.value ?? 0)];
   show("progress");
-  $("steps").replaceChildren(); $("failure").hidden = true;
-  $("progTitle").textContent = `Building the brief for ${entity.name}`;
+  $("steps").replaceChildren(); $("failure").hidden = true; $("meterFill").style.width = "4%";
+  $("progTitle").textContent = `Building the co-marketing brief for ${entity.name}`;
   const rows = new Map();
+  const EXPECTED_STEPS = 8; // profile, sound, timing, partners, places, editor, check, plain AI
+  const finished = () => [...rows.values()].filter((r) => /\b(done|error|skipped)\b/.test(r.el.className)).length;
   const started = Date.now();
   const tick = setInterval(() => ($("elapsed").textContent = `${Math.round((Date.now() - started) / 1000)} s elapsed`), 500);
   const onProgress = (e) => {
@@ -108,6 +111,7 @@ async function onBuild() {
     if (e.detail) row.el.querySelector(".d").textContent = e.detail;
     row.el.querySelector(".ms").textContent = e.ms ? `${(e.ms / 1000).toFixed(1)} s` : "";
     row.el.querySelector(".dot").textContent = e.status === "done" ? "✓" : e.status === "error" || e.status === "skipped" ? "!" : "";
+    $("meterFill").style.width = `${Math.max(4, (finished() / Math.max(EXPECTED_STEPS, rows.size)) * 100)}%`;
   };
   try {
     const brief = await streamBrief({ entity, ...formState }, onProgress);
@@ -157,12 +161,13 @@ const scorePill = (v, floor) => h("span", { class: "score" + (floor != null && v
 function renderBrief(brief) {
   const { input, audience, sound, partners, places, timing, editor, cliche } = brief;
   const e = input.entity;
+  // Ordered for a partnerships lead: the shortlist first, then the evidence behind it.
   const tabs = [
-    ["audience", "Audience DNA", panelAudience(brief)],
-    ["sound", "Sound and talent", panelSound(sound)],
-    ["partners", "Partners", panelPartners(brief)],
-    ["where", "Cities and timing", panelWhere(brief)],
-    ["cliche", "Cliché check", panelCliche(brief)],
+    ["partners", "Partner shortlist", panelPartners(brief)],
+    ["audience", "Audience", panelAudience(brief)],
+    ["sound", "Trailer and soundtrack", panelSound(sound)],
+    ["where", "Screenings and timing", panelWhere(brief)],
+    ["cliche", "Plain AI vs data", panelCliche(brief)],
     ["sources", "Sources", panelSources(brief)],
   ];
   const select = (key) => {
@@ -173,11 +178,11 @@ function renderBrief(brief) {
   };
   const target = [input.ageBand && AGE_LABELS[input.ageBand], input.gender && (input.gender === "female" ? "women" : "men")].filter(Boolean).join(", ");
   $("brief").replaceChildren(
-    h("div", { class: "bhead" },
+    h("div", { class: "bhead", style: e.image ? `--poster:url("${imgSrc(e.image)}")` : undefined },
       e.image ? h("img", { class: "thumb", src: imgSrc(e.image), alt: "" }) : h("div", { class: "thumb" }),
       h("div", { class: "grow" },
+        h("div", { class: "meta" }, [TYPE_LABELS[e.type], input.goal, target && `Target: ${target}`, input.city].filter(Boolean).map((x) => h("span", { class: "chip static" }, x))),
         h("h1", {}, e.name),
-        h("div", { class: "muted small" }, [TYPE_LABELS[e.type], input.goal, target && `target: ${target}`, input.city].filter(Boolean).join(" · ")),
         h("div", { class: "muted small" }, `Built ${new Date(brief.createdAt).toLocaleString()} from ${brief.provenance.length} Qloo calls`)),
       h("div", { class: "actions" },
         h("button", { class: "small", onclick: () => navigator.clipboard?.writeText(location.href).then(() => toast("Link copied")) }, "Copy link"),
@@ -185,11 +190,31 @@ function renderBrief(brief) {
         h("a", { class: "small", href: `/api/brief/${brief.id}`, download: `archetype-${brief.id}.json` }, h("button", { class: "small" }, "JSON")),
         h("button", { class: "small primary", onclick: () => { history.pushState({}, "", "/"); show("start"); } }, "New brief"))),
     h("div", { class: "headline" }, h("b", {}, editor.headline), editor.source === "fallback" ? h("span", { class: "muted small" }, "Written without the language model (fallback text).") : ""),
+    bento(brief, select),
     h("div", { class: "tabs", role: "tablist" }, tabs.map(([k, label]) => h("button", { class: "tab", id: "tab-" + k, role: "tab", "aria-selected": "false", onclick: () => select(k) }, label))),
     ...tabs.map(([k, , panel]) => h("div", { class: "panel", id: "panel-" + k, role: "tabpanel", hidden: true }, panel)),
   );
   select("partners");
   show("brief");
+}
+
+// At-a-glance tiles above the tabs. Each one opens the tab with the evidence behind it.
+function bento({ audience, partners, timing, cliche }, select) {
+  const tile = (tab, wide, k, v, s) => h("button", { type: "button", class: "tile" + (wide ? " wide" : ""), onclick: () => { select(tab); $("tab-" + tab).scrollIntoView({ block: "nearest", behavior: "smooth" }); } },
+    h("span", { class: "k" }, k), h("span", { class: "v" }, v), h("span", { class: "s" }, s));
+  const top = partners.picks[0];
+  const flagged = partners.picks.filter((p) => p.warnings?.length).length;
+  const clearPeak = (audience.peakAge?.value ?? 0) >= 0.1;
+  const plain = cliche?.brands.summary;
+  const trend = { rising: "Rising ↗", falling: "Falling ↘", steady: "Steady →" }[timing?.direction];
+  const day = (iso) => new Date(`${iso}T00:00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  return h("div", { class: "bento" },
+    tile("partners", true, "Top partner", top ? [top.name, scorePill(top.affinity)] : "None cleared the bar", top ? `${top.categoryLabel}. ${top.reason}` : "Lower the minimum fit score and rebuild."),
+    tile("audience", false, "Audience peak", clearPeak ? audience.peakAge.label : "No clear peak", audience.gender?.text ?? "Gender lean unclear"),
+    tile("where", false, "Launch window", trend ?? "No trend", trend ? `Interest from ${day(timing.from)} to ${day(timing.to)}` : "Qloo has no trend series for this kind."),
+    tile("cliche", true, "Plain AI vs data", plain ? `${plain.llmBelowOurFloor} of ${plain.scored} below our picks` : "Not run",
+      plain ? "Brands a plain AI suggested that scored below the lowest data-backed pick for this audience." : "Needs a language-model key."),
+    tile("partners", true, "Shortlist", `${partners.picks.length} partners`, flagged ? `${flagged} flagged: the brand's own customers skew differently.` : "None flagged against their own customers."));
 }
 
 function ageSentence(audience) {
@@ -204,7 +229,7 @@ function panelAudience({ audience, editor }) {
   const male = audience.genderIndex.male;
   return [
     h("p", {}, editor.audienceSummary),
-    editor.launchAngles.length ? h("div", {}, h("h3", {}, "Launch angles"), editor.launchAngles.map((a) => h("div", { class: "callout" }, a))) : "",
+    editor.launchAngles.length ? h("div", {}, h("h3", {}, "Co-marketing angles"), editor.launchAngles.map((a) => h("div", { class: "callout" }, a))) : "",
     editor.caveats.length ? h("p", { class: "warnbox" }, "Watch out: ", editor.caveats.join(" ")) : "",
     h("div", { class: "cols" },
       h("div", { class: "card" },
@@ -228,8 +253,8 @@ function artistList(items) {
       h("span", { class: "n" }, a.name), h("div", { style: "width:90px" }, bar(a.affinity)), h("span", { class: "num" }, fmt(a.affinity)))) : h("span", { class: "muted" }, "None returned."));
 }
 const panelSound = (sound) => h("div", { class: "cols" },
-  h("div", { class: "card" }, h("h2", {}, "Mainstream"), h("p", { class: "muted small" }, "Artists whose fans overlap most with this audience. Good for trailers and playlists."), artistList(sound.mainstream)),
-  h("div", { class: "card" }, h("h2", {}, "Emerging"), h("p", { class: "muted small" }, "Same audience, popularity capped. Affordable and fresh."), artistList(sound.emerging)));
+  h("div", { class: "card" }, h("h2", {}, "Mainstream"), h("p", { class: "muted small" }, "Artists whose fans overlap most with this audience. Candidates for trailer sync, soundtrack and premiere playlists."), artistList(sound.mainstream)),
+  h("div", { class: "card" }, h("h2", {}, "Emerging"), h("p", { class: "muted small" }, "Same audience, popularity capped. More affordable for sync deals, premieres and live appearances."), artistList(sound.emerging)));
 
 function panelPartners({ partners, input }) {
   const groups = new Map();
@@ -275,13 +300,13 @@ function panelWhere({ places, timing, modules, input }) {
     : h("p", { class: "muted" }, modules.timing?.reason ?? modules.timing?.error ?? "No trend data.");
   const placeBlock = places
     ? [h("div", { class: "cols" },
-        h("div", { class: "card" }, h("h2", {}, `Venues in ${places.city}`), h("div", { class: "list" }, places.venues.map((v) =>
+        h("div", { class: "card" }, h("h2", {}, `Venues fans favor in ${places.city}`), h("div", { class: "list" }, places.venues.map((v) =>
           h("div", { class: "it" }, h("span", { class: "n" }, v.name, h("div", { class: "muted small" }, v.description)), h("span", { class: "num" }, fmt(v.affinity)))))),
         h("div", { class: "card" }, h("h2", {}, "Where fans concentrate"), h("div", { class: "list" }, places.neighborhoods.length ? places.neighborhoods.map((n) =>
           h("div", { class: "it" }, h("span", { class: "n" }, n.name), h("div", { style: "width:90px" }, bar(n.affinity)), h("span", { class: "num" }, fmt(n.affinity)))) : h("span", { class: "muted" }, "No named neighborhoods returned.")),
           h("p", { class: "muted small" }, "Heatmap areas are coarse (boroughs and districts), so use them to shortlist, not to rank streets.")))]
-    : h("p", { class: "muted" }, input.city ? "No place data returned." : "Add a city on the first screen to see venues and neighborhoods.");
-  return [h("h3", {}, "Timing"), timingBlock, h("h3", {}, "Places"), placeBlock];
+    : h("p", { class: "muted" }, input.city ? "No place data returned." : "Add a city on the first screen to see venues and neighborhoods for screenings and pop-ups.");
+  return [h("h3", {}, "Launch window"), timingBlock, h("h3", {}, "Screenings and pop-ups"), placeBlock];
 }
 
 function clicheColumn(title, subtitle, rows, floor, ours) {
@@ -292,7 +317,7 @@ function clicheColumn(title, subtitle, rows, floor, ours) {
 }
 
 function panelCliche({ cliche, input, model }) {
-  if (!cliche) return h("p", { class: "muted" }, "The cliché check needs a language-model key and was skipped.");
+  if (!cliche) return h("p", { class: "muted" }, "The plain AI vs data comparison needs a language-model key and was skipped.");
   const block = (label, data) => {
     const s = data.summary;
     const floor = Math.min(...data.ours.map((o) => o.affinity).filter((v) => typeof v === "number"));
@@ -333,6 +358,7 @@ async function init() {
     try { localStorage.setItem("theme", root.dataset.theme); } catch {}
   };
   $("startForm").onsubmit = onFind;
+  $("ctaBtn").onclick = () => { $("startForm").scrollIntoView({ behavior: "smooth", block: "center" }); $("q").focus({ preventScroll: true }); };
   $("backBtn").onclick = () => show("start");
   $("buildBtn").onclick = onBuild;
   window.onpopstate = () => location.reload();
@@ -340,7 +366,7 @@ async function init() {
     config = await api("/api/config");
   } catch (e) { $("startMsg").textContent = e.message; return; }
   $("typeChips").replaceChildren(...config.types.map((t) => h("button", { type: "button", class: "chip", role: "radio", "data-type": t, "aria-checked": "false", onclick: () => setType(t) }, TYPE_LABELS[t] ?? t)));
-  setType("book");
+  setType("movie");
   for (const b of config.ageBands) $("age").append(new Option(AGE_LABELS[b] ?? b, b));
   $("catChips").replaceChildren(...config.categories.map((c) => {
     chosenCats.add(c.key);
@@ -352,9 +378,9 @@ async function init() {
   }));
   $("minScore").value = config.minScore; $("minScoreOut").textContent = fmt(config.minScore);
   $("minScore").oninput = () => ($("minScoreOut").textContent = fmt(Number($("minScore").value)));
-  $("examples").replaceChildren(...EXAMPLES.map((ex) => h("a", { href: "#", onclick: (ev) => { ev.preventDefault(); fillForm(ex); } }, ex.q)));
+  $("examples").replaceChildren(...EXAMPLES.map((ex) => h("button", { type: "button", class: "ex", onclick: () => { fillForm(ex); $("q").focus(); } }, h("span", {}, TYPE_LABELS[ex.type]), ex.q)));
   if (!config.hasQloo) $("startMsg").textContent = "QLOO_API_KEY is missing on the server.";
-  else if (!config.hasLlm) $("startMsg").textContent = "META_API_KEY and BASETEN_API_KEY are missing: briefs will use fallback text and skip the cliché check.";
+  else if (!config.hasLlm) $("startMsg").textContent = "META_API_KEY and BASETEN_API_KEY are missing: briefs will use fallback text and skip the plain AI vs data comparison.";
   const saved = /^\/b\/([0-9a-f]{12})$/.exec(location.pathname);
   if (saved) loadSaved(saved[1]);
 }

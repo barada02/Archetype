@@ -4,43 +4,89 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Archetype</title>
-<meta name="description" content="Cultural-fit briefs for launches, grounded in the Qloo taste graph.">
+<meta name="description" content="Co-marketing briefs for film and TV releases: brand partners the audience will accept, grounded in the Qloo taste graph.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <header class="top">
   <a class="brand" href="/" aria-label="Archetype home"><span class="mark">A</span> Archetype</a>
-  <span class="tagline">Who the audience really is, and who they would accept as a partner.</span>
-  <button id="themeBtn" class="ghost small" aria-label="Toggle theme">Theme</button>
+  <span class="tagline">Brand partners your audience will actually accept.</span>
+  <nav class="nav"><a href="/#how">How it works</a><a href="/#contents">What's in a brief</a></nav>
+  <button id="themeBtn" class="icon" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
 </header>
 
 <main>
   <section id="view-start" class="view">
-    <div class="narrow">
-      <h1>What are you launching?</h1>
-      <p class="lede">Name a book, game, film, show, podcast or artist. Archetype measures its audience in the Qloo taste graph and builds a brief: who they are, which artists and partner brands they would accept, where fans are, and where a plain AI guess falls short.</p>
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">For film and TV partnership teams</span>
+        <h1>What are you <em>releasing?</em></h1>
+        <p class="lede">Name your film or show. Archetype measures its real audience in the Qloo taste graph and turns it into a co-marketing brief your partnerships team can act on.</p>
+        <ul class="proof">
+          <li><b>Partner shortlist</b> ranked for your target audience, each brand checked against its own customers.</li>
+          <li><b>Trailer and soundtrack</b> artists whose fans overlap, mainstream and emerging.</li>
+          <li><b>Screening cities</b> where fans cluster, and whether interest is rising into launch.</li>
+          <li><b>Every number sourced</b> to a Qloo call. The AI writes the prose, never the numbers.</li>
+        </ul>
+      </div>
+      <div class="hero-form">
       <form id="startForm" class="card form" autocomplete="off">
+        <div class="form-head"><b>Start a brief</b><span class="muted small">About 30 seconds</span></div>
         <label for="q">Title</label>
-        <input id="q" required maxlength="120" placeholder="The Secret History">
-        <label>Kind</label>
+        <input id="q" required maxlength="120" placeholder="Everything Everywhere All at Once">
+        <label>Kind <span class="muted small">(also works for books, games, podcasts and artists)</span></label>
         <div id="typeChips" class="chips" role="radiogroup" aria-label="Kind"></div>
         <div class="grid2">
-          <div><label for="goal">Goal (optional)</label><input id="goal" maxlength="200" placeholder="Series adaptation launch"></div>
-          <div><label for="city">City for venues and neighborhoods (optional)</label><input id="city" maxlength="80" placeholder="New York"></div>
+          <div><label for="goal">Campaign goal (optional)</label><input id="goal" maxlength="200" list="goalPresets" placeholder="Theatrical release co-marketing">
+            <datalist id="goalPresets">
+              <option value="Theatrical release co-marketing"><option value="Streaming premiere partners"><option value="Season premiere brand tie-ins">
+              <option value="Trailer and soundtrack music"><option value="Screening tour and pop-ups"><option value="Awards-season screenings and partners">
+            </datalist></div>
+          <div><label for="city">Opening city (optional)</label><input id="city" maxlength="80" placeholder="Los Angeles"></div>
         </div>
         <div class="grid2">
-          <div><label for="age">Target age group</label><select id="age"><option value="">Anyone</option></select></div>
-          <div><label for="gender">Target gender</label><select id="gender"><option value="">Anyone</option><option value="female">Women</option><option value="male">Men</option></select></div>
+          <div><label for="age">Target audience age</label><select id="age"><option value="">Anyone</option></select></div>
+          <div><label for="gender">Target audience gender</label><select id="gender"><option value="">Anyone</option><option value="female">Women</option><option value="male">Men</option></select></div>
         </div>
         <details><summary>Partner categories and minimum fit</summary>
           <div id="catChips" class="chips"></div>
           <label for="minScore">Minimum fit score: <b id="minScoreOut"></b></label>
           <input id="minScore" type="range" min="0.5" max="0.95" step="0.01">
         </details>
-        <div class="row"><button class="primary" type="submit" id="findBtn">Find it</button><span id="startMsg" class="muted" role="status"></span></div>
+        <div class="row"><button class="primary wide" type="submit" id="findBtn">Find my title</button><span id="startMsg" class="muted" role="status"></span></div>
       </form>
-      <div class="examples"><span class="muted">Try:</span> <span id="examples"></span></div>
+      <div class="examples"><span class="muted">Try:</span> <span id="examples" style="display:contents"></span></div>
+      </div>
     </div>
+
+    <section id="how" class="band">
+      <div class="band-head"><span class="kicker">How it works</span><h2 class="display">From title to partner meeting in three steps</h2></div>
+      <div class="steps3">
+        <div><i>1</i><b>Name the release</b><span>Pick the film or show, your target age and gender, and the city you are opening in.</span></div>
+        <div><i>2</i><b>Archetype measures the audience</b><span>Qloo supplies every number: who the fans are, which brands and artists they over-index on, where they cluster. A language model then picks from Qloo's ranked candidates and explains each choice.</span></div>
+        <div><i>3</i><b>Take the brief into the room</b><span>Share a link or print it. Every claim traces back to the Qloo call behind it, so you can defend each partner.</span></div>
+      </div>
+    </section>
+
+    <section id="contents" class="band">
+      <div class="band-head"><span class="kicker">What's in a brief</span><h2 class="display">Everything a partnerships lead needs on one page</h2></div>
+      <div class="grid3">
+        <div class="card"><b>Partner shortlist</b><span>Up to eight brands across fashion, food and drink, beauty, travel, automotive and gaming, with a fit score and a reason for each.</span></div>
+        <div class="card"><b>Audience</b><span>Measured age and gender skew, genres, moods and traits, plus co-marketing angles grounded in them.</span></div>
+        <div class="card"><b>Trailer and soundtrack</b><span>Mainstream artists for reach and emerging ones that are cheaper to license.</span></div>
+        <div class="card"><b>Screenings and timing</b><span>Venues and neighborhoods where fans cluster, and the weekly interest trend into launch.</span></div>
+        <div class="card"><b>Plain AI vs data</b><span>What a plain AI would pitch with no data, scored against the same audience next to the shortlist.</span></div>
+        <div class="card"><b>Sources</b><span>Every Qloo call behind every number: endpoint, parameters, status and timing.</span></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2 class="display">Find partners your audience will <em>actually</em> accept.</h2>
+      <button class="primary" type="button" id="ctaBtn">Start a brief</button>
+    </section>
   </section>
 
   <section id="view-confirm" class="view" hidden>
@@ -54,8 +100,9 @@
 
   <section id="view-progress" class="view" hidden>
     <div class="narrow">
-      <h1 id="progTitle">Building your brief</h1>
+      <h1 id="progTitle">Building your co-marketing brief</h1>
       <p class="lede">Each line is a real Qloo or language-model call. Slow ones can take a few seconds.</p>
+      <div class="meter" aria-hidden="true"><i id="meterFill"></i></div>
       <div id="steps" class="card steps"></div>
       <p class="muted" id="elapsed"></p>
       <p id="failure" class="warnbox" hidden></p>
