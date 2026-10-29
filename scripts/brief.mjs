@@ -3,7 +3,7 @@
 import { writeFile, mkdir } from "node:fs/promises";
 import { loadConfig } from "../src/config.mjs";
 import { createQloo } from "../src/qloo.mjs";
-import { createGemini } from "../src/gemini.mjs";
+import { createLlm } from "../src/llm.mjs";
 import { buildBrief, resolveEntities } from "../src/pipeline.mjs";
 
 const [type, title, ...rest] = process.argv.slice(2);
@@ -11,12 +11,12 @@ const flag = (name) => (rest.includes(`--${name}`) ? rest[rest.indexOf(`--${name
 if (!type || !title) { console.error('Usage: node scripts/brief.mjs <type> "<title>" [--age 25_to_29] [--gender female] [--city "New York"] [--goal "..."]'); process.exit(2); }
 const config = loadConfig();
 const qloo = createQloo({ apiKey: config.qlooKey, baseUrl: config.qlooBase, cacheDir: "data/cache" });
-const gemini = config.geminiKey ? createGemini({ apiKey: config.geminiKey, model: config.geminiModel }) : undefined;
+const llm = createLlm(config);
 const [entity] = await resolveEntities({ qloo, query: title, type });
 console.error(`Resolved: ${entity.name} (${entity.id})`);
 const brief = await buildBrief({
   input: { entity, goal: flag("goal"), ageBand: flag("age"), gender: flag("gender"), city: flag("city") },
-  qloo, gemini, emit: (e) => console.error(`  ${e.status.padEnd(8)} ${e.id.padEnd(9)} ${e.ms ?? ""}ms ${e.detail ?? ""}`),
+  qloo, llm, emit: (e) => console.error(`  ${e.status.padEnd(8)} ${e.id.padEnd(9)} ${e.ms ?? ""}ms ${e.detail ?? ""}`),
 });
 await mkdir("data/briefs", { recursive: true });
 await writeFile(`data/briefs/${brief.id}.json`, JSON.stringify(brief, null, 2));

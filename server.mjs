@@ -6,7 +6,7 @@ import { join, dirname, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadConfig, redactor } from "./src/config.mjs";
 import { createQloo } from "./src/qloo.mjs";
-import { createGemini } from "./src/gemini.mjs";
+import { createLlm } from "./src/llm.mjs";
 import { buildBrief, resolveEntities, ENTITY_TYPES, PARTNER_CATEGORIES, DEFAULT_MIN_SCORE } from "./src/pipeline.mjs";
 import { AGE_BANDS } from "./src/util.mjs";
 
@@ -16,7 +16,7 @@ const BRIEFS = join(ROOT, "data", "briefs");
 const config = loadConfig();
 const redact = redactor(config);
 const qloo = createQloo({ apiKey: config.qlooKey, baseUrl: config.qlooBase, cacheDir: join(ROOT, "data", "cache") });
-const gemini = config.geminiKey ? createGemini({ apiKey: config.geminiKey, model: config.geminiModel }) : undefined;
+const llm = createLlm(config);
 
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml" };
 const MAX_BODY = 20_000;
@@ -85,7 +85,7 @@ async function handleBuild(req, res) {
   res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive" });
   const send = (event, data) => res.write(`event: ${event}\ndata: ${redact(data)}\n\n`);
   try {
-    const brief = await buildBrief({ input, qloo, gemini, emit: (e) => send("progress", e) });
+    const brief = await buildBrief({ input, qloo, llm, emit: (e) => send("progress", e) });
     await mkdir(BRIEFS, { recursive: true });
     await writeFile(join(BRIEFS, `${brief.id}.json`), redact(brief));
     send("done", brief);
@@ -99,7 +99,7 @@ async function handleBuild(req, res) {
 
 const api = {
   "GET /api/config": async () => ({
-    hasQloo: Boolean(config.qlooKey), hasGemini: Boolean(gemini), model: gemini?.model,
+    hasQloo: Boolean(config.qlooKey), hasLlm: Boolean(llm), model: llm?.model,
     types: ENTITY_TYPES, ageBands: AGE_BANDS, minScore: DEFAULT_MIN_SCORE,
     categories: Object.entries(PARTNER_CATEGORIES).map(([key, c]) => ({ key, label: c.label })),
   }),
@@ -113,6 +113,22 @@ const api = {
   },
 };
 
+// Qloo images are served from our origin, so browser blockers and hotlink rules on
+// images.qloo.com cannot break them. Only that host is fetched: this is not an open proxy.
+const MAX_IMAGE = 3_000_000;
+async function proxyImage(res, target) {
+  let url;
+  try { url = new URL(target); } catch { throw fail(400, "Bad image url"); }
+  if (url.protocol !== "https:" || url.hostname !== "images.qloo.com") throw fail(400, "Image host not allowed");
+  const upstream = await fetch(url, { signal: AbortSignal.timeout(15_000) }).catch(() => undefined);
+  const type = upstream?.headers.get("content-type") ?? "";
+  if (!upstream?.ok || !type.startsWith("image/")) throw fail(502, "Image unavailable");
+  const data = Buffer.from(await upstream.arrayBuffer());
+  if (data.length > MAX_IMAGE) throw fail(502, "Image too large");
+  res.writeHead(200, { "content-type": type, "cache-control": "public, max-age=604800" });
+  res.end(data);
+}
+
 async function serveStatic(res, file) {
   try {
     const data = await readFile(join(PUBLIC, file));
@@ -124,9 +140,10 @@ async function serveStatic(res, file) {
 }
 
 const server = createServer(async (req, res) => {
-  const { pathname } = new URL(req.url, "http://x");
+  const { pathname, searchParams } = new URL(req.url, "http://x");
   try {
     if (req.method === "POST" && pathname === "/api/brief") return await handleBuild(req, res);
+    if (req.method === "GET" && pathname === "/img") return await proxyImage(res, searchParams.get("u") ?? "");
     const handler = api[`${req.method} ${pathname}`];
     if (handler) return json(res, 200, await handler(req));
     const saved = req.method === "GET" && pathname.match(/^\/api\/brief\/([0-9a-f]{12})$/);
@@ -145,5 +162,5 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(config.port, config.host, () => {
-  console.error(`Archetype on http://${config.host}:${config.port}  qloo=${config.qlooKey ? "key set" : "NO KEY"}  gemini=${gemini ? gemini.model : "NO KEY"}`);
+  console.error(`Archetype on http://${config.host}:${config.port}  qloo=${config.qlooKey ? "key set" : "NO KEY"}  llm=${llm ? llm.label : "NO KEY"}`);
 });

@@ -1,6 +1,8 @@
 // Archetype front end: describe -> confirm -> watch it work -> brief.
 // No framework. All text is inserted with textContent (never innerHTML).
 const $ = (id) => document.getElementById(id);
+// Images go through our server (see /img in server.mjs) so browser blockers cannot break them.
+const imgSrc = (url) => `/img?u=${encodeURIComponent(url)}`;
 
 function h(tag, attrs = {}, ...children) {
   const el = document.createElement(tag);
@@ -79,7 +81,7 @@ function renderCandidates() {
   $("candidates").replaceChildren(...candidates.map((c, i) =>
     h("label", { class: "cand" },
       h("input", { type: "radio", name: "cand", value: String(i), checked: i === 0 }),
-      c.image ? h("img", { src: c.image, alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
+      c.image ? h("img", { src: imgSrc(c.image), alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
       h("div", {}, h("b", {}, c.name, c.year ? ` (${c.year})` : ""), h("span", {}, c.description || "No description"),
         h("span", {}, c.popularity != null ? `Popularity ${c.popularity}` : "")))));
   $("confirmMsg").textContent = "";
@@ -172,7 +174,7 @@ function renderBrief(brief) {
   const target = [input.ageBand && AGE_LABELS[input.ageBand], input.gender && (input.gender === "female" ? "women" : "men")].filter(Boolean).join(", ");
   $("brief").replaceChildren(
     h("div", { class: "bhead" },
-      e.image ? h("img", { class: "thumb", src: e.image, alt: "" }) : h("div", { class: "thumb" }),
+      e.image ? h("img", { class: "thumb", src: imgSrc(e.image), alt: "" }) : h("div", { class: "thumb" }),
       h("div", { class: "grow" },
         h("h1", {}, e.name),
         h("div", { class: "muted small" }, [TYPE_LABELS[e.type], input.goal, target && `target: ${target}`, input.city].filter(Boolean).join(" · ")),
@@ -182,7 +184,7 @@ function renderBrief(brief) {
         h("button", { class: "small", onclick: () => window.print() }, "Print / PDF"),
         h("a", { class: "small", href: `/api/brief/${brief.id}`, download: `archetype-${brief.id}.json` }, h("button", { class: "small" }, "JSON")),
         h("button", { class: "small primary", onclick: () => { history.pushState({}, "", "/"); show("start"); } }, "New brief"))),
-    h("div", { class: "headline" }, h("b", {}, editor.headline), editor.source === "fallback" ? h("span", { class: "muted small" }, "Written without Gemini (fallback text).") : ""),
+    h("div", { class: "headline" }, h("b", {}, editor.headline), editor.source === "fallback" ? h("span", { class: "muted small" }, "Written without the language model (fallback text).") : ""),
     h("div", { class: "tabs", role: "tablist" }, tabs.map(([k, label]) => h("button", { class: "tab", id: "tab-" + k, role: "tab", "aria-selected": "false", onclick: () => select(k) }, label))),
     ...tabs.map(([k, , panel]) => h("div", { class: "panel", id: "panel-" + k, role: "tabpanel", hidden: true }, panel)),
   );
@@ -222,7 +224,7 @@ function panelAudience({ audience, editor }) {
 
 function artistList(items) {
   return h("div", { class: "list" }, items.length ? items.map((a) =>
-    h("div", { class: "it" }, a.image ? h("img", { class: "thumb", style: "width:36px;height:36px", src: a.image, alt: "", loading: "lazy" }) : "",
+    h("div", { class: "it" }, a.image ? h("img", { class: "thumb", style: "width:36px;height:36px", src: imgSrc(a.image), alt: "", loading: "lazy" }) : "",
       h("span", { class: "n" }, a.name), h("div", { style: "width:90px" }, bar(a.affinity)), h("span", { class: "num" }, fmt(a.affinity)))) : h("span", { class: "muted" }, "None returned."));
 }
 const panelSound = (sound) => h("div", { class: "cols" },
@@ -240,7 +242,7 @@ function panelPartners({ partners, input }) {
     !partners.picks.length ? h("p", { class: "warnbox" }, "No partners cleared the minimum fit score. Lower it under Partner categories and minimum fit.") : "",
     ...[...groups].map(([label, list]) => h("div", { class: "card pcat" }, h("h2", {}, label), list.map((p) =>
       h("div", { class: "pcard" },
-        p.image ? h("img", { class: "thumb", src: p.image, alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
+        p.image ? h("img", { class: "thumb", src: imgSrc(p.image), alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
         h("div", { class: "body" },
           h("div", {}, h("span", { class: "nm" }, p.name), scorePill(p.affinity)),
           h("div", {}, p.reason),
@@ -290,23 +292,23 @@ function clicheColumn(title, subtitle, rows, floor, ours) {
 }
 
 function panelCliche({ cliche, input, model }) {
-  if (!cliche) return h("p", { class: "muted" }, "The cliché check needs a Gemini key and was skipped.");
+  if (!cliche) return h("p", { class: "muted" }, "The cliché check needs a language-model key and was skipped.");
   const block = (label, data) => {
     const s = data.summary;
     const floor = Math.min(...data.ours.map((o) => o.affinity).filter((v) => typeof v === "number"));
     return [h("h3", {}, label),
-      h("div", { class: "verdict" }, `Plain Gemini named ${data.llm.length}; Qloo could score ${s.scored}${s.notInQloo ? ` (${s.notInQloo} not found in Qloo)` : ""}. Their average fit is ${fmt(s.llmAverage)} against ${fmt(s.oursAverage)} for the data-backed picks; ${s.llmBelowOurFloor} of ${s.scored} fall below our lowest pick. ${s.overlap ? `${s.overlap} overlap with our picks.` : "None overlap with our picks."}`),
-      h("div", { class: "cols" }, clicheColumn("Plain Gemini guessed", "No data, just its own knowledge.", data.llm, floor), clicheColumn("Archetype picks", "Chosen from measured audience fit.", data.ours, floor, true))];
+      h("div", { class: "verdict" }, `The plain model named ${data.llm.length}; Qloo could score ${s.scored}${s.notInQloo ? ` (${s.notInQloo} not found in Qloo)` : ""}. Their average fit is ${fmt(s.llmAverage)} against ${fmt(s.oursAverage)} for the data-backed picks; ${s.llmBelowOurFloor} of ${s.scored} fall below our lowest pick. ${s.overlap ? `${s.overlap} overlap with our picks.` : "None overlap with our picks."}`),
+      h("div", { class: "cols" }, clicheColumn("Plain model guessed", "No data, just its own knowledge.", data.llm, floor), clicheColumn("Archetype picks", "Chosen from measured audience fit.", data.ours, floor, true))];
   };
   return [
-    h("p", { class: "muted small" }, `Same question, asked of ${model ?? "Gemini"} with no data: "${cliche.prompt}" Each suggestion was then looked up in Qloo and scored against this audience. Our picks were selected from that same ranking, so read this as "does the guess hold up in the data", not as an independent contest.`),
+    h("p", { class: "muted small" }, `Same question, asked of ${model ?? "the language model"} with no data: "${cliche.prompt}" Each suggestion was then looked up in Qloo and scored against this audience. Our picks were selected from that same ranking, so read this as "does the guess hold up in the data", not as an independent contest.`),
     block("Partner brands", cliche.brands), block("Artists", cliche.artists),
   ];
 }
 
 function panelSources({ provenance, modules }) {
   return [
-    h("p", { class: "muted small" }, "Every number in this brief comes from one of these calls. Gemini only wrote the prose, and any text containing numbers it was not given was replaced."),
+    h("p", { class: "muted small" }, "Every number in this brief comes from one of these calls. The language model only wrote the prose, and any text containing numbers it was not given was replaced."),
     h("div", { class: "chips" }, Object.entries(modules).map(([k, v]) => h("span", { class: "chip static" }, `${k}: ${v.status}${v.ms ? ` ${(v.ms / 1000).toFixed(1)} s` : ""}${v.reason ? ` (${v.reason})` : ""}`))),
     h("div", { class: "scroll" }, h("table", {},
       h("thead", {}, h("tr", {}, ["Module", "Endpoint", "Parameters", "Status", "ms"].map((x) => h("th", {}, x)))),
@@ -352,7 +354,7 @@ async function init() {
   $("minScore").oninput = () => ($("minScoreOut").textContent = fmt(Number($("minScore").value)));
   $("examples").replaceChildren(...EXAMPLES.map((ex) => h("a", { href: "#", onclick: (ev) => { ev.preventDefault(); fillForm(ex); } }, ex.q)));
   if (!config.hasQloo) $("startMsg").textContent = "QLOO_API_KEY is missing on the server.";
-  else if (!config.hasGemini) $("startMsg").textContent = "GEMINI_API_KEY is missing: briefs will use fallback text and skip the cliché check.";
+  else if (!config.hasLlm) $("startMsg").textContent = "META_API_KEY and BASETEN_API_KEY are missing: briefs will use fallback text and skip the cliché check.";
   const saved = /^\/b\/([0-9a-f]{12})$/.exec(location.pathname);
   if (saved) loadSaved(saved[1]);
 }

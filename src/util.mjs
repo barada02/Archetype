@@ -11,7 +11,7 @@ export const AGE_LABELS = {
 };
 
 export const normName = (s) =>
-  String(s ?? "")
+  String(decodeEntities(s) ?? "")
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
@@ -19,10 +19,20 @@ export const normName = (s) =>
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 
+// Qloo text often arrives HTML-encoded ("Jackals &amp; the Truth"). Single pass, so
+// "&amp;lt;" becomes "&lt;", not "<". The UI inserts text with textContent, so this is safe.
+const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
+export const decodeEntities = (s) =>
+  typeof s !== "string" ? s : s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, code) => {
+    if (code[0] !== "#") return ENTITIES[code.toLowerCase()] ?? m;
+    const n = code[1] === "x" || code[1] === "X" ? parseInt(code.slice(2), 16) : Number(code.slice(1));
+    return n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : m;
+  });
+
 export const stripMarkup = (html) =>
-  String(html ?? "")
+  decodeEntities(String(html ?? "")
     .replace(/<br\s*\/?>/gi, " ")
-    .replace(/<[^>]+>/g, "")
+    .replace(/<[^>]+>/g, ""))
     .replace(/\s+/g, " ")
     .trim();
 

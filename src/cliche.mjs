@@ -1,6 +1,6 @@
-// The cliché check: ask plain Gemini (no data) for partners and artists, then score
+// The cliché check: ask the plain LLM (no data) for partners and artists, then score
 // its suggestions with Qloo against the same audience, next to our data-backed picks.
-import { normName, round } from "./util.mjs";
+import { normName, round, decodeEntities } from "./util.mjs";
 import { listOf } from "./qloo.mjs";
 
 const SYSTEM = "You are a marketing strategist. Use only your own knowledge. Answer with JSON only.";
@@ -29,7 +29,7 @@ async function resolveNames(call, names, type) {
   for (const name of names) {
     const res = await call("cliche", "/search", { query: name, types: `urn:entity:${type}`, take: 3 });
     const hit = res.ok ? listOf(res.body).find((e) => matchesName(name, e.name)) : undefined;
-    out.push({ name, id: hit?.entity_id, resolvedName: hit?.name });
+    out.push({ name, id: hit?.entity_id, resolvedName: decodeEntities(hit?.name) });
   }
   return out;
 }
@@ -66,8 +66,8 @@ async function compareList({ call, type, suggestions, ours, signal }) {
   };
 }
 
-export async function clicheCheck({ gemini, call, entity, target, signal, oursBrands, oursArtists }) {
-  const raw = await gemini.json({ system: SYSTEM, prompt: clichePrompt({ entity, target }) });
+export async function clicheCheck({ llm, call, entity, target, signal, oursBrands, oursArtists }) {
+  const raw = await llm.json({ system: SYSTEM, prompt: clichePrompt({ entity, target }) });
   const take = (list) => (Array.isArray(list) ? list.map(String).slice(0, 5) : []);
   const brands = take(raw?.brands), artists = take(raw?.artists);
   const [b, a] = await Promise.all([
