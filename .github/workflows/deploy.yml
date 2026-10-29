@@ -64,7 +64,8 @@ jobs:
           printf '%s\n' \
             'QLOO_API_KEY=${{ secrets.QLOO_API_KEY }}' \
             'QLOO_BASE_URL=https://hackathon.api.qloo.com' \
-            'META_API_KEY=${{ secrets.META_API_KEY }}' \n            'BASETEN_API_KEY=${{ secrets.BASETEN_API_KEY }}' > .env
+            'META_API_KEY=${{ secrets.META_API_KEY }}' \
+            'BASETEN_API_KEY=${{ secrets.BASETEN_API_KEY }}' > .env
           umask 022
 
           # Service
