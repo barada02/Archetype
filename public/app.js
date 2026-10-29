@@ -1,6 +1,8 @@
 // Archetype front end: describe -> confirm -> watch it work -> brief.
 // No framework. All text is inserted with textContent (never innerHTML).
 const $ = (id) => document.getElementById(id);
+// Images go through our server (see /img in server.mjs) so browser blockers cannot break them.
+const imgSrc = (url) => `/img?u=${encodeURIComponent(url)}`;
 
 function h(tag, attrs = {}, ...children) {
   const el = document.createElement(tag);
@@ -79,7 +81,7 @@ function renderCandidates() {
   $("candidates").replaceChildren(...candidates.map((c, i) =>
     h("label", { class: "cand" },
       h("input", { type: "radio", name: "cand", value: String(i), checked: i === 0 }),
-      c.image ? h("img", { src: c.image, alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
+      c.image ? h("img", { src: imgSrc(c.image), alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
       h("div", {}, h("b", {}, c.name, c.year ? ` (${c.year})` : ""), h("span", {}, c.description || "No description"),
         h("span", {}, c.popularity != null ? `Popularity ${c.popularity}` : "")))));
   $("confirmMsg").textContent = "";
@@ -172,7 +174,7 @@ function renderBrief(brief) {
   const target = [input.ageBand && AGE_LABELS[input.ageBand], input.gender && (input.gender === "female" ? "women" : "men")].filter(Boolean).join(", ");
   $("brief").replaceChildren(
     h("div", { class: "bhead" },
-      e.image ? h("img", { class: "thumb", src: e.image, alt: "" }) : h("div", { class: "thumb" }),
+      e.image ? h("img", { class: "thumb", src: imgSrc(e.image), alt: "" }) : h("div", { class: "thumb" }),
       h("div", { class: "grow" },
         h("h1", {}, e.name),
         h("div", { class: "muted small" }, [TYPE_LABELS[e.type], input.goal, target && `target: ${target}`, input.city].filter(Boolean).join(" · ")),
@@ -222,7 +224,7 @@ function panelAudience({ audience, editor }) {
 
 function artistList(items) {
   return h("div", { class: "list" }, items.length ? items.map((a) =>
-    h("div", { class: "it" }, a.image ? h("img", { class: "thumb", style: "width:36px;height:36px", src: a.image, alt: "", loading: "lazy" }) : "",
+    h("div", { class: "it" }, a.image ? h("img", { class: "thumb", style: "width:36px;height:36px", src: imgSrc(a.image), alt: "", loading: "lazy" }) : "",
       h("span", { class: "n" }, a.name), h("div", { style: "width:90px" }, bar(a.affinity)), h("span", { class: "num" }, fmt(a.affinity)))) : h("span", { class: "muted" }, "None returned."));
 }
 const panelSound = (sound) => h("div", { class: "cols" },
@@ -240,7 +242,7 @@ function panelPartners({ partners, input }) {
     !partners.picks.length ? h("p", { class: "warnbox" }, "No partners cleared the minimum fit score. Lower it under Partner categories and minimum fit.") : "",
     ...[...groups].map(([label, list]) => h("div", { class: "card pcat" }, h("h2", {}, label), list.map((p) =>
       h("div", { class: "pcard" },
-        p.image ? h("img", { class: "thumb", src: p.image, alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
+        p.image ? h("img", { class: "thumb", src: imgSrc(p.image), alt: "", loading: "lazy" }) : h("div", { class: "thumb" }),
         h("div", { class: "body" },
           h("div", {}, h("span", { class: "nm" }, p.name), scorePill(p.affinity)),
           h("div", {}, p.reason),

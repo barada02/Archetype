@@ -113,6 +113,22 @@ const api = {
   },
 };
 
+// Qloo images are served from our origin, so browser blockers and hotlink rules on
+// images.qloo.com cannot break them. Only that host is fetched: this is not an open proxy.
+const MAX_IMAGE = 3_000_000;
+async function proxyImage(res, target) {
+  let url;
+  try { url = new URL(target); } catch { throw fail(400, "Bad image url"); }
+  if (url.protocol !== "https:" || url.hostname !== "images.qloo.com") throw fail(400, "Image host not allowed");
+  const upstream = await fetch(url, { signal: AbortSignal.timeout(15_000) }).catch(() => undefined);
+  const type = upstream?.headers.get("content-type") ?? "";
+  if (!upstream?.ok || !type.startsWith("image/")) throw fail(502, "Image unavailable");
+  const data = Buffer.from(await upstream.arrayBuffer());
+  if (data.length > MAX_IMAGE) throw fail(502, "Image too large");
+  res.writeHead(200, { "content-type": type, "cache-control": "public, max-age=604800" });
+  res.end(data);
+}
+
 async function serveStatic(res, file) {
   try {
     const data = await readFile(join(PUBLIC, file));
@@ -124,9 +140,10 @@ async function serveStatic(res, file) {
 }
 
 const server = createServer(async (req, res) => {
-  const { pathname } = new URL(req.url, "http://x");
+  const { pathname, searchParams } = new URL(req.url, "http://x");
   try {
     if (req.method === "POST" && pathname === "/api/brief") return await handleBuild(req, res);
+    if (req.method === "GET" && pathname === "/img") return await proxyImage(res, searchParams.get("u") ?? "");
     const handler = api[`${req.method} ${pathname}`];
     if (handler) return json(res, 200, await handler(req));
     const saved = req.method === "GET" && pathname.match(/^\/api\/brief\/([0-9a-f]{12})$/);
