@@ -457,7 +457,7 @@ const panelSound = (sound) => h("div", { class: "cols" },
   h("div", { class: "card" }, h("h2", {}, "Mainstream"), h("p", { class: "muted small" }, "Artists whose fans overlap most with this audience. Candidates for trailer sync, soundtrack and premiere playlists."), artistList(sound.mainstream)),
   h("div", { class: "card" }, h("h2", {}, "Emerging"), h("p", { class: "muted small" }, "Same audience, popularity capped. More affordable for sync deals, premieres and live appearances."), artistList(sound.emerging)));
 
-function panelPartners({ partners, input }) {
+function panelPartners({ id, partners, input }) {
   const groups = new Map();
   for (const p of partners.picks) groups.set(p.categoryLabel, [...(groups.get(p.categoryLabel) ?? []), p]);
   const s = partners.stats;
@@ -474,11 +474,41 @@ function panelPartners({ partners, input }) {
           h("div", {}, p.reason),
           h("div", { class: "chips", style: "margin-top:4px" }, [p.brandType, ...p.industries].filter(Boolean).map((x) => h("span", { class: "chip static" }, x))),
           p.audience ? h("div", { class: "muted small" }, `Its own audience peaks at ${p.audience.peakAge?.label ?? "unclear"}, ${p.audience.gender?.text ?? "unclear gender"}.`) : "",
-          p.warnings.map((w) => h("div", { class: "warn" }, "⚠ " + w)))))),
+          p.warnings.map((w) => h("div", { class: "warn" }, "⚠ " + w)),
+          h("div", { class: "pitchrow" }, h("button", { class: "small", type: "button", onclick: (ev) => togglePitch(ev.currentTarget, id, p) }, "Draft pitch email")))))),
     ),
     others.length ? h("details", {}, h("summary", {}, `Other candidates that cleared the bar (${others.length})`),
       h("div", { class: "chips", style: "margin-top:8px" }, others.map((c) => h("span", { class: "chip static", title: c.categoryLabel }, `${c.name} ${fmt(c.affinity)}`)))) : "",
   ];
+}
+
+// Outreach draft for one partner, loaded on demand from /api/pitch and shown
+// under its card. Second click hides it again.
+async function togglePitch(btn, briefId, pick) {
+  const row = btn.parentElement;
+  row.querySelector(".pitch-err")?.remove();
+  const open = row.querySelector(".pitch");
+  if (open) { open.remove(); btn.textContent = "Draft pitch email"; return; }
+  btn.disabled = true; btn.textContent = "Drafting…";
+  try {
+    const d = await api("/api/pitch", { id: briefId, partnerId: pick.id });
+    const note = d.source === "llm"
+      ? "AI draft written from this brief's data only."
+      : d.source === "llm+fallback"
+        ? "AI draft with every number checked against this brief's data."
+        : "Template draft (AI unavailable). Every number is from this brief's data.";
+    row.append(h("div", { class: "pitch" },
+      h("b", {}, d.subject),
+      h("div", { class: "pitch-body" }, d.body),
+      h("div", { class: "muted small" }, note, pick.warnings?.length ? " This partner is flagged: check the warning above before sending." : ""),
+      h("div", {}, h("button", { class: "small", type: "button", onclick: () => navigator.clipboard?.writeText(`${d.subject}\n\n${d.body}`).then(() => toast("Draft copied")) }, "Copy draft"))));
+    btn.textContent = "Hide draft";
+  } catch (e) {
+    row.append(h("div", { class: "warn pitch-err" }, `Could not draft: ${e.message}`));
+    btn.textContent = "Draft pitch email";
+  } finally {
+    btn.disabled = false;
+  }
 }
 
 function sparkline(series) {
@@ -514,7 +544,16 @@ function clicheColumn(title, subtitle, rows, floor, ours) {
   return h("div", { class: "card" }, h("h2", {}, title), h("p", { class: "muted small" }, subtitle),
     h("div", { class: "list" }, rows.map((r) => h("div", { class: "it" },
       h("span", { class: "n" }, r.name, r.found === false ? h("span", { class: "muted small" }, " (not in Qloo)") : "", r.inOurPicks ? h("span", { class: "muted small" }, " (also in our picks)") : ""),
+      typeof r.affinity === "number" ? h("div", { style: "width:90px" }, bar(r.affinity)) : "",
       typeof r.affinity === "number" ? scorePill(r.affinity, ours ? undefined : floor) : h("span", { class: "muted small" }, "no score")))));
+}
+
+// Average fit, plain AI against data-backed picks, as two bars.
+function clicheAverages(data) {
+  const s = data.summary;
+  return h("div", { class: "card", style: "margin-bottom:14px" },
+    h("div", { class: "kv" }, "Plain AI average", bar(s.llmAverage ?? 0), h("span", { class: "num" }, fmt(s.llmAverage))),
+    h("div", { class: "kv" }, "Archetype average", bar(s.oursAverage ?? 0), h("span", { class: "num" }, fmt(s.oursAverage))));
 }
 
 function panelCliche({ cliche, input, model }) {
@@ -524,6 +563,7 @@ function panelCliche({ cliche, input, model }) {
     const floor = Math.min(...data.ours.map((o) => o.affinity).filter((v) => typeof v === "number"));
     return [h("h3", {}, label),
       h("div", { class: "verdict" }, `The plain model named ${data.llm.length}; Qloo could score ${s.scored}${s.notInQloo ? ` (${s.notInQloo} not found in Qloo)` : ""}. Their average fit is ${fmt(s.llmAverage)} against ${fmt(s.oursAverage)} for the data-backed picks; ${s.llmBelowOurFloor} of ${s.scored} fall below our lowest pick. ${s.overlap ? `${s.overlap} overlap with our picks.` : "None overlap with our picks."}`),
+      clicheAverages(data),
       h("div", { class: "cols" }, clicheColumn("Plain model guessed", "No data, just its own knowledge.", data.llm, floor), clicheColumn("Archetype picks", "Chosen from measured audience fit.", data.ours, floor, true))];
   };
   return [
@@ -532,10 +572,28 @@ function panelCliche({ cliche, input, model }) {
   ];
 }
 
+// The agent's own trace: each step it ran, in pipeline order, with its outcome
+// and how many Qloo calls it made. Older briefs predate labels and details.
+const TRACE_ORDER = ["profile", "sound", "partners", "places", "timing", "editor", "check", "cliche"];
+function traceList(provenance, modules) {
+  const ids = [...TRACE_ORDER.filter((k) => modules[k]), ...Object.keys(modules ?? {}).filter((k) => !TRACE_ORDER.includes(k))];
+  return h("div", { class: "card steps" }, ids.map((k) => {
+    const m = modules[k];
+    const calls = provenance.filter((c) => c.module === k).length;
+    const detail = [m.detail ?? m.reason ?? m.error ?? "", calls ? `${calls} Qloo call${calls === 1 ? "" : "s"}` : ""].filter(Boolean).join(" · ");
+    return h("div", { class: "step " + m.status },
+      h("span", { class: "dot" }, m.status === "done" ? "✓" : m.status === "running" ? "" : "!"),
+      h("span", { class: "t" }, h("span", { class: "l" }, m.label ?? k), detail ? h("span", { class: "d" }, detail) : ""),
+      h("span", { class: "ms" }, m.ms ? `${(m.ms / 1000).toFixed(1)} s` : ""));
+  }));
+}
+
 function panelSources({ provenance, modules }) {
   return [
     h("p", { class: "muted small" }, "Every number in this brief comes from one of these calls. The language model only wrote the prose, and any text containing numbers it was not given was replaced."),
-    h("div", { class: "chips" }, Object.entries(modules).map(([k, v]) => h("span", { class: "chip static" }, `${k}: ${v.status}${v.ms ? ` ${(v.ms / 1000).toFixed(1)} s` : ""}${v.reason ? ` (${v.reason})` : ""}`))),
+    h("h3", {}, "Agent trace"),
+    traceList(provenance, modules),
+    h("h3", {}, "Qloo calls"),
     h("div", { class: "scroll" }, h("table", {},
       h("thead", {}, h("tr", {}, ["Module", "Endpoint", "Parameters", "Status", "ms"].map((x) => h("th", {}, x)))),
       h("tbody", {}, provenance.map((c) => h("tr", {}, h("td", {}, c.module), h("td", { class: "mono" }, c.path), h("td", { class: "mono" }, c.query),
