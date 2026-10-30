@@ -108,7 +108,7 @@ async function handleBuild(req, res) {
   if (!allowBuild(clientIp(req))) throw fail(429, "Too many briefs from this address. Try again later.");
   if (running >= 2) throw fail(429, "The server is busy building other briefs. Try again in a moment.");
   running++;
-  res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive" });
+  res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive", "x-accel-buffering": "no" });
   const send = (event, data) => res.write(`event: ${event}\ndata: ${redact(data)}\n\n`);
   try {
     const brief = await buildBrief({ input, qloo, llm, emit: (e) => send("progress", e) });
@@ -134,12 +134,18 @@ async function handleChat(req, res) {
   if (!messages.length) throw fail(400, "Ask a question first");
   const context = JSON.stringify(chatContext(await loadBrief(id)));
   if (!allowChat(clientIp(req))) throw fail(429, "Too many questions from this address. Try again later.");
-  res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive" });
+  res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive", "x-accel-buffering": "no" });
   const send = (event, data) => res.write(`event: ${event}\ndata: ${redact(data)}\n\n`);
   try {
-    const reply = await llm.stream({ system: `${CHAT_SYSTEM}\n\nBRIEF DATA:\n${context}`, messages, onDelta: (text) => send("delta", { text }) });
-    const answer = String(reply).trim().replace(/\*\*(.+?)\*\*/g, "$1").slice(0, 4000); // plain text: drop markdown bold
-    send("done", { answer, model: llm.model, unsupported: unsupportedNumbers(answer, context) });
+    // "model" names the provider that is actually answering (the backup, if the primary failed).
+    const reply = await llm.stream({
+      system: `${CHAT_SYSTEM}\n\nBRIEF DATA:\n${context}`, messages,
+      onStart: (answered) => send("model", answered),
+      onDelta: (text) => send("delta", { text }),
+    });
+    const answer = reply.text.trim().replace(/\*\*(.+?)\*\*/g, "$1").slice(0, 4000); // plain text: drop markdown bold
+    const { name, model, backup } = reply;
+    send("done", { answer, name, model, backup, unsupported: unsupportedNumbers(answer, context) });
   } catch (error) {
     send("failure", { error: error.message });
   } finally {

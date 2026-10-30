@@ -238,13 +238,20 @@ function chatPanel(brief) {
     turns.push({ role: "user", content: question });
     log.append(bubble("user", question));
     const pending = bubble("assistant pending", "Thinking…");
+    const by = h("div", { class: "msg-by", hidden: true });
     log.append(pending); log.scrollTop = log.scrollHeight;
     sendBtn.disabled = true;
     try {
       // The answer streams into the bubble as it is written; the final event carries the cleaned text.
       let streamed = "", final;
+      // A small line under the answer naming the model that is actually responding.
+      // Names the provider only when the server reports it; never guesses.
+      const SOURCES = { meta: "Meta API", baseten: "Baseten" };
+      const answeredBy = ({ name, model, backup }) => [model, SOURCES[name] && `${SOURCES[name]}${backup ? " (backup)" : ""}`].filter(Boolean).join(" · ");
+      pending.after(by);
       await postStream("/api/chat", { id: brief.id, messages: turns }, (event, payload) => {
-        if (event === "delta") {
+        if (event === "model") { by.textContent = answeredBy(payload); by.hidden = false; }
+        else if (event === "delta") {
           streamed += payload.text;
           pending.className = "msg assistant streaming";
           pending.textContent = streamed.replace(/\*\*/g, "");
@@ -256,7 +263,9 @@ function chatPanel(brief) {
       const { answer, unsupported } = final;
       turns.push({ role: "assistant", content: answer });
       pending.replaceWith(bubble("assistant", answer, unsupported?.length ? h("div", { class: "warn" }, `⚠ Mentions ${unsupported.join(", ")}, which is not in this brief's data. Check the tabs before using it.`) : ""));
+      if (final.model) { by.textContent = answeredBy(final); by.hidden = false; }
     } catch (e) {
+      by.remove();
       turns.pop();
       pending.replaceWith(bubble("assistant error", `Could not answer: ${e.message}`));
     } finally {
