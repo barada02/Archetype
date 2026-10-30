@@ -78,24 +78,24 @@ export async function buildBrief({ input, qloo, llm, emit = () => {}, now = new 
   const categories = (input.categories?.length ? input.categories : Object.keys(PARTNER_CATEGORIES)).filter((k) => k in PARTNER_CATEGORIES);
   const target = [input.ageBand && input.ageBand.replace(/_/g, " "), input.gender].filter(Boolean).join(", ") || undefined;
 
-  // Runs one module; fn returns { data, detail }. Optional modules degrade instead of failing the brief.
+  // Runs one module; fn returns { data, detail }. Optional modules degrade instead of failing the brief. Label and detail are kept for the saved trace.
   async function step(id, label, fn, { optional = true } = {}) {
     emit({ id, label, status: "running" });
     const started = performance.now();
     try {
       const { data, detail } = await fn();
       const ms = Math.round(performance.now() - started);
-      modules[id] = { status: "done", ms };
+      modules[id] = { status: "done", ms, label, detail };
       emit({ id, label, status: "done", ms, detail });
       return data;
     } catch (error) {
-      modules[id] = { status: "error", error: error.message };
+      modules[id] = { status: "error", error: error.message, label };
       emit({ id, label, status: "error", detail: error.message });
       if (!optional) throw error;
       return undefined;
     }
   }
-  const skip = (id, label, why) => { modules[id] = { status: "skipped", reason: why }; emit({ id, label, status: "skipped", detail: why }); };
+  const skip = (id, label, why) => { modules[id] = { status: "skipped", reason: why, label }; emit({ id, label, status: "skipped", detail: why }); };
 
   // ---- data modules (parallel) ----
   const profileP = step("profile", "Audience skew and taste tags", async () => {

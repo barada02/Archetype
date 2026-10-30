@@ -51,6 +51,9 @@ test("buildBrief assembles every module, filters media brands, and records prove
   assert.equal(brief.modules.cliche.status, "skipped");
   assert.ok(brief.provenance.length >= 8 && brief.provenance.every((c) => c.module && c.path));
   assert.ok(events.some((e) => e.id === "profile" && e.status === "done"));
+  assert.equal(brief.modules.profile.label, "Audience skew and taste tags");
+  assert.match(brief.modules.profile.detail, /25 to 29/);
+  assert.equal(brief.modules.timing.reason, "Qloo has no trend series for this type");
   assert.ok(!TREND_TYPES.includes("book") && TREND_TYPES.includes("movie"));
 });
 
