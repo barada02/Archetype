@@ -140,14 +140,31 @@ export function createLlm(config, factories = { meta: createMeta, baseten: creat
   const providers = order.map((name) => available[name]).filter(Boolean);
   if (!providers.length) return undefined;
 
-  // A stream can only fall back while nothing has been sent on: once text has reached the
-  // reader, switching providers would splice two different answers together.
   async function withFallback(method, request) {
-    let started = false;
-    const req = method === "stream" ? { ...request, onDelta: (piece) => { started = true; request.onDelta(piece); } } : request;
     for (const [i, provider] of providers.entries()) {
       try {
-        return await provider[method](req);
+        return await provider[method](request);
+      } catch (error) {
+        const next = providers[i + 1];
+        if (!next) throw error;
+        console.error(`${provider.name} failed (${String(error.message).slice(0, 120)}); trying ${next.name}`);
+      }
+    }
+  }
+
+  // Streams the answer and resolves to { text, name, model, backup }, naming the provider that
+  // actually answered. onStart(provider) fires with the first piece of text. A stream can only
+  // fall back while nothing has been sent on: switching later would splice two answers together.
+  async function stream(request) {
+    let started = false;
+    for (const [i, provider] of providers.entries()) {
+      const answered = { name: provider.name, model: provider.model, backup: i > 0 };
+      const onDelta = (piece) => {
+        if (!started) { started = true; request.onStart?.(answered); }
+        request.onDelta(piece);
+      };
+      try {
+        return { text: await provider.stream({ ...request, onDelta }), ...answered };
       } catch (error) {
         const next = providers[i + 1];
         if (!next || started) throw error;
@@ -158,7 +175,7 @@ export function createLlm(config, factories = { meta: createMeta, baseten: creat
 
   return {
     json: (request) => withFallback("json", request),
-    stream: (request) => withFallback("stream", request),
+    stream,
     model: providers[0].model,
     label: providers.map((p) => `${p.name}:${p.model}`).join(" > "),
   };

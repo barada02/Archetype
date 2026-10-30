@@ -207,10 +207,12 @@ test("createLlm stream() falls back only while nothing has been streamed", async
     async stream({ onDelta }) { if (mode === "fail") throw new Error("down"); onDelta(`${name} `); if (mode === "midway") throw new Error("cut"); return `from ${name}`; } });
   const quiet = console.error; console.error = () => {};
   try {
-    const pieces = [];
+    const pieces = [], starts = [];
     const ok = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", "fail"), baseten: fake("baseten", "ok") });
-    assert.equal(await ok.stream({ system: "s", messages: [], onDelta: (p) => pieces.push(p) }), "from baseten");
+    const reply = await ok.stream({ system: "s", messages: [], onStart: (p) => starts.push(p), onDelta: (p) => pieces.push(p) });
+    assert.deepEqual(reply, { text: "from baseten", name: "baseten", model: "baseten", backup: true }); // reports who actually answered
     assert.deepEqual(pieces, ["baseten "]);
+    assert.deepEqual(starts, [{ name: "baseten", model: "baseten", backup: true }]);
     const cut = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", "midway"), baseten: fake("baseten", "ok") });
     await assert.rejects(cut.stream({ system: "s", messages: [], onDelta: () => {} }), /cut/);
   } finally { console.error = quiet; }

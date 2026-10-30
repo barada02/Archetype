@@ -307,3 +307,4 @@ button.secondary:hover:not(:disabled) { border-color:var(--accent); transform:tr
 
 .msg.streaming::after { content:"▍"; margin-left:1px; color:var(--accent); animation:caret 1s steps(1) infinite; }
 @keyframes caret { 50% { opacity:0; } }
+.msg-by { align-self:flex-start; margin:-6px 0 0 4px; font:500 11px/1.4 var(--mono); color:var(--muted); }
