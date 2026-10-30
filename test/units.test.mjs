@@ -7,6 +7,7 @@ import { matchesName, rankPool } from "../src/cliche.mjs";
 import { loadConfig, redactor } from "../src/config.mjs";
 import { createLlm, parseJson } from "../src/llm.mjs";
 import { chatContext, cleanMessages, unsupportedNumbers } from "../src/chat.mjs";
+import { pitchData, pitchPrompt, validatePitch } from "../src/pitch.mjs";
 
 test("normName ignores case, accents and punctuation", () => {
   assert.equal(normName("Beyoncé & Jay-Z"), "beyonce and jay z");
@@ -216,4 +217,35 @@ test("createLlm stream() falls back only while nothing has been streamed", async
     const cut = createLlm({ metaKey: "m", basetenKey: "b" }, { meta: fake("meta", "midway"), baseten: fake("baseten", "ok") });
     await assert.rejects(cut.stream({ system: "s", messages: [], onDelta: () => {} }), /cut/);
   } finally { console.error = quiet; }
+});
+
+const pitchBrief = {
+  input: { entity: { name: "Past Lives", type: "movie" }, goal: "Theatrical release co-marketing", ageBand: "30_to_34", gender: "female", city: "New York" },
+  audience: { peakAge: { label: "30 to 34", value: 0.3 }, gender: { text: "strongly female-leaning" }, genres: [{ name: "Drama" }], moods: [{ name: "Reflective" }], traits: [] },
+};
+const pitchPick = { id: "B1", name: "Aesop", categoryLabel: "Health and beauty", affinity: 0.873, brandType: "Product Brand", industries: ["Beauty"], description: "Skincare.", reason: "Over-indexes with fans of Past Lives.", audience: { peakAge: { label: "30 to 34" }, gender: { text: "female-leaning" } } };
+
+test("pitch: the model may quote the fit score but nothing it was not given", () => {
+  const clean = validatePitch({ subject: "A partnership idea", body: "Your fit score of 0.87 is the strongest we measured." }, { brief: pitchBrief, pick: pitchPick });
+  assert.equal(clean.source, "llm");
+  assert.match(clean.body, /0\.87/);
+  const dirty = validatePitch({ subject: "Up 82% with fans", body: "87% of fans buy Aesop, up 12.5 points this year." }, { brief: pitchBrief, pick: pitchPick });
+  assert.equal(dirty.source, "llm+fallback");
+  assert.doesNotMatch(dirty.subject, /82/);
+  assert.doesNotMatch(dirty.body, /87%|12\.5/);
+  assert.match(dirty.body, /0\.873/);
+});
+
+test("pitch: fallback drafts a usable email from data alone", () => {
+  const out = validatePitch(undefined, { brief: pitchBrief, pick: pitchPick });
+  assert.equal(out.source, "fallback");
+  assert.match(out.subject, /Aesop x Past Lives/);
+  assert.match(out.body, /0\.873/);
+  assert.match(out.body, /15-minute intro call/);
+});
+
+test("pitch: prompt carries the partner and audience the model may cite", () => {
+  const prompt = pitchPrompt({ brief: pitchBrief, pick: pitchPick });
+  assert.ok(prompt.includes("Aesop") && prompt.includes("0.873") && prompt.includes("30 to 34"));
+  assert.deepEqual(Object.keys(pitchData({ brief: pitchBrief, pick: pitchPick })).sort(), ["audience", "partner", "release"]);
 });

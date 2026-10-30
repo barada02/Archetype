@@ -8,6 +8,7 @@ import { loadConfig, redactor } from "./src/config.mjs";
 import { createQloo } from "./src/qloo.mjs";
 import { createLlm } from "./src/llm.mjs";
 import { CHAT_SYSTEM, chatContext, cleanMessages, unsupportedNumbers } from "./src/chat.mjs";
+import { PITCH_SYSTEM, pitchPrompt, validatePitch } from "./src/pitch.mjs";
 import { buildBrief, resolveEntities, ENTITY_TYPES, PARTNER_CATEGORIES, DEFAULT_MIN_SCORE } from "./src/pipeline.mjs";
 import { AGE_BANDS } from "./src/util.mjs";
 
@@ -153,6 +154,27 @@ async function handleChat(req, res) {
   }
 }
 
+// Outreach draft for one partner in a saved brief. The server loads the brief
+// itself; the browser only sends its id and the partner id. Without a
+// language-model key (or when it fails) the deterministic draft is returned.
+async function handlePitch(req, res) {
+  const body = await readJson(req);
+  const id = str(body.id, 12);
+  if (!/^[0-9a-f]{12}$/.test(id)) throw fail(400, "id must be a brief id");
+  const partnerId = str(body.partnerId, 64);
+  if (!/^[0-9A-Fa-f-]{36}$/.test(partnerId)) throw fail(400, "partnerId must be a Qloo entity id");
+  const brief = await loadBrief(id);
+  const pick = brief.partners.picks.find((p) => p.id === partnerId);
+  if (!pick) throw fail(404, "No such partner in this brief");
+  if (!allowChat(clientIp(req))) throw fail(429, "Too many questions from this address. Try again later.");
+  let raw;
+  if (llm) {
+    try { raw = await llm.json({ system: PITCH_SYSTEM, prompt: pitchPrompt({ brief, pick }) }); }
+    catch { raw = undefined; }
+  }
+  return json(res, 200, { ...validatePitch(raw, { brief, pick }), partner: { id: pick.id, name: pick.name } });
+}
+
 const api = {
   "GET /api/config": async () => ({
     hasQloo: Boolean(config.qlooKey), hasLlm: Boolean(llm), model: llm?.model,
@@ -201,6 +223,7 @@ const server = createServer(async (req, res) => {
   try {
     if (req.method === "POST" && pathname === "/api/brief") return await handleBuild(req, res);
     if (req.method === "POST" && pathname === "/api/chat") return await handleChat(req, res);
+    if (req.method === "POST" && pathname === "/api/pitch") return await handlePitch(req, res);
     if (req.method === "GET" && pathname === "/img") return await proxyImage(res, searchParams.get("u") ?? "");
     const handler = api[`${req.method} ${pathname}`];
     if (handler) return json(res, 200, await handler(req));
