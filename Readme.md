@@ -10,7 +10,8 @@ one-page brief for the person who has to sign the partnership deals:
 - **Trailer and soundtrack**: mainstream and emerging artists whose fans overlap.
 - **Screenings and timing**: venues and neighborhoods where fans cluster, and whether interest is rising or falling.
 - **Plain AI vs data**: what a plain language model suggests with no data, scored in Qloo against the same audience, next to the data-backed picks.
-- **Sources**: every Qloo call behind every number.
+- **Sources**: every Qloo call behind every number, plus the agent's own step-by-step trace.
+- **Pitch drafts**: a ready-to-send outreach email for each shortlisted brand, written only from the brief's data.
 - **Ask about this brief**: a chat panel that explains any part of the brief in plain words. The server loads the brief itself and the model answers only from its data; any number in an answer that is not in the brief is flagged.
 - **Guided tour**: an optional, skippable walkthrough from the landing page that fills in an example and walks through a finished sample brief.
 
@@ -34,7 +35,8 @@ All at Once*, aimed at 25 to 29 year olds, opening in Los Angeles.
    pop-ups, and whether interest is rising into the release window.
 5. **Plain AI vs data**: the same question asked of a plain AI, with its suggestions scored against this
    audience, so the lead can show why the shortlist beats the obvious names.
-6. They copy the link or print the brief and take it into partner conversations. Every number traces back to a
+6. **Pitch drafts**: one click under any partner produces an outreach email citing the measured fit, ready to copy into an intro.
+7. They copy the link or print the brief and take it into partner conversations. Every number traces back to a
    Qloo call on the Sources tab.
 
 ## Why it needs Qloo
@@ -46,6 +48,10 @@ model only edits and explains. Its output is validated: partner ids it invents a
 number that was not in the data is replaced.
 
 ## How it works
+
+Archetype is an agentic tool, not a chatbot: it runs a multi-step pipeline where each step calls Qloo,
+records its own provenance, and validates any model output before the next step uses it. The Sources
+tab shows the agent's own trace, so every claim can be audited.
 
 ```
 Browser ──► Node server (holds keys, caches, rate-limits) ──► Qloo REST API
@@ -114,6 +120,7 @@ src/pipeline.mjs  brief builder (modules, provenance)
 src/editor.mjs    editor prompt and output validation
 src/llm.mjs       Meta API and Baseten clients, primary with backup
 src/cliche.mjs    plain-LLM comparison
+src/pitch.mjs     per-brand outreach drafts (validated, template fallback without LLM)
 src/qloo.mjs      Qloo client (cache, retry, concurrency)
 public/           single-page UI, no build step
 test/             unit and pipeline tests (fake Qloo and LLM)

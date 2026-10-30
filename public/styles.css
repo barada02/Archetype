@@ -221,6 +221,9 @@ h2.display em { font-style:italic; color:var(--accent); }
 .score { display:inline-block; font-size:12px; font-weight:650; padding:2px 9px; border-radius:99px; background:var(--ok-soft); color:var(--ok); margin-left:8px; font-variant-numeric:tabular-nums; font-family:var(--mono); }
 .score.low { background:var(--warn-soft); color:var(--warn); }
 .warn { font-size:13px; color:var(--warn); margin-top:6px; }
+.pitchrow { margin-top:10px; }
+.pitch { margin-top:10px; padding:12px 14px; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--soft); display:grid; gap:8px; }
+.pitch-body { white-space:pre-wrap; font-size:14px; line-height:1.6; }
 table { width:100%; border-collapse:collapse; font-size:13px; } th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
 th { color:var(--muted); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.07em; }
 .mono { font:12px var(--mono); overflow-wrap:anywhere; }
