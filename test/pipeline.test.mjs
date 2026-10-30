@@ -19,7 +19,7 @@ function fakeQloo() {
       if (path === "/search") return ok({ entities: /nobody/i.test(params.query) ? [] : [{ entity_id: "NEW-ID", name: params.query }] });
       if (type === "urn:demographics") return ok({ demographics: [{ query: { age: { "25_to_29": 0.4, "55_and_older": -0.3 }, gender: { male: -0.3, female: 0.3 } } }] });
       if (type === "urn:tag") return ok({ tags: [{ name: "Reflective", query: { affinity: 0.9 } }] });
-      if (type === "urn:entity:artist") return ok({ entities: [{ entity_id: "ART1", name: "Artist One", query: { affinity: 0.95 }, popularity: 0.9 }, { entity_id: "SELF", name: "Self", query: { affinity: 1 } }] });
+      if (type === "urn:entity:artist") return ok({ entities: [{ entity_id: "ART1", name: "Artist One", query: { affinity: 0.95 }, popularity: 0.9 }, { entity_id: "SELF", name: "Self", query: { affinity: 1 } }, { entity_id: "NOSCORE", name: "No Score", popularity: 0.5 }] });
       if (type === "urn:entity:brand" && params["filter.tags"]) {
         return ok({ entities: [brand("B-" + params["filter.tags"].split(":").pop(), "Brand " + params["filter.tags"].split(":").pop(), 0.9), brand("MEDIA", "A Magazine", 0.95, "Media Brand"), brand("LOW" + params["filter.tags"], "Weak", 0.6)] });
       }
@@ -40,7 +40,7 @@ test("buildBrief assembles every module, filters media brands, and records prove
   const brief = await buildBrief({ input: { entity, city: "New York", ageBand: "25_to_29", gender: "female", goal: "Launch", categories: ["fashion", "travel"] }, qloo, llm: undefined, emit: (e) => events.push(e) });
   assert.equal(brief.audience.peakAge.band, "25_to_29");
   assert.equal(brief.audience.gender.side, "female");
-  assert.deepEqual(brief.sound.mainstream.map((a) => a.id), ["ART1"]); // the entity itself is excluded
+  assert.deepEqual(brief.sound.mainstream.map((a) => a.id), ["ART1"]); // the entity itself and unscored artists are excluded
   assert.equal(brief.partners.stats.mediaBrands, 2);
   assert.equal(brief.partners.stats.belowScore, 2);
   assert.ok(brief.partners.candidates.every((c) => !/media/i.test(c.brandType)));

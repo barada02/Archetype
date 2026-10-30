@@ -119,7 +119,7 @@ export async function buildBrief({ input, qloo, llm, emit = () => {}, now = new 
       call("sound", "/v2/insights", base),
       call("sound", "/v2/insights", { ...base, "filter.popularity.max": 0.6 }),
     ]);
-    const cards = (res) => (res.ok ? listOf(res.body).filter((a) => a.entity_id !== entity.id).slice(0, 8).map(artistCard) : []);
+    const cards = (res) => (res.ok ? listOf(res.body).filter((a) => a.entity_id !== entity.id && typeof a.query?.affinity === "number").slice(0, 8).map(artistCard) : []);
     const data = { mainstream: cards(main), emerging: cards(rising) };
     return { data, detail: `${data.mainstream.length} mainstream, ${data.emerging.length} emerging` };
   });

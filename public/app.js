@@ -23,6 +23,8 @@ const EXAMPLES = [
   { q: "Talk to Me", type: "movie", age: "24_and_younger", city: "Chicago", goal: "Screening tour and pop-ups" },
   { q: "Past Lives", type: "movie", age: "30_to_34", city: "New York", goal: "Awards-season screenings and partners" },
   { q: "The Bear", type: "tv_show", age: "30_to_34", city: "Chicago", goal: "Season premiere brand tie-ins" },
+  { q: "Elden Ring", type: "videogame", age: "25_to_29", gender: "male", city: "Los Angeles", goal: "Expansion launch brand tie-ins" },
+  { q: "Huberman Lab", type: "podcast", age: "30_to_34", gender: "male", city: "Austin", goal: "Sponsor outreach for live tour" },
 ];
 
 let config, chosenType = "movie", candidates = [], formState = null;

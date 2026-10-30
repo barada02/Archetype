@@ -1,0 +1,2115 @@
+{
+  "id": "b2c1b23be0bb",
+  "createdAt": "2026-10-30T06:38:52.082Z",
+  "model": "muse-wonder-1.0",
+  "input": {
+    "entity": {
+      "id": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+      "name": "Huberman Lab",
+      "type": "podcast",
+      "description": "Exploring neuroscience and science-based tools to understand brain function, behavior, and health.",
+      "image": "https://images.qloo.com/i/10E08FC9-04BB-4827-9331-7E9ABE1F7DB6-420x-auto.jpg",
+      "popularity": 0.989
+    },
+    "goal": "Sponsor outreach for live tour",
+    "ageBand": "30_to_34",
+    "gender": "male",
+    "city": "Austin",
+    "categories": [
+      "fashion",
+      "food_drink",
+      "beauty",
+      "travel",
+      "automotive",
+      "gaming"
+    ],
+    "minScore": 0.75
+  },
+  "audience": {
+    "ageIndex": {
+      "24_and_younger": -0.046000000000000006,
+      "25_to_29": -0.16599999999999998,
+      "30_to_34": -0.11600000000000002,
+      "35_to_44": 0.15800000000000006,
+      "45_to_54": -0.10599999999999996,
+      "55_and_older": -0.576
+    },
+    "genderIndex": {
+      "male": 0.418,
+      "female": -0.418
+    },
+    "peakAge": {
+      "band": "35_to_44",
+      "label": "35 to 44",
+      "value": 0.158
+    },
+    "gender": {
+      "side": "male",
+      "strength": "strong",
+      "value": 0.418,
+      "text": "strongly male-leaning"
+    },
+    "genres": [
+      {
+        "name": "Health & Fitness",
+        "affinity": 0.9
+      },
+      {
+        "name": "Education",
+        "affinity": 0.876
+      },
+      {
+        "name": "Nutrition",
+        "affinity": 0.866
+      },
+      {
+        "name": "Self-Improvement",
+        "affinity": 0.852
+      },
+      {
+        "name": "Fitness",
+        "affinity": 0.852
+      },
+      {
+        "name": "Business",
+        "affinity": 0.837
+      }
+    ],
+    "moods": [
+      {
+        "name": "Engaging",
+        "affinity": 0.979
+      },
+      {
+        "name": "Heroic",
+        "affinity": 0.966
+      },
+      {
+        "name": "Immersive",
+        "affinity": 0.945
+      },
+      {
+        "name": "Strategic",
+        "affinity": 0.925
+      },
+      {
+        "name": "Epic",
+        "affinity": 0.915
+      }
+    ],
+    "traits": [
+      {
+        "name": "Engaging Storyline",
+        "affinity": 0.947
+      },
+      {
+        "name": "Historical",
+        "affinity": 0.945
+      },
+      {
+        "name": "Satire Loving",
+        "affinity": 0.94
+      },
+      {
+        "name": "Addictive",
+        "affinity": 0.937
+      },
+      {
+        "name": "Action Enthusiasts",
+        "affinity": 0.926
+      }
+    ],
+    "lifestyle": []
+  },
+  "sound": {
+    "mainstream": [
+      {
+        "id": "2B408CF7-D221-468C-A19E-70D7FC6A64F4",
+        "name": "Iya Terra",
+        "affinity": 0.924,
+        "popularity": 0.732,
+        "image": "https://images.qloo.com/i/2B408CF7-D221-468C-A19E-70D7FC6A64F4-420x-auto.jpg"
+      },
+      {
+        "id": "DECC89C5-41CF-4A3A-9377-89BB3FB1DF6F",
+        "name": "Stick Figure",
+        "affinity": 0.924,
+        "popularity": 0.968,
+        "image": "https://images.qloo.com/i/DECC89C5-41CF-4A3A-9377-89BB3FB1DF6F-420x-auto.jpg"
+      },
+      {
+        "id": "6D0D8498-648F-4F33-B0E3-787C0BDFCE2C",
+        "name": "Zach Deputy",
+        "affinity": 0.924,
+        "popularity": 0.768,
+        "image": "https://images.qloo.com/i/6D0D8498-648F-4F33-B0E3-787C0BDFCE2C-420x-auto.jpg"
+      },
+      {
+        "id": "99A88995-F1C7-4552-A801-934BDB78922E",
+        "name": "Fortunate Youth",
+        "affinity": 0.923,
+        "popularity": 0.869,
+        "image": "https://images.qloo.com/i/99A88995-F1C7-4552-A801-934BDB78922E-420x-auto.jpg"
+      },
+      {
+        "id": "EA2418FD-0A83-4EAC-8FD2-93266475B1DC",
+        "name": "Arden Park Roots",
+        "affinity": 0.922,
+        "popularity": 0.209,
+        "image": "https://images.qloo.com/i/EA2418FD-0A83-4EAC-8FD2-93266475B1DC-420x-auto.jpg"
+      },
+      {
+        "id": "0EE02925-AA5E-4A9F-970B-7664B8D22026",
+        "name": "Trevor Hall",
+        "affinity": 0.921,
+        "popularity": 0.971,
+        "image": "https://images.qloo.com/i/0EE02925-AA5E-4A9F-970B-7664B8D22026-420x-auto.jpg"
+      },
+      {
+        "id": "8F127B26-7329-45CC-82A5-D2C3976FAB97",
+        "name": "Giant Panda Guerilla Dub Squad",
+        "affinity": 0.92,
+        "popularity": 0.914,
+        "image": "https://images.qloo.com/i/8F127B26-7329-45CC-82A5-D2C3976FAB97-420x-auto.jpg"
+      },
+      {
+        "id": "B4156B5A-17B0-491A-BE8B-4D376A5339D0",
+        "name": "Soul Majestic",
+        "affinity": 0.919,
+        "popularity": 0.616,
+        "image": "https://images.qloo.com/i/B4156B5A-17B0-491A-BE8B-4D376A5339D0-420x-auto.jpg"
+      }
+    ],
+    "emerging": [
+      {
+        "id": "EA2418FD-0A83-4EAC-8FD2-93266475B1DC",
+        "name": "Arden Park Roots",
+        "affinity": 0.922,
+        "popularity": 0.209,
+        "image": "https://images.qloo.com/i/EA2418FD-0A83-4EAC-8FD2-93266475B1DC-420x-auto.jpg"
+      },
+      {
+        "id": "3B6F009C-E020-46FE-A012-29965427A8CD",
+        "name": "Unified Highway",
+        "affinity": 0.919,
+        "popularity": 0.453,
+        "image": "https://images.qloo.com/i/3B6F009C-E020-46FE-A012-29965427A8CD-420x-auto.jpg"
+      },
+      {
+        "id": "687BB647-EFAD-4D6A-BCAE-B9C7189822CC",
+        "name": "Poor Man's Whiskey",
+        "affinity": 0.912,
+        "popularity": 0.514,
+        "image": "https://images.qloo.com/i/687BB647-EFAD-4D6A-BCAE-B9C7189822CC-420x-auto.jpg"
+      },
+      {
+        "id": "8281B16A-ED86-4C7B-A7EC-A5FE936A4C35",
+        "name": "Roots of Creation",
+        "affinity": 0.911,
+        "popularity": 0.568,
+        "image": "https://images.qloo.com/i/8281B16A-ED86-4C7B-A7EC-A5FE936A4C35-420x-auto.jpg"
+      },
+      {
+        "id": "6A0F7608-7C5F-485D-B808-71A0FC636C41",
+        "name": "Indubious",
+        "affinity": 0.906,
+        "popularity": 0.524,
+        "image": "https://images.qloo.com/i/6A0F7608-7C5F-485D-B808-71A0FC636C41-420x-auto.jpg"
+      },
+      {
+        "id": "F6EC69A5-73B0-4918-B06F-E32268391436",
+        "name": "The Magic Beans",
+        "affinity": 0.906,
+        "popularity": 0.24,
+        "image": "https://images.qloo.com/i/F6EC69A5-73B0-4918-B06F-E32268391436-420x-auto.jpg"
+      },
+      {
+        "id": "341E3EA8-F944-412C-A5A9-8DBF95B88F9A",
+        "name": "Kendall Street Company",
+        "affinity": 0.904,
+        "popularity": 0.59,
+        "image": "https://images.qloo.com/i/341E3EA8-F944-412C-A5A9-8DBF95B88F9A-420x-auto.jpg"
+      },
+      {
+        "id": "18171C5A-67E6-4A2B-B738-BF28729341F7",
+        "name": "HIRIE",
+        "affinity": 0.898,
+        "popularity": 0.524,
+        "image": "https://images.qloo.com/i/18171C5A-67E6-4A2B-B738-BF28729341F7-420x-auto.jpg"
+      }
+    ]
+  },
+  "partners": {
+    "picks": [
+      {
+        "id": "B06F980E-A566-490E-B6B9-92F73F43602B",
+        "name": "Whoop",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.917,
+        "brandType": "Service Brand",
+        "industries": [
+          "Health & Wellness",
+          "Consumer Electronics",
+          "Fitness Technology"
+        ],
+        "description": "WHOOP is a wearable health and fitness brand offering a scientifically-grounded system that tracks sleep, strain, recovery, and performance to optimize human potential.",
+        "image": "https://images.qloo.com/i/B06F980E-A566-490E-B6B9-92F73F43602B-420x-auto.jpg",
+        "reason": "Whoop fits the science-grounded interest in sleep, strain, recovery, and performance optimization central to this health-focused audience.",
+        "warnings": [],
+        "audience": {
+          "peakAge": {
+            "band": "35_to_44",
+            "label": "35 to 44",
+            "value": 0.43
+          },
+          "gender": {
+            "side": "male",
+            "strength": "strong",
+            "value": 0.34,
+            "text": "strongly male-leaning"
+          }
+        }
+      },
+      {
+        "id": "2650C16E-BF2A-41A3-8166-62D6FA25C19A",
+        "name": "Onnit",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.907,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Sports & Fitness",
+          "Consumer Packaged Goods"
+        ],
+        "description": "Onnit is a holistic wellness and lifestyle brand offering brain, workout, and health supplements, as well as fitness equipment like kettlebells.",
+        "image": "https://images.qloo.com/i/2650C16E-BF2A-41A3-8166-62D6FA25C19A-420x-auto.jpg",
+        "reason": "Onnit aligns with holistic wellness, brain health, workout supplements, and functional fitness equipment for performance-minded listeners.",
+        "warnings": [],
+        "audience": {
+          "peakAge": {
+            "band": "35_to_44",
+            "label": "35 to 44",
+            "value": 0.43
+          },
+          "gender": {
+            "side": "male",
+            "strength": "strong",
+            "value": 0.63,
+            "text": "strongly male-leaning"
+          }
+        }
+      },
+      {
+        "id": "2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9",
+        "name": "Oura Ring",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.887,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Consumer Electronics",
+          "Wearable Technology"
+        ],
+        "description": "Oura Ring is a smart ring that tracks fitness, sleep, stress, and health metrics to provide personal wellness insights.",
+        "image": "https://images.qloo.com/i/2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9-420x-auto.jpg",
+        "reason": "Oura Ring offers discreet tracking of sleep, stress, fitness, and health metrics with personal insights this audience values.",
+        "warnings": [],
+        "audience": {
+          "peakAge": {
+            "band": "30_to_34",
+            "label": "30 to 34",
+            "value": 0.25
+          },
+          "gender": {
+            "side": "male",
+            "strength": "slight",
+            "value": 0.09,
+            "text": "slightly male-leaning"
+          }
+        }
+      },
+      {
+        "id": "D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C",
+        "name": "Vuori",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.877,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Sports & Fitness"
+        ],
+        "description": "Vuori is a retail apparel brand specializing in athletic and performance clothing for men and women, designed for movement and everyday style.",
+        "image": "https://images.qloo.com/i/D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C-420x-auto.jpg",
+        "reason": "Vuori provides performance apparel designed for movement and everyday wear, credible for active attendees without feeling like fashion sponsorship.",
+        "warnings": [],
+        "audience": {
+          "peakAge": {
+            "band": "45_to_54",
+            "label": "45 to 54",
+            "value": 0.44
+          },
+          "gender": {
+            "side": "male",
+            "strength": "strong",
+            "value": 0.34,
+            "text": "strongly male-leaning"
+          }
+        }
+      },
+      {
+        "id": "1A91A46A-3764-4720-973D-C25951E4484C",
+        "name": "Huel",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.858,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Health & Wellness"
+        ],
+        "description": "Huel is a global food and beverage brand offering nutritionally complete, plant-based powdered meals, ready-to-drink meals, snacks, and supplements designed for convenie…",
+        "image": "https://images.qloo.com/i/1A91A46A-3764-4720-973D-C25951E4484C-420x-auto.jpg",
+        "site": "https://huel.com/",
+        "reason": "Huel matches nutrition and convenience interests through nutritionally complete meals and supplements built for busy, optimization-focused routines.",
+        "warnings": [],
+        "audience": {
+          "peakAge": {
+            "band": "45_to_54",
+            "label": "45 to 54",
+            "value": 0.18
+          },
+          "gender": {
+            "side": "male",
+            "strength": "strong",
+            "value": 0.68,
+            "text": "strongly male-leaning"
+          }
+        }
+      },
+      {
+        "id": "BF298229-6B37-44B8-ABC3-2AC098C5767B",
+        "name": "Laird Superfood",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.855,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Health & Wellness"
+        ],
+        "description": "Laird Superfood is a plant-based brand offering dairy-free, gluten-free, non-GMO superfood creamers, organic coffees, and functional mushroom blends.",
+        "image": "https://images.qloo.com/i/BF298229-6B37-44B8-ABC3-2AC098C5767B-420x-auto.jpg",
+        "reason": "Laird Superfood fits functional nutrition interests with plant-based creamers, coffees, and mushroom blends positioned around daily performance.",
+        "warnings": [
+          "Brand audience peaks at 55 and over, this audience at 35 to 44."
+        ],
+        "audience": {
+          "peakAge": {
+            "band": "55_and_older",
+            "label": "55 and over",
+            "value": 0.45
+          },
+          "gender": {
+            "side": "male",
+            "strength": "strong",
+            "value": 0.37,
+            "text": "strongly male-leaning"
+          }
+        }
+      }
+    ],
+    "candidates": [
+      {
+        "id": "B06F980E-A566-490E-B6B9-92F73F43602B",
+        "name": "Whoop",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.917,
+        "brandType": "Service Brand",
+        "industries": [
+          "Health & Wellness",
+          "Consumer Electronics",
+          "Fitness Technology"
+        ],
+        "description": "WHOOP is a wearable health and fitness brand offering a scientifically-grounded system that tracks sleep, strain, recovery, and performance to optimize human potential.",
+        "image": "https://images.qloo.com/i/B06F980E-A566-490E-B6B9-92F73F43602B-420x-auto.jpg"
+      },
+      {
+        "id": "C4438E6F-8EA9-463E-850E-43C5D72C4BDF",
+        "name": "Untuckit",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.91,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "E-commerce"
+        ],
+        "description": "UNTUCKit is a clothing brand specializing in shirts designed to be worn untucked, offering polos, button-downs, shorts, pants, and sport coats with a focus on perfect fi…",
+        "image": "https://images.qloo.com/i/C4438E6F-8EA9-463E-850E-43C5D72C4BDF-420x-auto.jpg",
+        "site": "https://www.untuckit.com/"
+      },
+      {
+        "id": "2650C16E-BF2A-41A3-8166-62D6FA25C19A",
+        "name": "Onnit",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.907,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Sports & Fitness",
+          "Consumer Packaged Goods"
+        ],
+        "description": "Onnit is a holistic wellness and lifestyle brand offering brain, workout, and health supplements, as well as fitness equipment like kettlebells.",
+        "image": "https://images.qloo.com/i/2650C16E-BF2A-41A3-8166-62D6FA25C19A-420x-auto.jpg"
+      },
+      {
+        "id": "9522D71D-B878-444D-8D84-F71959839013",
+        "name": "Crossfit",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.897,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Sports & Fitness",
+          "Health & Wellness",
+          "Education"
+        ],
+        "description": "CrossFit is a fitness brand known for its high-intensity functional training programs and the CrossFit Games competition to find the fittest athletes.",
+        "image": "https://images.qloo.com/i/9522D71D-B878-444D-8D84-F71959839013-420x-auto.jpg"
+      },
+      {
+        "id": "F6F1ED5F-CEAA-4A95-A1FC-4F58E5D0B16B",
+        "name": "Renaissance Periodization",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.894,
+        "brandType": "Service Brand",
+        "industries": [
+          "Health & Wellness",
+          "Sports & Fitness",
+          "Technology"
+        ],
+        "description": "Renaissance Periodization (RP Strength) is a fitness brand offering science-based strength training programs, hypertrophy apps, and nutrition coaching to help build musc…",
+        "image": "https://images.qloo.com/i/F6F1ED5F-CEAA-4A95-A1FC-4F58E5D0B16B-420x-auto.jpg"
+      },
+      {
+        "id": "3029C0A3-DE3F-42D0-9425-43520D665D7F",
+        "name": "Oars + Alps",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.893,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Health & Wellness"
+        ],
+        "description": "Oars + Alps is a men's skincare brand offering deodorant, sunscreen, face wash, and other grooming essentials made without harsh chemicals.",
+        "image": "https://images.qloo.com/i/3029C0A3-DE3F-42D0-9425-43520D665D7F-420x-auto.jpg"
+      },
+      {
+        "id": "AE366930-7BD7-4E8D-80D0-F3C290434144",
+        "name": "Reign Body Fuel",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.89,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Health & Wellness",
+          "Sports & Fitness"
+        ],
+        "description": "Reign Body Fuel is a brand of fitness and performance energy drinks designed to help athletes perform at their peak with natural caffeine and better-for-you ingredients.",
+        "image": "https://images.qloo.com/i/AE366930-7BD7-4E8D-80D0-F3C290434144-420x-auto.jpg"
+      },
+      {
+        "id": "09930535-BB1C-43C2-A235-A3381CD5EF91",
+        "name": "The Beard Club",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.889,
+        "brandType": "Product Brand",
+        "industries": [
+          "Beauty & Personal Care",
+          "Consumer Packaged Goods",
+          "E-commerce"
+        ],
+        "description": "The Beard Club is a men's grooming brand specializing in beard care products and curated grooming kits to help men grow and maintain their beards.",
+        "image": "https://images.qloo.com/i/09930535-BB1C-43C2-A235-A3381CD5EF91-420x-auto.jpg"
+      },
+      {
+        "id": "2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9",
+        "name": "Oura Ring",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.887,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Consumer Electronics",
+          "Wearable Technology"
+        ],
+        "description": "Oura Ring is a smart ring that tracks fitness, sleep, stress, and health metrics to provide personal wellness insights.",
+        "image": "https://images.qloo.com/i/2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9-420x-auto.jpg"
+      },
+      {
+        "id": "B102D40B-8F3F-4476-A763-CEAB4CCE249E",
+        "name": "Xero Shoes",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.886,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Health & Wellness",
+          "Sports & Fitness"
+        ],
+        "description": "Xero Shoes is a brand specializing in barefoot-inspired minimalist footwear, including shoes, boots, and sandals designed for natural foot movement and comfort.",
+        "image": "https://images.qloo.com/i/B102D40B-8F3F-4476-A763-CEAB4CCE249E-420x-auto.jpg"
+      },
+      {
+        "id": "17256545-2272-40F1-90D2-2FC6AE4DB798",
+        "name": "McGregor Fast",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.885,
+        "brandType": "Personal Brand",
+        "industries": [
+          "Sports & Fitness",
+          "Health & Wellness"
+        ],
+        "description": "McGregor FAST is a training program developed to propel athletes into elite physiological shape, endorsed by Conor McGregor, offering specialized workouts and fitness eq…",
+        "image": "https://images.qloo.com/i/17256545-2272-40F1-90D2-2FC6AE4DB798-420x-auto.jpg"
+      },
+      {
+        "id": "88CF88E9-093B-4D8D-B941-42DB7E4BCF2D",
+        "name": "Proper Cloth",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.885,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "E-Commerce"
+        ],
+        "description": "Proper Cloth is a premium men's custom clothing brand specializing in made-to-measure shirts and tailored menswear with a focus on quality, fit, and craftsmanship.",
+        "image": "https://images.qloo.com/i/88CF88E9-093B-4D8D-B941-42DB7E4BCF2D-420x-auto.jpg"
+      },
+      {
+        "id": "8B0015D1-1E85-4FE5-A5F2-84AC83CDD180",
+        "name": "Thursday Boot Company",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.883,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "Footwear"
+        ],
+        "description": "Thursday Boot Company is a footwear brand known for handcrafted men's and women's boots combining durability and fashion, including lace-ups, chukkas, and Chelsea boots.",
+        "image": "https://images.qloo.com/i/8B0015D1-1E85-4FE5-A5F2-84AC83CDD180-420x-auto.jpg"
+      },
+      {
+        "id": "DD595A25-C1C4-45A3-BC4A-46BD10A14EAF",
+        "name": "Black Rifle",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.882,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Retail"
+        ],
+        "description": "Black Rifle Coffee Company is a veteran-founded brand specializing in premium coffee and energy drinks for people who love America.",
+        "image": "https://images.qloo.com/i/DD595A25-C1C4-45A3-BC4A-46BD10A14EAF-420x-auto.jpg",
+        "site": "https://www.blackriflecoffee.com/"
+      },
+      {
+        "id": "D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C",
+        "name": "Vuori",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.877,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Sports & Fitness"
+        ],
+        "description": "Vuori is a retail apparel brand specializing in athletic and performance clothing for men and women, designed for movement and everyday style.",
+        "image": "https://images.qloo.com/i/D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C-420x-auto.jpg"
+      },
+      {
+        "id": "D7BDF978-7202-4572-B025-A78AD4AE48A4",
+        "name": "Birddogs Shorts",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.877,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "E-commerce"
+        ],
+        "description": "Birddogs is a men's apparel brand known for shorts and pants featuring comfortable built-in liners, offering casual and slim fit styles.",
+        "image": "https://images.qloo.com/i/D7BDF978-7202-4572-B025-A78AD4AE48A4-420x-auto.jpg"
+      },
+      {
+        "id": "E17C3CBD-B054-4FFB-B9C7-EA1D4B1FA887",
+        "name": "Bylt Basics",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.876,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Retail",
+          "E-Commerce"
+        ],
+        "description": "BYLT Basics is a brand offering premium everyday men's and women's basics, including underwear and shirts, designed for comfort, durability, and style.",
+        "image": "https://images.qloo.com/i/E17C3CBD-B054-4FFB-B9C7-EA1D4B1FA887-420x-auto.jpg"
+      },
+      {
+        "id": "8293A3AA-0A66-481A-A475-0AD783AF0B3B",
+        "name": "August McGregor",
+        "category": "fashion",
+        "categoryLabel": "Fashion and apparel",
+        "affinity": 0.876,
+        "brandType": "Product Brand",
+        "industries": [
+          "Fashion & Apparel",
+          "Luxury Retail"
+        ],
+        "description": "August McGregor is a fashion brand collaboration known for men's custom suits and clothing, associated with Conor McGregor and David August.",
+        "image": "https://images.qloo.com/i/8293A3AA-0A66-481A-A475-0AD783AF0B3B-420x-auto.jpg"
+      },
+      {
+        "id": "5F620BA9-9B72-4580-94E5-5D3FE09DCC60",
+        "name": "Stryve Biltong",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.87,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Health & Wellness",
+          "Snack Foods"
+        ],
+        "description": "Stryve Biltong is a healthy snacking brand offering high-protein, additive-free, air-dried beef snacks known as biltong, sourced from premium U.S. beef.",
+        "image": "https://images.qloo.com/i/5F620BA9-9B72-4580-94E5-5D3FE09DCC60-420x-auto.jpg"
+      },
+      {
+        "id": "331FEFDC-047C-4772-99B1-4324B9A23C32",
+        "name": "Butcher Box",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.867,
+        "brandType": "Service Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Subscription Services"
+        ],
+        "description": "ButcherBox is a subscription service delivering high-quality, humanely-raised meat and seafood directly to customers' doors.",
+        "image": "https://images.qloo.com/i/331FEFDC-047C-4772-99B1-4324B9A23C32-420x-auto.jpg"
+      },
+      {
+        "id": "A15D3A02-134D-4B12-A14D-CA3AFC79BA45",
+        "name": "PhD Nutrition",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.866,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Sports & Fitness",
+          "Consumer Packaged Goods"
+        ],
+        "description": "PhD Nutrition is a brand specializing in premium sports nutrition products, including protein powders and supplements designed for athletes and fitness enthusiasts.",
+        "image": "https://images.qloo.com/i/A15D3A02-134D-4B12-A14D-CA3AFC79BA45-420x-auto.jpg"
+      },
+      {
+        "id": "19E084C2-0B06-40F4-9B03-623894FA22B6",
+        "name": "Gatorade Zero",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.863,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Sports & Fitness"
+        ],
+        "description": "Gatorade Zero is a zero-sugar sports drink with electrolytes designed to hydrate and replenish what athletes lose in sweat.",
+        "image": "https://images.qloo.com/i/19E084C2-0B06-40F4-9B03-623894FA22B6-420x-auto.jpg"
+      },
+      {
+        "id": "DA172545-9817-4178-B8BF-30F0E9B78B55",
+        "name": "Foodspring athletics",
+        "category": "beauty",
+        "categoryLabel": "Health and beauty",
+        "affinity": 0.86,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Sports & Fitness",
+          "Health & Wellness",
+          "Personal Goods"
+        ],
+        "description": "Foodspring Athletics is a sports and fitness team or brand associated with athletic training, competitions, and fitness events.",
+        "image": "https://images.qloo.com/i/DA172545-9817-4178-B8BF-30F0E9B78B55-420x-auto.jpg"
+      },
+      {
+        "id": "1A91A46A-3764-4720-973D-C25951E4484C",
+        "name": "Huel",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.858,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Health & Wellness"
+        ],
+        "description": "Huel is a global food and beverage brand offering nutritionally complete, plant-based powdered meals, ready-to-drink meals, snacks, and supplements designed for convenie…",
+        "image": "https://images.qloo.com/i/1A91A46A-3764-4720-973D-C25951E4484C-420x-auto.jpg",
+        "site": "https://huel.com/"
+      },
+      {
+        "id": "BF298229-6B37-44B8-ABC3-2AC098C5767B",
+        "name": "Laird Superfood",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.855,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Health & Wellness"
+        ],
+        "description": "Laird Superfood is a plant-based brand offering dairy-free, gluten-free, non-GMO superfood creamers, organic coffees, and functional mushroom blends.",
+        "image": "https://images.qloo.com/i/BF298229-6B37-44B8-ABC3-2AC098C5767B-420x-auto.jpg"
+      },
+      {
+        "id": "1DEF570A-743A-4D58-A077-016C53E7E6DE",
+        "name": "Grenade",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.848,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Health & Wellness",
+          "Sports Nutrition"
+        ],
+        "description": "Grenade is a brand specializing in high protein, low sugar nutrition bars and supplements designed to fuel fitness and performance.",
+        "image": "https://images.qloo.com/i/1DEF570A-743A-4D58-A077-016C53E7E6DE-420x-auto.jpg"
+      },
+      {
+        "id": "BED9714C-EB06-4A8B-9490-EC8DAA5BD9D5",
+        "name": "Soylent",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.847,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods",
+          "Health & Wellness"
+        ],
+        "description": "Soylent is a science-backed meal replacement brand offering complete nutrition with protein, healthy fats, slow-burning carbs, and 28 essential vitamins and minerals, de…",
+        "image": "https://images.qloo.com/i/BED9714C-EB06-4A8B-9490-EC8DAA5BD9D5-420x-auto.jpg",
+        "site": "https://soylent.com/"
+      },
+      {
+        "id": "AE3508D6-540E-4088-9D15-7BB2AD04081C",
+        "name": "Mighty Leaf Tea Whole Leaf Tea",
+        "category": "food_drink",
+        "categoryLabel": "Food and drink",
+        "affinity": 0.847,
+        "brandType": "Product Brand",
+        "industries": [
+          "Food & Beverage",
+          "Consumer Packaged Goods"
+        ],
+        "description": "Mighty Leaf Tea offers premium whole leaf teas, herbs, fruits, and spices in silken tea pouches for a high-quality, flavorful tea experience.",
+        "image": "https://images.qloo.com/i/AE3508D6-540E-4088-9D15-7BB2AD04081C-420x-auto.jpg"
+      },
+      {
+        "id": "0F0382E0-5ADD-41C3-A973-B7E613007F1A",
+        "name": "Rivian Automotive",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.838,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Technology",
+          "Clean Energy"
+        ],
+        "description": "Rivian Automotive is an electric vehicle manufacturer specializing in adventure-ready electric trucks and SUVs, including the R1T and R1S models.",
+        "image": "https://images.qloo.com/i/0F0382E0-5ADD-41C3-A973-B7E613007F1A-420x-auto.jpg",
+        "site": "https://rivian.com"
+      },
+      {
+        "id": "78AC434A-FA7B-4BED-B8BE-3364D2DD9023",
+        "name": "Indian Motorcycle",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.835,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Motorcycle Manufacturing"
+        ],
+        "description": "Indian Motorcycle is America's first motorcycle company, known for its iconic motorcycles including Standard, Cruiser, Bagger, Elite, and Touring models.",
+        "image": "https://images.qloo.com/i/78AC434A-FA7B-4BED-B8BE-3364D2DD9023-420x-auto.jpg"
+      },
+      {
+        "id": "AD49C7B3-F699-4EB9-AA55-A67D63BB1E74",
+        "name": "Triumph Motorcycles",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.832,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Motorcycle Manufacturing"
+        ],
+        "description": "Triumph Motorcycles is a British motorcycle manufacturer known for iconic, stylish, and performance-oriented motorcycles designed by riders for riders.",
+        "image": "https://images.qloo.com/i/AD49C7B3-F699-4EB9-AA55-A67D63BB1E74-420x-auto.jpg"
+      },
+      {
+        "id": "83C8E95E-A528-4609-873C-0C10904D51DF",
+        "name": "Arch Motorcycle",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.832,
+        "brandType": "Product Brand",
+        "industries": [
+          "Automotive",
+          "Motorcycles"
+        ],
+        "description": "ARCH Motorcycle is a California-based company specializing in bespoke American motorcycles with a focus on performance, customization, and craftsmanship.",
+        "image": "https://images.qloo.com/i/83C8E95E-A528-4609-873C-0C10904D51DF-420x-auto.jpg",
+        "site": "http://www.archmotorcycle.com/"
+      },
+      {
+        "id": "F2ED2D8B-C91A-425E-9F65-241F905C6232",
+        "name": "Bfgoodrich Tires",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.825,
+        "brandType": "Product Brand",
+        "industries": [
+          "Automotive",
+          "Tire Manufacturing"
+        ],
+        "description": "BFGoodrich Tires is a brand specializing in high-performance and off-road tires known for durability and race-proven engineering across various terrains.",
+        "image": "https://images.qloo.com/i/F2ED2D8B-C91A-425E-9F65-241F905C6232-420x-auto.jpg"
+      },
+      {
+        "id": "215F9D93-0499-41F9-953A-CE6D5D4E3C77",
+        "name": "Earthroamer",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.824,
+        "brandType": "Product Brand",
+        "industries": [
+          "Automotive",
+          "Recreational Vehicles",
+          "Outdoor Adventure"
+        ],
+        "description": "EarthRoamer is a company specializing in luxury overland vehicles, producing solar/diesel hybrid, four-wheel drive expedition vehicles for off-road travel.",
+        "image": "https://images.qloo.com/i/215F9D93-0499-41F9-953A-CE6D5D4E3C77-420x-auto.jpg"
+      },
+      {
+        "id": "DE2CB441-3EF7-4942-92C3-21F8D379BFCD",
+        "name": "Winnebago Industries",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.82,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Retail",
+          "Hospitality & Travel",
+          "Industrials"
+        ],
+        "description": "Winnebago Industries is a leading manufacturer of premium outdoor recreation products including RVs, motorhomes, travel trailers, fifth wheels, power boats, and pontoons…",
+        "image": "https://images.qloo.com/i/DE2CB441-3EF7-4942-92C3-21F8D379BFCD-420x-auto.jpg",
+        "site": "https://winnebagoind.com/"
+      },
+      {
+        "id": "8FD09C3A-7362-4749-BDCE-12C3933FDC25",
+        "name": "Harley-Davidson",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.814,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Motorcycles",
+          "Mechanical Engineering"
+        ],
+        "description": "Harley-Davidson is a renowned American motorcycle manufacturer known for its powerful, customizable motorcycles and extensive gear and accessories.",
+        "image": "https://images.qloo.com/i/8FD09C3A-7362-4749-BDCE-12C3933FDC25-420x-auto.jpg",
+        "site": "https://www.harley-davidson.com/"
+      },
+      {
+        "id": "64B8B573-69D1-426F-A1AC-691FF7A65A31",
+        "name": "Toyo Tire Corporation",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.812,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Rubber Manufacturing"
+        ],
+        "description": "Toyo Tire Corporation is a Japanese company specializing in manufacturing premium tires for trucks, SUVs, sports cars, and luxury vehicles.",
+        "image": "https://images.qloo.com/i/64B8B573-69D1-426F-A1AC-691FF7A65A31-420x-auto.jpg",
+        "site": "http://www.toyo-rubber.co.jp/"
+      },
+      {
+        "id": "42BC56E1-0667-49AF-B0F3-13C58816F53D",
+        "name": "Morgan Motor Company",
+        "category": "automotive",
+        "categoryLabel": "Automotive",
+        "affinity": 0.812,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Automotive",
+          "Luxury Goods"
+        ],
+        "description": "Morgan Motor Company is a British motor car manufacturer known for handcrafted sports cars featuring classic design and modern BMW engines.",
+        "image": "https://images.qloo.com/i/42BC56E1-0667-49AF-B0F3-13C58816F53D-420x-auto.jpg"
+      },
+      {
+        "id": "6D7DE619-CDD6-46DA-A8D6-B480F9D2D980",
+        "name": "Flare Audio",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.805,
+        "brandType": "Product Brand",
+        "industries": [
+          "Health & Wellness",
+          "Consumer Electronics",
+          "Audio Technology"
+        ],
+        "description": "Flare Audio is a British audio technology company innovating sound experience with unique acoustical products like Calmer earplugs and Mirror Image Sound™ technology.",
+        "image": "https://images.qloo.com/i/6D7DE619-CDD6-46DA-A8D6-B480F9D2D980-420x-auto.jpg"
+      },
+      {
+        "id": "5F55E5CB-3F3A-4B04-B794-E134A0835CD5",
+        "name": "Nvidia",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.799,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Technology",
+          "Semiconductors"
+        ],
+        "description": "NVIDIA is a global leader in AI computing, graphics processing units (GPUs), and platforms for gaming, autonomous vehicles, robotics, and data centers.",
+        "image": "https://images.qloo.com/i/5F55E5CB-3F3A-4B04-B794-E134A0835CD5-420x-auto.jpg",
+        "site": "https://nvidia.com"
+      },
+      {
+        "id": "E0C26132-AD45-4583-99EC-4E01F7430E72",
+        "name": "NZXT",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.799,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Computer Hardware"
+        ],
+        "description": "NZXT is a gaming hardware brand offering custom and prebuilt gaming PCs, PC components, and gaming peripherals.",
+        "image": "https://images.qloo.com/i/E0C26132-AD45-4583-99EC-4E01F7430E72-420x-auto.jpg",
+        "site": "http://www.nzxt.com"
+      },
+      {
+        "id": "4304245A-4464-4562-A775-E8C9DA1E3B92",
+        "name": "Otesaga Resort Hotel",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.794,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Resort Lodging"
+        ],
+        "description": "A historic luxury resort hotel in Cooperstown, NY, offering elegant accommodations, lakeside views, fine dining, and seasonal amenities.",
+        "image": "https://images.qloo.com/i/4304245A-4464-4562-A775-E8C9DA1E3B92-420x-auto.jpg"
+      },
+      {
+        "id": "25DBF2FB-D374-48D1-943C-BCE947AB3679",
+        "name": "Digital Storm Online",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.793,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Technology",
+          "Computer Hardware"
+        ],
+        "description": "Digital Storm is a company specializing in custom-built high-performance gaming PCs and desktops.",
+        "image": "https://images.qloo.com/i/25DBF2FB-D374-48D1-943C-BCE947AB3679-420x-auto.jpg",
+        "site": "http://www.digitalstorm.com/"
+      },
+      {
+        "id": "9AF96B7A-6AD0-4A20-819F-091582B82B74",
+        "name": "Corsair",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.792,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Technology",
+          "Gaming Hardware"
+        ],
+        "description": "Corsair is a leading brand specializing in high-performance PC components and gaming gear, including keyboards, mice, and headsets.",
+        "image": "https://images.qloo.com/i/9AF96B7A-6AD0-4A20-819F-091582B82B74-420x-auto.jpg"
+      },
+      {
+        "id": "1E74E760-63C9-48E9-89A0-6716C9C14E8B",
+        "name": "Playstation",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.79,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Media & Entertainment",
+          "Consumer Electronics",
+          "Video Games"
+        ],
+        "description": "PlayStation is a brand of video game consoles, games, and related services developed and sold by Sony Interactive Entertainment.",
+        "image": "https://images.qloo.com/i/1E74E760-63C9-48E9-89A0-6716C9C14E8B-420x-auto.jpg"
+      },
+      {
+        "id": "1680C451-3A9C-42F1-AB27-4A55017A545D",
+        "name": "Hyper X",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.788,
+        "brandType": "Product Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Gaming Hardware"
+        ],
+        "description": "HyperX is a brand specializing in high-quality gaming gear including wireless gaming keyboards, mice, headsets, and microphones, known for ergonomic design and customiza…",
+        "image": "https://images.qloo.com/i/1680C451-3A9C-42F1-AB27-4A55017A545D-420x-auto.jpg",
+        "site": "https://www.hyperxgaming.com/"
+      },
+      {
+        "id": "75D1595F-016E-4050-A30F-2378CDCEB3C0",
+        "name": "Xbox",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.788,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Media & Entertainment",
+          "Video Games"
+        ],
+        "description": "Xbox is a gaming brand offering consoles, games, and community services across console, PC, and cloud platforms.",
+        "image": "https://images.qloo.com/i/75D1595F-016E-4050-A30F-2378CDCEB3C0-420x-auto.jpg",
+        "site": "https://www.xbox.com/"
+      },
+      {
+        "id": "0EFBE144-D084-4FAA-899B-546E22CACA24",
+        "name": "Turtle Beach",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.787,
+        "brandType": "Corporate Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Video Games",
+          "Gaming Hardware"
+        ],
+        "description": "Turtle Beach is a leading brand specializing in gaming peripherals including headsets, controllers, keyboards, mice, and flight simulation gear, known for products like…",
+        "image": "https://images.qloo.com/i/0EFBE144-D084-4FAA-899B-546E22CACA24-420x-auto.jpg",
+        "site": "http://www.turtlebeach.com"
+      },
+      {
+        "id": "C5E58757-699C-4B97-B733-CCD3D8F8ADC8",
+        "name": "Waze",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.785,
+        "brandType": "Service Brand",
+        "industries": [
+          "Technology",
+          "Automotive Navigation",
+          "Software"
+        ],
+        "description": "Waze is a community-driven navigation app providing real-time driving directions, live traffic updates, and road condition alerts.",
+        "image": "https://images.qloo.com/i/C5E58757-699C-4B97-B733-CCD3D8F8ADC8-420x-auto.jpg",
+        "site": "https://www.waze.com"
+      },
+      {
+        "id": "1DA3EB67-5AA9-402B-9023-AC4F0194DEE9",
+        "name": "Luxury Retreats",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.785,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Vacation Rentals"
+        ],
+        "description": "Luxury Retreats is a travel company offering luxury vacation rentals worldwide with premium amenities and inspiring views.",
+        "image": "https://images.qloo.com/i/1DA3EB67-5AA9-402B-9023-AC4F0194DEE9-420x-auto.jpg"
+      },
+      {
+        "id": "D3259CA6-90A7-4BFA-963C-570DEC327A4C",
+        "name": "Wimdu",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.785,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Travel Technology"
+        ],
+        "description": "Wimdu is an online marketplace for booking vacation rentals and city apartments worldwide, offering over 350,000 properties.",
+        "image": "https://images.qloo.com/i/D3259CA6-90A7-4BFA-963C-570DEC327A4C-420x-auto.jpg"
+      },
+      {
+        "id": "786BA009-D295-4C0E-A32F-59424A3463DB",
+        "name": "Canada",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.784,
+        "brandType": "Government Brand",
+        "industries": [
+          "Government",
+          "Public Services",
+          "Tourism"
+        ],
+        "description": "Canada is a country in North America known for its vast geography, diverse culture, and government services including immigration, health, and natural resources.",
+        "image": "https://images.qloo.com/i/786BA009-D295-4C0E-A32F-59424A3463DB-420x-auto.jpg"
+      },
+      {
+        "id": "8F215838-D81D-4704-9D6A-DADDC9ED3BDF",
+        "name": "Upside",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.784,
+        "brandType": "Service Brand",
+        "industries": [
+          "Retail",
+          "Financial Technology",
+          "Consumer Rewards"
+        ],
+        "description": "Upside is a cashback app that rewards users with up to 3x more cash back on essential purchases like groceries, dining, and gas.",
+        "image": "https://images.qloo.com/i/8F215838-D81D-4704-9D6A-DADDC9ED3BDF-420x-auto.jpg"
+      },
+      {
+        "id": "CD2B9DB6-8105-4FB7-9729-3A3DD36BD19A",
+        "name": "Maingear",
+        "category": "gaming",
+        "categoryLabel": "Gaming and electronics",
+        "affinity": 0.783,
+        "brandType": "Product Brand",
+        "industries": [
+          "Consumer Electronics",
+          "Computer Hardware",
+          "Technology"
+        ],
+        "description": "MAINGEAR is a high-performance custom PC builder specializing in gaming desktops and laptops with advanced customization and premium components.",
+        "image": "https://images.qloo.com/i/CD2B9DB6-8105-4FB7-9729-3A3DD36BD19A-420x-auto.jpg",
+        "site": "http://www.maingear.com/"
+      },
+      {
+        "id": "E46121CA-1C42-43BA-9B86-D3B27444A173",
+        "name": "Fabhotels",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.782,
+        "brandType": "Retail Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Travel Technology"
+        ],
+        "description": "FabHotels is an Indian budget hotel chain offering 3-star accommodations across over 66 cities, known for affordable and quality stays.",
+        "image": "https://images.qloo.com/i/E46121CA-1C42-43BA-9B86-D3B27444A173-420x-auto.jpg"
+      },
+      {
+        "id": "D4367D5C-C621-4B22-A429-BE77DA6C251C",
+        "name": "Quark Expeditions",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.781,
+        "brandType": "Service Brand",
+        "industries": [
+          "Hospitality & Travel",
+          "Expedition Travel",
+          "Adventure Tourism"
+        ],
+        "description": "Quark Expeditions is a polar travel company specializing in immersive Arctic and Antarctic expeditions with expert guides and modern ships.",
+        "image": "https://images.qloo.com/i/D4367D5C-C621-4B22-A429-BE77DA6C251C-420x-auto.jpg",
+        "site": "http://www.quarkexpeditions.com"
+      },
+      {
+        "id": "000638AF-A93F-42E2-A901-6AC30D0E4A4F",
+        "name": "TSA PreCheck",
+        "category": "travel",
+        "categoryLabel": "Travel",
+        "affinity": 0.781,
+        "brandType": "Government Brand",
+        "industries": [
+          "Government",
+          "Transportation Security"
+        ],
+        "description": "Established following the events of 2001, this program is part of the United States Department of Homeland Security's mandate to ensure secure transportation. It provide…",
+        "image": "https://images.qloo.com/i/000638AF-A93F-42E2-A901-6AC30D0E4A4F-420x-auto.jpg"
+      }
+    ],
+    "stats": {
+      "fetched": 60,
+      "mediaBrands": 2,
+      "belowScore": 0,
+      "minScore": 0.75
+    }
+  },
+  "places": {
+    "city": "Austin",
+    "venues": [
+      {
+        "id": "250116EB-5407-4CC2-BAFC-571854035DB0",
+        "name": "Cathedral of Junk",
+        "type": "place",
+        "description": "Whimsical multilevel assemblage of over 60 tons of discarded furniture and objects built into a backyard art environment in south Austin.",
+        "image": "https://images.qloo.com/i/250116EB-5407-4CC2-BAFC-571854035DB0-420x-auto.jpg",
+        "popularity": 0.988,
+        "affinity": 0.867
+      },
+      {
+        "id": "D4919918-02F6-4B9D-9B16-437F9D284D01",
+        "name": "Allens Boots",
+        "type": "place",
+        "description": "Iconic South Congress shop offering an unparalleled selection of handcrafted cowboy boots and western apparel, including made-to-measure custom boots from El Paso.",
+        "image": "https://images.qloo.com/i/D4919918-02F6-4B9D-9B16-437F9D284D01-420x-auto.jpg",
+        "popularity": 0.993,
+        "affinity": 0.864
+      },
+      {
+        "id": "A73FC5BF-E9A2-479F-A65D-EC72EA89BB7B",
+        "name": "Roadhouse Relics",
+        "type": "place",
+        "description": "Studio-gallery in Austin showcasing Todd Sanders' vintage-inspired Americana neon artworks crafted with modern materials and specialized weathering techniques.",
+        "image": "https://images.qloo.com/i/A73FC5BF-E9A2-479F-A65D-EC72EA89BB7B-420x-auto.jpg",
+        "popularity": 0.932,
+        "affinity": 0.863
+      },
+      {
+        "id": "E7891B86-C7F4-4490-8DCE-D2166B03D09E",
+        "name": "Sukha Yoga Oltorf",
+        "type": "place",
+        "description": "Lofty, vibrant Bhakti-style yoga studio offering daily classes, meditation, breathwork, workshops and retreats with a strong community focus in South Austin.",
+        "image": "https://images.qloo.com/i/E7891B86-C7F4-4490-8DCE-D2166B03D09E-420x-auto.jpg",
+        "popularity": 0.716,
+        "affinity": 0.86
+      },
+      {
+        "id": "D5D79DF5-A80E-4E34-871F-0464C3352C87",
+        "name": "WYLD Bar",
+        "type": "place",
+        "description": "Lively downtown Austin bar and event venue with piano music, karaoke, a mechanical bull, and creative cocktails for parties and nights out.",
+        "image": "https://images.qloo.com/i/D5D79DF5-A80E-4E34-871F-0464C3352C87-420x-auto.jpg",
+        "popularity": 0.077,
+        "affinity": 0.86
+      },
+      {
+        "id": "EDF5A72E-92EF-41DE-928D-5238D04BB583",
+        "name": "ONNIT",
+        "type": "place",
+        "description": "Corporate retail location offering science-backed nootropics, performance supplements, and curated wellness bundles backed by lab-tested formulations for cognitive and physical optimization.",
+        "image": "https://images.qloo.com/i/EDF5A72E-92EF-41DE-928D-5238D04BB583-420x-auto.jpg",
+        "popularity": 0.989,
+        "affinity": 0.859
+      },
+      {
+        "id": "C994F78F-19FF-4E72-B381-085DAD6F2467",
+        "name": "Rocheli Patisserie",
+        "type": "place",
+        "description": "Luxury patisserie on Austin's Chicon Street offering handcrafted pastries, cakes, and coffee.",
+        "image": "https://images.qloo.com/i/C994F78F-19FF-4E72-B381-085DAD6F2467-420x-auto.jpg",
+        "popularity": 0.179,
+        "affinity": 0.858
+      },
+      {
+        "id": "490117A4-AE69-494D-92D4-7B6FF55FC4DE",
+        "name": "Lady Bird Lake",
+        "type": "place",
+        "description": "Urban river-like reservoir in central Austin offering kayaking and rowing, with continuous waterfront trails for jogging, biking, and wildlife viewing.",
+        "image": "https://images.qloo.com/i/490117A4-AE69-494D-92D4-7B6FF55FC4DE-420x-auto.jpg",
+        "popularity": 1,
+        "affinity": 0.857
+      }
+    ],
+    "neighborhoods": [
+      {
+        "id": "F57D2546-ACAF-4E29-AA78-F668D047A970",
+        "name": "Brentwood",
+        "area": "Brentwood, Austin, Travis, Texas, United States of America",
+        "affinity": 0.533
+      },
+      {
+        "id": "ABFA036B-B2EC-4FBF-A0D8-1D2DD720D137",
+        "name": "Allandale",
+        "area": "Allandale, Austin, Travis, Texas, United States of America",
+        "affinity": 0.333
+      },
+      {
+        "id": "8BA2AD4C-EBF5-4228-B7BD-3157706A0AB3",
+        "name": "Wooten",
+        "area": "Wooten, Austin, Travis, Texas, United States of America",
+        "affinity": 0.267
+      }
+    ]
+  },
+  "editor": {
+    "source": "llm",
+    "headline": "Huberman Lab live tour sponsorship should sell measurable self-optimization, not generic wellness lifestyle branding.",
+    "audienceSummary": "The audience is strongly male-leaning with a clear peak in mid-adulthood, over-indexing on health and fitness, education, nutrition, self-improvement, and business. They accept partners as authentic when brands feel scientific, performance-driven, and useful rather than fashionable, indulgent, or purely entertaining.",
+    "launchAngles": [
+      "Live recovery and sleep-readiness activations where attendees can connect daily habits to measurable performance outcomes",
+      "Science-led nutrition and training workshops framed around practical protocols for strength, focus, and endurance",
+      "On-site performance apparel and wearable trials positioned as tools for training, travel, and tour-day routines"
+    ],
+    "caveats": [
+      "Measured audience peak sits above the stated target, so outreach should validate whether live tour buyers match the broader podcast audience.",
+      "Health and supplement partners will need careful claims discipline to preserve scientific credibility with this education-leaning audience.",
+      "Fashion-led or grooming-led sponsors risk feeling inauthentic unless tied directly to performance, recovery, or measurable wellbeing."
+    ]
+  },
+  "cliche": {
+    "prompt": "A team is preparing the launch of the podcast \"Huberman Lab\", aimed at 30 to 34, male. Which 5 brands would be the best partners, and which 5 music artists best fit its audience? Return JSON: {\"brands\": [\"name\", ...], \"artists\": [\"name\", ...]}",
+    "brands": {
+      "llm": [
+        {
+          "name": "AG1",
+          "qlooName": "AG1 Energy",
+          "id": "9BA78DCE-1E6A-4E02-BE51-47636776A254",
+          "affinity": 0.823,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 8
+        },
+        {
+          "name": "Eight Sleep",
+          "qlooName": "Eight Sleep",
+          "id": "81EC484E-33D2-4247-B899-EB76B4439D4D",
+          "affinity": 0.858,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 5
+        },
+        {
+          "name": "Momentous",
+          "qlooName": "Momentous",
+          "id": "351F0B0E-CB3F-4952-8A93-84990CE7716C",
+          "affinity": 0.853,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 7
+        },
+        {
+          "name": "WHOOP",
+          "qlooName": "Whoop",
+          "id": "B06F980E-A566-490E-B6B9-92F73F43602B",
+          "affinity": 0.917,
+          "inOurPicks": true,
+          "found": true,
+          "rank": 1
+        },
+        {
+          "name": "LMNT",
+          "inOurPicks": false,
+          "found": false
+        }
+      ],
+      "ours": [
+        {
+          "id": "B06F980E-A566-490E-B6B9-92F73F43602B",
+          "name": "Whoop",
+          "affinity": 0.917
+        },
+        {
+          "id": "2650C16E-BF2A-41A3-8166-62D6FA25C19A",
+          "name": "Onnit",
+          "affinity": 0.907,
+          "rank": 2
+        },
+        {
+          "id": "2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9",
+          "name": "Oura Ring",
+          "affinity": 0.887,
+          "rank": 3
+        },
+        {
+          "id": "D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C",
+          "name": "Vuori",
+          "affinity": 0.877,
+          "rank": 4
+        },
+        {
+          "id": "1A91A46A-3764-4720-973D-C25951E4484C",
+          "name": "Huel",
+          "affinity": 0.858,
+          "rank": 6
+        }
+      ],
+      "summary": {
+        "llmAverage": 0.863,
+        "oursAverage": 0.889,
+        "llmBelowOurFloor": 2,
+        "overlap": 1,
+        "notInQloo": 1,
+        "scored": 4
+      }
+    },
+    "artists": {
+      "llm": [
+        {
+          "name": "Tool",
+          "qlooName": "Tool",
+          "id": "851EC557-2F8B-4DB7-A4A9-2A2BB606E450",
+          "affinity": 0.833,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 6
+        },
+        {
+          "name": "Bon Iver",
+          "qlooName": "Bon Iver",
+          "id": "E51DB8F2-7A93-4746-A283-E55B5216FDE1",
+          "affinity": 0.779,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 8
+        },
+        {
+          "name": "The National",
+          "qlooName": "The National",
+          "id": "192BB96E-F4BD-4A76-B24E-CD049EC9DFA2",
+          "affinity": 0.716,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 10
+        },
+        {
+          "name": "Tame Impala",
+          "qlooName": "Tame Impala",
+          "id": "D1AE8792-9129-46E0-AEE7-2C3A81E91385",
+          "affinity": 0.798,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 7
+        },
+        {
+          "name": "Hans Zimmer",
+          "qlooName": "Hans Zimmer",
+          "id": "37DB91E9-9EE1-4C98-AA01-0AF0C34274EC",
+          "affinity": 0.721,
+          "inOurPicks": false,
+          "found": true,
+          "rank": 9
+        }
+      ],
+      "ours": [
+        {
+          "id": "2B408CF7-D221-468C-A19E-70D7FC6A64F4",
+          "name": "Iya Terra",
+          "affinity": 0.845,
+          "rank": 5
+        },
+        {
+          "id": "DECC89C5-41CF-4A3A-9377-89BB3FB1DF6F",
+          "name": "Stick Figure",
+          "affinity": 0.852,
+          "rank": 4
+        },
+        {
+          "id": "6D0D8498-648F-4F33-B0E3-787C0BDFCE2C",
+          "name": "Zach Deputy",
+          "affinity": 0.865,
+          "rank": 3
+        },
+        {
+          "id": "99A88995-F1C7-4552-A801-934BDB78922E",
+          "name": "Fortunate Youth",
+          "affinity": 0.89,
+          "rank": 1
+        },
+        {
+          "id": "EA2418FD-0A83-4EAC-8FD2-93266475B1DC",
+          "name": "Arden Park Roots",
+          "affinity": 0.872,
+          "rank": 2
+        }
+      ],
+      "summary": {
+        "llmAverage": 0.769,
+        "oursAverage": 0.865,
+        "llmBelowOurFloor": 5,
+        "overlap": 0,
+        "notInQloo": 0,
+        "scored": 5
+      }
+    }
+  },
+  "provenance": [
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+      "status": 200,
+      "ms": 6270,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "filter.tag.types": "urn:tag:emotional_tone:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&filter.tag.types=urn%3Atag%3Aemotional_tone%3Aqloo&take=8",
+      "status": 200,
+      "ms": 8123,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "filter.tag.types": "urn:tag:lifestyle:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&filter.tag.types=urn%3Atag%3Alifestyle%3Aqloo&take=8",
+      "status": 200,
+      "ms": 382,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "filter.tag.types": "urn:tag:genre:media",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&filter.tag.types=urn%3Atag%3Agenre%3Amedia&take=8",
+      "status": 200,
+      "ms": 9340,
+      "cached": false
+    },
+    {
+      "module": "sound",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "take": 14
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&take=14",
+      "status": 200,
+      "ms": 632,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.tags": "urn:tag:genre:brand:fashion",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.tags=urn%3Atag%3Agenre%3Abrand%3Afashion&take=10",
+      "status": 200,
+      "ms": 442,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.tags": "urn:tag:genre:brand:food_and_beverage",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.tags=urn%3Atag%3Agenre%3Abrand%3Afood_and_beverage&take=10",
+      "status": 200,
+      "ms": 416,
+      "cached": false
+    },
+    {
+      "module": "sound",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "take": 14,
+        "filter.popularity.max": 0.6
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&take=14&filter.popularity.max=0.6",
+      "status": 200,
+      "ms": 2340,
+      "cached": false
+    },
+    {
+      "module": "profile",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:tag",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "filter.tag.types": "urn:tag:audience:qloo",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Atag&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&filter.tag.types=urn%3Atag%3Aaudience%3Aqloo&take=8",
+      "status": 200,
+      "ms": 4967,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.tags": "urn:tag:genre:brand:health_and_beauty",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.tags=urn%3Atag%3Agenre%3Abrand%3Ahealth_and_beauty&take=10",
+      "status": 200,
+      "ms": 381,
+      "cached": false
+    },
+    {
+      "module": "timing",
+      "path": "/v2/trending",
+      "params": {
+        "filter.type": "urn:entity:podcast",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "filter.start_date": "2026-05-01",
+        "filter.end_date": "2026-10-30",
+        "take": 26
+      },
+      "query": "filter.type=urn%3Aentity%3Apodcast&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&filter.start_date=2026-05-01&filter.end_date=2026-10-30&take=26",
+      "status": 200,
+      "ms": 306,
+      "cached": false
+    },
+    {
+      "module": "places",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:place",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "filter.location.query": "Austin",
+        "take": 8
+      },
+      "query": "filter.type=urn%3Aentity%3Aplace&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&filter.location.query=Austin&take=8",
+      "status": 200,
+      "ms": 1267,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.tags": "urn:tag:genre:brand:travel",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.tags=urn%3Atag%3Agenre%3Abrand%3Atravel&take=10",
+      "status": 200,
+      "ms": 624,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.tags": "urn:tag:genre:brand:automotive",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.tags=urn%3Atag%3Agenre%3Abrand%3Aautomotive&take=10",
+      "status": 200,
+      "ms": 325,
+      "cached": false
+    },
+    {
+      "module": "partners",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.tags": "urn:tag:genre:brand:electronics:gaming",
+        "take": 10
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.tags=urn%3Atag%3Agenre%3Abrand%3Aelectronics%3Agaming&take=10",
+      "status": 200,
+      "ms": 332,
+      "cached": false
+    },
+    {
+      "module": "places",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:heatmap",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "filter.location.query": "Austin",
+        "output.heatmap.boundary": "urn:entity:locality",
+        "take": 20
+      },
+      "query": "filter.type=urn%3Aheatmap&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&filter.location.query=Austin&output.heatmap.boundary=urn%3Aentity%3Alocality&take=20",
+      "status": 200,
+      "ms": 26524,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "B06F980E-A566-490E-B6B9-92F73F43602B"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=B06F980E-A566-490E-B6B9-92F73F43602B",
+      "status": 200,
+      "ms": 6538,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C",
+      "status": 200,
+      "ms": 307,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "1A91A46A-3764-4720-973D-C25951E4484C"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=1A91A46A-3764-4720-973D-C25951E4484C",
+      "status": 200,
+      "ms": 287,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "BF298229-6B37-44B8-ABC3-2AC098C5767B"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=BF298229-6B37-44B8-ABC3-2AC098C5767B",
+      "status": 200,
+      "ms": 287,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "2650C16E-BF2A-41A3-8166-62D6FA25C19A"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=2650C16E-BF2A-41A3-8166-62D6FA25C19A",
+      "status": 200,
+      "ms": 7687,
+      "cached": false
+    },
+    {
+      "module": "check",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:demographics",
+        "signal.interests.entities": "2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9"
+      },
+      "query": "filter.type=urn%3Ademographics&signal.interests.entities=2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9",
+      "status": 200,
+      "ms": 7705,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Tool",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Tool&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 5869,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Bon Iver",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Bon+Iver&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "The National",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=The+National&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "AG1",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=AG1&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 6027,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Tame Impala",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Tame+Impala&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 402,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Hans Zimmer",
+        "types": "urn:entity:artist",
+        "take": 3
+      },
+      "query": "query=Hans+Zimmer&types=urn%3Aentity%3Aartist&take=3",
+      "status": 200,
+      "ms": 0,
+      "cached": true
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Eight Sleep",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Eight+Sleep&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 409,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "Momentous",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=Momentous&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 459,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:artist",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.results.entities": [
+          "2B408CF7-D221-468C-A19E-70D7FC6A64F4",
+          "DECC89C5-41CF-4A3A-9377-89BB3FB1DF6F",
+          "6D0D8498-648F-4F33-B0E3-787C0BDFCE2C",
+          "99A88995-F1C7-4552-A801-934BDB78922E",
+          "EA2418FD-0A83-4EAC-8FD2-93266475B1DC",
+          "851EC557-2F8B-4DB7-A4A9-2A2BB606E450",
+          "E51DB8F2-7A93-4746-A283-E55B5216FDE1",
+          "192BB96E-F4BD-4A76-B24E-CD049EC9DFA2",
+          "D1AE8792-9129-46E0-AEE7-2C3A81E91385",
+          "37DB91E9-9EE1-4C98-AA01-0AF0C34274EC"
+        ],
+        "take": 15
+      },
+      "query": "filter.type=urn%3Aentity%3Aartist&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.results.entities=2B408CF7-D221-468C-A19E-70D7FC6A64F4%2CDECC89C5-41CF-4A3A-9377-89BB3FB1DF6F%2C6D0D8498-648F-4F33-B0E3-787C0BDFCE2C%2C99A88995-F1C7-4552-A801-934BDB78922E%2CEA2418FD-0A83-4EAC-8FD2-93266475B1DC%2C851EC557-2F8B-4DB7-A4A9-2A2BB606E450%2CE51DB8F2-7A93-4746-A283-E55B5216FDE1%2C192BB96E-F4BD-4A76-B24E-CD049EC9DFA2%2CD1AE8792-9129-46E0-AEE7-2C3A81E91385%2C37DB91E9-9EE1-4C98-AA01-0AF0C34274EC&take=15",
+      "status": 200,
+      "ms": 615,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "WHOOP",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=WHOOP&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 525,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/search",
+      "params": {
+        "query": "LMNT",
+        "types": "urn:entity:brand",
+        "take": 3
+      },
+      "query": "query=LMNT&types=urn%3Aentity%3Abrand&take=3",
+      "status": 200,
+      "ms": 391,
+      "cached": false
+    },
+    {
+      "module": "cliche",
+      "path": "/v2/insights",
+      "params": {
+        "filter.type": "urn:entity:brand",
+        "signal.interests.entities": "10E08FC9-04BB-4827-9331-7E9ABE1F7DB6",
+        "signal.demographics.age": "30_to_34",
+        "signal.demographics.gender": "male",
+        "filter.results.entities": [
+          "B06F980E-A566-490E-B6B9-92F73F43602B",
+          "2650C16E-BF2A-41A3-8166-62D6FA25C19A",
+          "2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9",
+          "D619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C",
+          "1A91A46A-3764-4720-973D-C25951E4484C",
+          "9BA78DCE-1E6A-4E02-BE51-47636776A254",
+          "81EC484E-33D2-4247-B899-EB76B4439D4D",
+          "351F0B0E-CB3F-4952-8A93-84990CE7716C"
+        ],
+        "take": 13
+      },
+      "query": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=10E08FC9-04BB-4827-9331-7E9ABE1F7DB6&signal.demographics.age=30_to_34&signal.demographics.gender=male&filter.results.entities=B06F980E-A566-490E-B6B9-92F73F43602B%2C2650C16E-BF2A-41A3-8166-62D6FA25C19A%2C2EF5762E-6F5F-44E6-8332-0D6E33B1C2D9%2CD619A0B2-F0ED-4DD3-97D9-00BDC4F32E7C%2C1A91A46A-3764-4720-973D-C25951E4484C%2C9BA78DCE-1E6A-4E02-BE51-47636776A254%2C81EC484E-33D2-4247-B899-EB76B4439D4D%2C351F0B0E-CB3F-4952-8A93-84990CE7716C&take=13",
+      "status": 200,
+      "ms": 639,
+      "cached": false
+    }
+  ],
+  "modules": {
+    "sound": {
+      "status": "done",
+      "ms": 10939,
+      "label": "Artists: mainstream and emerging",
+      "detail": "8 mainstream, 8 emerging"
+    },
+    "profile": {
+      "status": "done",
+      "ms": 11267,
+      "label": "Audience skew and taste tags",
+      "detail": "35 to 44, strongly male-leaning"
+    },
+    "timing": {
+      "status": "error",
+      "error": "Qloo has no trend series for this title",
+      "label": "Is interest rising or falling?"
+    },
+    "partners": {
+      "status": "done",
+      "ms": 12562,
+      "label": "Partner brands by category",
+      "detail": "57 candidates kept of 60"
+    },
+    "places": {
+      "status": "done",
+      "ms": 37811,
+      "label": "Places and neighborhoods in Austin",
+      "detail": "8 venues, 3 neighborhoods"
+    },
+    "editor": {
+      "status": "done",
+      "ms": 10936,
+      "label": "Editor: choose and explain partners",
+      "detail": "6 partners (llm)"
+    },
+    "check": {
+      "status": "done",
+      "ms": 7723,
+      "label": "Check each partner's own audience",
+      "detail": "1 of 6 flagged"
+    },
+    "cliche": {
+      "status": "done",
+      "ms": 22141,
+      "label": "Plain AI vs data: score an unaided guess",
+      "detail": "4 of 5 LLM brands scored, 2 below our floor"
+    }
+  }
+}
